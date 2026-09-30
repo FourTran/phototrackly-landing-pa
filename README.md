@@ -1,4 +1,4 @@
-# PhotoTrackly pre-launch website
+# PhotoTrackly pre-launch website 
 
 A responsive Next.js landing page for the planned property-media workspace. The design, two early-access forms, interactive sample job, and illustrative production board are preserved. **Lead submissions go to a Google Sheet in Google Drive. No separate database is required.**
 
