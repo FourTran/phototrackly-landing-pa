@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-page-custom-font -- App Router root layout: this stylesheet is global across all routes, with system-font fallbacks. */
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { siteUrl } from '@/lib/site';
 import './globals.css';
 
@@ -21,5 +22,5 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  </head><body><a className="skip-link" href="#main">Skip to content</a>{children}</body></html>;
+  </head><body><a className="skip-link" href="#main">Skip to content</a>{children}<SpeedInsights /></body></html>;
 }
