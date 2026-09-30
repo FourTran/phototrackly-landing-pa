@@ -2,6 +2,7 @@
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { siteUrl } from '@/lib/site';
 import './globals.css';
 
@@ -22,5 +23,5 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  </head><body><a className="skip-link" href="#main">Skip to content</a>{children}<Analytics /></body></html>;
+  </head><body><a className="skip-link" href="#main">Skip to content</a>{children}<Analytics /><SpeedInsights /></body></html>;
 }
