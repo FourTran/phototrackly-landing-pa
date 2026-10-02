@@ -30,7 +30,7 @@ const originalInsights: Insight[] = [
     answer: 'For each active property job, identify its current stage, the next action, the person responsible, and the due time. Review blocked or due-soon jobs first. A stage label alone does not tell a coordinator what to do next.',
     intro: 'When a studio has several shoots, edits and deliveries underway, the owner can become the status database. A short daily triage works better when the team looks at the same job record and decides the next action together.',
     image: '/images/insights/property-media-job-triage.webp',
-    imageAlt: 'Property media team working in a studio',
+    imageAlt: 'Studio coordinator reviewing property media contact sheets beside a task board',
     readingMinutes: 5,
     sections: [
       {
@@ -72,7 +72,7 @@ const originalInsights: Insight[] = [
     answer: 'A multi-service property shoot is ready to schedule when the team has the property address, client contact, ordered services, requested timing and access instructions. Assign the responsible people, confirm their briefs, and record changes on the same job.',
     intro: 'A calendar event says where and when. It rarely explains every service a property-media team must produce. For a shoot with photos, drone images and a floor plan, the coordinator needs to make the service brief travel with the appointment.',
     image: '/images/insights/multi-service-shoot-scheduling.webp',
-    imageAlt: 'Residential property exterior prepared for a media shoot',
+    imageAlt: 'Photographer preparing cameras, drone equipment and floor-plan tools for a property shoot',
     readingMinutes: 5,
     sections: [
       {
@@ -113,7 +113,7 @@ const originalInsights: Insight[] = [
     answer: 'A property-media job is ready to deliver when every agreed deliverable has a clear disposition, the intended files have passed human review, open revisions are resolved or explicitly agreed, and the client-facing package has been checked.',
     intro: 'An editor can finish a file while the job is still waiting on another service or a client decision. Treating “uploaded” as “approved” is an easy way to send an incomplete package.',
     image: '/images/insights/real-estate-media-delivery-readiness.webp',
-    imageAlt: 'Residential interior media representing a completed property shoot',
+    imageAlt: 'Editor checking property photos, floor plan and video frames before delivery',
     readingMinutes: 5,
     sections: [
       {
@@ -154,7 +154,7 @@ const originalInsights: Insight[] = [
     answer: 'Test property-media software with one realistic job that includes several services and a late change. Follow the job from request to client delivery, and ask each role to show how it finds its next action. Record gaps before comparing prices or feature lists.',
     intro: 'A long feature list does not show whether a coordinator can find the missing floor plan on a busy day. A realistic test job reveals where people would still need separate messages, spreadsheets and folders.',
     image: '/images/insights/evaluate-property-media-workflow-software.webp',
-    imageAlt: 'Photographer working on a property media assignment',
+    imageAlt: 'Studio team comparing a property workflow with a sample job brief',
     readingMinutes: 6,
     sections: [
       {
