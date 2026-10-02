@@ -181,5 +181,6 @@ test('reference typography, section order and all five original photographs are 
   await expect(page.locator('.rf-pv-metrics')).toContainText('08');
   await expect(page.locator('.seo-home-links')).toHaveCount(2);
   await expect(page.locator('.seo-home-grid a')).toHaveCount(8);
-  expect(await page.locator('.pl main > section').count()).toBe(12);
+  await expect(page.locator('.in-home-list a')).toHaveCount(4);
+  expect(await page.locator('.pl main > section').count()).toBe(13);
 });
