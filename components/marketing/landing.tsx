@@ -9,6 +9,7 @@ import FAQ from '@/components/prelaunch/faq';
 import AnalyticsConsent, { CookieSettingsButton } from '@/components/prelaunch/analytics-consent';
 import './prelaunch.css';
 import './seo-page.css';
+import './insights.css';
 
 export default function Landing() {
   return <div className="pl reference-site"><Navigation /><main id="main">
@@ -27,6 +28,12 @@ export default function Landing() {
     <ProductionBoard />
     <section className="rf-image-band"><Media name="exterior" alt="Contemporary home photographed at dusk" sizes="100vw" /><div className="rf-image-band-copy"><p className="rf-eyebrow">A WORKSPACE FOR THE WORK BEHIND THE IMAGE</p><h2>Every great listing has a production story.</h2><p>Make every handoff easier to understand, from the shoot request to approved media.</p></div></section>
     <section className="seo-home-links rf-section"><div className="rf-wrap"><p className="rf-eyebrow">STUDIO RESOURCES</p><h2>Tools you can use with your team today.</h2><div className="seo-home-grid"><Link href="/resources/shoot-to-delivery-checklist"><strong>Shoot-to-delivery checklist</strong><span>Keep the brief, assignment, review and handoff in view. ↗</span></Link><Link href="/resources/photographer-handoff-template"><strong>Photographer handoff template</strong><span>Send a complete property and service brief. ↗</span></Link><Link href="/resources/media-editing-review-checklist"><strong>Editing and review checklist</strong><span>Separate received files from approved deliverables. ↗</span></Link><Link href="/resources/property-job-status-board-template"><strong>Job status board template</strong><span>Track the owner, next action and blocker. ↗</span></Link></div><p className="resource-more"><Link href="/resources">See all resources →</Link></p></div></section>
+    <section className="in-home rf-section"><div className="rf-wrap"><p className="rf-eyebrow">FROM THE OPERATIONS DESK</p><h2>Four decisions every growing studio faces.</h2><div className="in-home-list">
+      <Link href="/insights/property-media-job-triage"><strong>Which job needs attention first?</strong><span>A daily triage method for a busy production board. ↗</span></Link>
+      <Link href="/insights/multi-service-shoot-scheduling"><strong>Is a multi-service shoot ready?</strong><span>Keep photos, drone and floor-plan instructions with the appointment. ↗</span></Link>
+      <Link href="/insights/real-estate-media-delivery-readiness"><strong>What is actually ready to deliver?</strong><span>Separate received, revised and approved media. ↗</span></Link>
+      <Link href="/insights/evaluate-property-media-workflow-software"><strong>How should we evaluate software?</strong><span>Test one representative job instead of a feature list. ↗</span></Link>
+    </div><p className="in-home-more"><Link href="/insights">Read all insights →</Link></p></div></section>
     <FAQ />
     <section className="rf-section rf-signup" id="early-access"><div className="rf-wrap rf-signup-grid"><div><p className="rf-eyebrow">JOIN EARLY ACCESS</p><h2>Help shape one workspace for shoots and production.</h2><p>We’re inviting growing real estate photography and property media teams in the US and Australia to register interest. Tell us which part of your current workflow takes the most coordination; your input will help shape the first release.</p><div className="rf-fit-note"><strong>Is this your team?</strong><span>You coordinate multiple shoots, people or production handoffs—and you’re tired of reconstructing status from separate tools.</span></div><ul><li>No payment required</li><li>No mandatory sales call</li><li>We’ll contact you about PhotoTrackly early access</li></ul></div><LeadForm variant="footer" /></div></section>
   </main><footer><div className="rf-wrap rf-foot-inner"><Wordmark /><p>Property media work, connected.</p><div className="rf-footer-links"><Link href="/privacy">Privacy</Link><CookieSettingsButton /><a href="#main">Back to top ↑</a></div></div></footer><AnalyticsConsent /></div>;
