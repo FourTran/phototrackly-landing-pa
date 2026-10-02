@@ -1,0 +1,45 @@
+# PhotoTrackly content progress
+
+This record tracks articles published from the PhotoTrackly Content Source Pack topic catalog. The canonical catalog lives in the project source pack, not in this repository. Before selecting a topic, compare its search intent with the live routes on `main`, not just its title. A related catalog row may already be substantially answered by an existing page; improve that page instead of creating a near-duplicate.
+
+## Existing pages before the daily batches
+
+- Four buying pages: `/real-estate-photography-business-software`, `/real-estate-photography-workflow-software`, `/real-estate-photography-scheduling-software`, `/real-estate-media-production-management`.
+- Four resources under `/resources`: shoot-to-delivery checklist, photographer handoff template, media editing and review checklist, and job status board template.
+- Four Insights articles: job triage, multi-service shoot scheduling, delivery readiness, and software evaluation.
+
+These already cover or substantially overlap Wave 1's general booking-to-delivery workflow, photographer-to-editor handoff checklist, pre-delivery QC checklist, software evaluation and delivery-readiness questions. Avoid creating another page with the same primary answer.
+
+## First two daily batches — merged 2 October 2026
+
+Each route below is on `main`. Catalog numbers identify the closest original topic or intent, not a claim that every related catalog row needs its own page.
+
+| Batch / PR | Catalog # | Article route |
+|---|---:|---|
+| Day 1 / [#13](https://github.com/FourTran/phototrackly-landing-pa/pull/13) | 2 | `/insights/scale-photography-business-without-owner-bottleneck` |
+| Day 1 / #13 | 4 | `/insights/handle-five-property-shoots-per-day` |
+| Day 1 / #13 | 13 | `/insights/track-every-active-property-media-job` |
+| Day 1 / #13 | 15 | `/insights/property-media-job-statuses` |
+| Day 1 / #13 | 57 | `/insights/schedule-multiple-property-photographers` |
+| Day 1 / #13 | 30 | `/insights/manage-multiple-real-estate-photo-editors` |
+| Day 1 / #13 | 191 | `/insights/outgrown-spreadsheets-property-media` |
+| Day 1 / #13 | 48 | `/insights/real-estate-photography-editing-workflow` |
+| Day 1 / #13 | 93 | `/insights/track-property-media-revisions-and-versions` |
+| Day 1 / #13 | 108 | `/insights/organize-photo-video-drone-floor-plan-one-property` |
+| Day 2 / [#14](https://github.com/FourTran/phototrackly-landing-pa/pull/14) | 19 | `/insights/property-media-operations-dashboard` |
+| Day 2 / #14 | 174 | `/insights/real-estate-photography-operations-checklist` |
+| Day 2 / #14 | 16 | `/insights/find-stuck-property-media-jobs` |
+| Day 2 / #14 | 31 | `/insights/in-house-versus-outsourced-property-photo-editing` |
+| Day 2 / #14 | 27 | `/insights/write-property-photo-editing-instructions` |
+| Day 2 / #14 | 38 | `/insights/property-media-editing-queue` |
+| Day 2 / #14 | 43 | `/insights/who-owns-property-media-quality-control` |
+| Day 2 / #14 | 64 | `/insights/prevent-double-booked-photographers` |
+| Day 2 / #14 | 28 | `/insights/organize-raw-property-media-files` |
+| Day 2 / #14 | 11 | `/insights/delegate-property-media-operations` |
+
+## Selection rule for future runs
+
+1. Read the current catalog, roadmap, brief and this record. Confirm actual routes and merged PRs on `main` before writing.
+2. Choose the next ten useful, distinct unanswered questions by buyer and product fit. Treat catalog rows with the same primary answer as one topic; improve or link an existing page where appropriate.
+3. Include catalog numbers and routes in the article PR. After the merge, update this record with the merged PR. Do not mark an open PR as published.
+4. Keep PhotoTrackly's pre-launch positioning, practical examples, real dates and verifiable claims.
