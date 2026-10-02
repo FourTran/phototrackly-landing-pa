@@ -15,6 +15,16 @@ const slugs = [
   'real-estate-photography-editing-workflow',
   'track-property-media-revisions-and-versions',
   'organize-photo-video-drone-floor-plan-one-property',
+  'property-media-operations-dashboard',
+  'real-estate-photography-operations-checklist',
+  'find-stuck-property-media-jobs',
+  'in-house-versus-outsourced-property-photo-editing',
+  'write-property-photo-editing-instructions',
+  'property-media-editing-queue',
+  'who-owns-property-media-quality-control',
+  'prevent-double-booked-photographers',
+  'organize-raw-property-media-files',
+  'delegate-property-media-operations',
 ];
 
 test('the insights hub links to distinct articles', async ({ page }) => {
