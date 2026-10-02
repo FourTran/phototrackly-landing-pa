@@ -1,3 +1,5 @@
+import { dayOneInsights } from './insights-day-one';
+
 export type Insight = {
   slug: string;
   category: string;
@@ -18,7 +20,7 @@ export type Insight = {
   related: { href: string; label: string }[];
 };
 
-export const insights: Insight[] = [
+const originalInsights: Insight[] = [
   {
     slug: 'property-media-job-triage',
     category: 'Operations',
@@ -185,5 +187,6 @@ export const insights: Insight[] = [
     ],
   },
 ];
+export const insights: Insight[] = [...originalInsights, ...dayOneInsights];
 export const insightSlugs = insights.map(article => article.slug);
 export function getInsight(slug: string) { return insights.find(article => article.slug === slug); }
