@@ -37,6 +37,23 @@ Each route below is on `main`. Catalog numbers identify the closest original top
 | Day 2 / #14 | 28 | `/insights/organize-raw-property-media-files` |
 | Day 2 / #14 | 11 | `/insights/delegate-property-media-operations` |
 
+## Third daily batch — PR #17
+
+The routes below are assigned to [PR #17](https://github.com/FourTran/phototrackly-landing-pa/pull/17). Confirm that the PR is merged before treating them as published.
+
+| Batch / PR | Catalog # | Article route |
+|---|---:|---|
+| Day 3 / [#17](https://github.com/FourTran/phototrackly-landing-pa/pull/17) | 20 | `/insights/property-media-morning-operations-check` |
+| Day 3 / #17 | 26 | `/insights/files-to-send-real-estate-photo-editor` |
+| Day 3 / #17 | 34 | `/insights/consistent-property-photo-editing-across-editors` |
+| Day 3 / #17 | 36 | `/insights/wrong-or-incomplete-files-from-property-editor` |
+| Day 3 / #17 | 37 | `/insights/overnight-real-estate-photo-editing-workflow` |
+| Day 3 / #17 | 39 | `/insights/prevent-property-editor-bottlenecks-busy-season` |
+| Day 3 / #17 | 44 | `/insights/qc-outsourced-real-estate-photo-editing` |
+| Day 3 / #17 | 59 | `/insights/assign-property-photographers-by-skills` |
+| Day 3 / #17 | 66 | `/insights/define-property-photographer-service-areas` |
+| Day 3 / #17 | 68 | `/insights/reschedule-property-shoot-without-breaking-day` |
+
 ## Selection rule for future runs
 
 1. Read the current catalog, roadmap, brief and this record. Confirm actual routes and merged PRs on `main` before writing.
