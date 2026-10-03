@@ -54,7 +54,8 @@ for (const slug of slugs) {
     await expect(page.locator('.in-section')).toHaveCount(4);
     const cover = page.locator('.in-hero-image img');
     await expect(cover).toBeVisible();
-    await expect(cover).toHaveAttribute('src', /\/images\/insights\//);
+    const coverSource = decodeURIComponent(await cover.getAttribute('src') || '');
+    expect(coverSource).toContain(`/images/insights/${slug}.webp`);
     expect(await cover.evaluate(image => (image as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
     await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
     await expect(page.locator('.in-related a')).toHaveCount(2);
