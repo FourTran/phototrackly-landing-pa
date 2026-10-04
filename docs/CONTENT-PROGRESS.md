@@ -54,6 +54,23 @@ The routes below are assigned to [PR #17](https://github.com/FourTran/phototrack
 | Day 3 / #17 | 66 | `/insights/define-property-photographer-service-areas` |
 | Day 3 / #17 | 68 | `/insights/reschedule-property-shoot-without-breaking-day` |
 
+## Fourth daily batch — PR #18
+
+The routes below are assigned to [PR #18](https://github.com/FourTran/phototrackly-landing-pa/pull/18). Confirm that the PR is merged before treating them as published.
+
+| Batch / PR | Catalog # | Article route |
+|---|---:|---|
+| Day 4 / [#18](https://github.com/FourTran/phototrackly-landing-pa/pull/18) | 21 | `/insights/prioritize-property-media-production` |
+| Day 4 / #18 | 35 | `/insights/real-estate-photography-editing-style-guide` |
+| Day 4 / #18 | 51 | `/insights/real-estate-video-qc-checklist` |
+| Day 4 / #18 | 52 | `/insights/drone-property-media-qc-checklist` |
+| Day 4 / #18 | 53 | `/insights/floor-plan-qc-checklist` |
+| Day 4 / #18 | 69 | `/insights/photographer-sick-day-reassignment-plan` |
+| Day 4 / #18 | 75 | `/insights/onboard-real-estate-photographer` |
+| Day 4 / #18 | 90 | `/insights/keep-source-files-with-correct-property` |
+| Day 4 / #18 | 104 | `/insights/handle-client-delivery-revisions-property-media` |
+| Day 4 / #18 | 107 | `/insights/partial-delivery-photos-before-video` |
+
 ## Selection rule for future runs
 
 1. Read the current catalog, roadmap, brief and this record. Confirm actual routes and merged PRs on `main` before writing.
