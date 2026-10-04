@@ -35,6 +35,16 @@ const slugs = [
   'assign-property-photographers-by-skills',
   'define-property-photographer-service-areas',
   'reschedule-property-shoot-without-breaking-day',
+  'prioritize-property-media-production',
+  'real-estate-photography-editing-style-guide',
+  'real-estate-video-qc-checklist',
+  'drone-property-media-qc-checklist',
+  'floor-plan-qc-checklist',
+  'photographer-sick-day-reassignment-plan',
+  'onboard-real-estate-photographer',
+  'keep-source-files-with-correct-property',
+  'handle-client-delivery-revisions-property-media',
+  'partial-delivery-photos-before-video',
 ];
 
 test('the insights hub links to distinct articles', async ({ page }) => {
