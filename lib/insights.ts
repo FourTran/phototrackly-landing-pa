@@ -1,6 +1,7 @@
 import { dayOneInsights } from './insights-day-one';
 import { dayTwoInsights } from './insights-day-two';
 import { dayThreeInsights } from './insights-day-three';
+import { dayFourInsights } from './insights-day-four';
 
 export type Insight = {
   slug: string;
@@ -189,6 +190,6 @@ const originalInsights: Insight[] = [
     ],
   },
 ];
-export const insights: Insight[] = [...originalInsights, ...dayOneInsights, ...dayTwoInsights, ...dayThreeInsights];
+export const insights: Insight[] = [...originalInsights, ...dayOneInsights, ...dayTwoInsights, ...dayThreeInsights, ...dayFourInsights];
 export const insightSlugs = insights.map(article => article.slug);
 export function getInsight(slug: string) { return insights.find(article => article.slug === slug); }
