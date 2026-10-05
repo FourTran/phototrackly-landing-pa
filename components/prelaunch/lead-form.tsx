@@ -14,7 +14,7 @@ export default function LeadForm({ variant }: { variant: 'hero' | 'footer' }) {
   const [message, setMessage] = useState(''); const [receipt, setReceipt] = useState<Receipt | null>(null);
   const id = (name: string) => `${variant}-${name}`;
   function fieldError(name: keyof FieldErrors) { return errors[name] ? <span className="pl-field-error" id={id(`${name}-error`)}>{errors[name]}</span> : null; }
-  function start() { if (!started.current) { started.current = true; track('form_start', { location: variant }); } }
+  function start() { if (!started.current) { started.current = true; track('early_access_form_start', { location: variant }); } }
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault(); if (pending) return;
     const element = event.currentTarget; const data = new FormData(element);
@@ -22,7 +22,7 @@ export default function LeadForm({ variant }: { variant: 'hero' | 'footer' }) {
     const currentFingerprint = JSON.stringify(fields);
     // A retry reuses its key; editing any field intentionally starts a new submission.
     if (!requestId.current || fingerprint.current !== currentFingerprint) { requestId.current = crypto.randomUUID(); fingerprint.current = currentFingerprint; }
-    setPending(true); setMessage(''); setErrors({}); track('form_submit', { location: variant });
+    setPending(true); setMessage(''); setErrors({}); track('early_access_submit', { location: variant });
     try {
       const response = await fetch('/api/early-access', {
         method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: AbortSignal.timeout(15000),
@@ -32,7 +32,7 @@ export default function LeadForm({ variant }: { variant: 'hero' | 'footer' }) {
       if (!response.ok || body.ok !== true || !body.reference || !body.withdrawalToken) {
         setErrors(body.fields || {});
         setMessage(body.error || 'We could not save your registration. Your details are still here; please try again.');
-        track('form_error', { location: variant, category: String(response.status) });
+        track('early_access_error', { location: variant, category: String(response.status) });
         requestAnimationFrame(() => {
           const field = Object.keys(body.fields || {})[0];
           const target = field ? document.getElementById(id(field)) : document.getElementById(id('feedback'));
@@ -40,11 +40,11 @@ export default function LeadForm({ variant }: { variant: 'hero' | 'footer' }) {
         });
         return;
       }
-      setReceipt(body); track('generate_lead', { location: variant });
+      setReceipt(body); track('early_access_success', { location: variant });
       requestAnimationFrame(() => success.current?.focus());
     } catch {
       setMessage('We could not confirm your registration. Please check your connection and try again. Retrying will not create a duplicate.');
-      track('form_error', { location: variant, category: 'network' });
+      track('early_access_error', { location: variant, category: 'network' });
       requestAnimationFrame(() => document.getElementById(id('feedback'))?.focus());
     } finally { setPending(false); }
   }
