@@ -45,6 +45,16 @@ const slugs = [
   'keep-source-files-with-correct-property',
   'handle-client-delivery-revisions-property-media',
   'partial-delivery-photos-before-video',
+  'show-next-action-owner-property-job',
+  'manage-property-media-workflow-exceptions',
+  'production-complete-approved-delivered-differences',
+  'real-estate-photo-editing-mistakes-pre-delivery',
+  'round-robin-vs-best-fit-photographer-assignment',
+  'property-size-shoot-duration-planning',
+  'manage-property-photographer-availability',
+  'travel-time-between-property-shoots',
+  'complete-property-shoot-job-instructions',
+  'track-property-media-client-delivery-event',
 ];
 
 test('the insights hub links to distinct articles', async ({ page }) => {
