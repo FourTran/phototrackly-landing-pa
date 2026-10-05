@@ -71,6 +71,23 @@ The routes below are assigned to [PR #18](https://github.com/FourTran/phototrack
 | Day 4 / #18 | 104 | `/insights/handle-client-delivery-revisions-property-media` |
 | Day 4 / #18 | 107 | `/insights/partial-delivery-photos-before-video` |
 
+## Fifth daily batch — PR #19
+
+The routes below are assigned to [PR #19](https://github.com/FourTran/phototrackly-landing-pa/pull/19). Confirm that the PR is merged before treating them as published.
+
+| Batch / PR | Catalog # | Article route |
+|---|---:|---|
+| Day 5 / [#19](https://github.com/FourTran/phototrackly-landing-pa/pull/19) | 22 | `/insights/show-next-action-owner-property-job` |
+| Day 5 / #19 | 23 | `/insights/manage-property-media-workflow-exceptions` |
+| Day 5 / #19 | 24 | `/insights/production-complete-approved-delivered-differences` |
+| Day 5 / #19 | 45 | `/insights/real-estate-photo-editing-mistakes-pre-delivery` |
+| Day 5 / #19 | 58 | `/insights/round-robin-vs-best-fit-photographer-assignment` |
+| Day 5 / #19 | 61 | `/insights/property-size-shoot-duration-planning` |
+| Day 5 / #19 | 63 | `/insights/manage-property-photographer-availability` |
+| Day 5 / #19 | 65 | `/insights/travel-time-between-property-shoots` |
+| Day 5 / #19 | 78 | `/insights/complete-property-shoot-job-instructions` |
+| Day 5 / #19 | 105 | `/insights/track-property-media-client-delivery-event` |
+
 ## Selection rule for future runs
 
 1. Read the current catalog, roadmap, brief and this record. Confirm actual routes and merged PRs on `main` before writing.
