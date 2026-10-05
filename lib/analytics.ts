@@ -1,5 +1,14 @@
 export const ANALYTICS_CONSENT_KEY = 'phototrackly.analytics-consent.v1';
-type EventName = 'cta_click' | 'form_start' | 'form_submit' | 'form_error' | 'generate_lead' | 'sample_stage_view' | 'board_filter' | 'faq_open';
+type EventName =
+  | 'cta_click'
+  | 'early_access_cta_click'
+  | 'early_access_form_start'
+  | 'early_access_submit'
+  | 'early_access_success'
+  | 'early_access_error'
+  | 'sample_stage_view'
+  | 'board_filter'
+  | 'faq_open';
 declare global { interface Window { dataLayer?: unknown[]; gtag?: (...args: unknown[]) => void; } }
 export function track(event: EventName, params: { location?: string; stage?: string; category?: string; question?: string } = {}) {
   try {
