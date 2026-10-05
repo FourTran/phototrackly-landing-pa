@@ -14,6 +14,7 @@ export type Insight = {
   image: string;
   imageAlt: string;
   readingMinutes: number;
+  publishedAt?: string;
   sections: {
     heading: string;
     paragraphs: string[];
@@ -191,6 +192,15 @@ const originalInsights: Insight[] = [
     ],
   },
 ];
-export const insights: Insight[] = [...originalInsights, ...dayOneInsights, ...dayTwoInsights, ...dayThreeInsights, ...dayFourInsights, ...dayFiveInsights];
+const published = (articles: Insight[], publishedAt: string): Insight[] => articles.map(article => ({ ...article, publishedAt }));
+export const insights: Insight[] = [
+  ...published(originalInsights, '2026-10-02T07:12:50Z'),
+  ...published(dayOneInsights, '2026-10-02T09:42:53Z'),
+  ...published(dayTwoInsights, '2026-10-02T09:50:25Z'),
+  ...published(dayThreeInsights, '2026-10-03T02:38:00Z'),
+  ...published(dayFourInsights, '2026-10-04T02:22:23Z'),
+  ...published(dayFiveInsights, '2026-10-05T02:04:27Z'),
+];
 export const insightSlugs = insights.map(article => article.slug);
 export function getInsight(slug: string) { return insights.find(article => article.slug === slug); }
+
