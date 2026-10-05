@@ -14,6 +14,9 @@ const config: NextConfig = {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 86400,
   },
+  async redirects() {
+    return [{ source: '/:path*', has: [{ type: 'host', value: 'www.phototrackly.com' }], destination: 'https://phototrackly.com/:path*', permanent: true }];
+  },
   async headers() {
     return [{ source: '/:path*', headers: [
       { key: 'X-Content-Type-Options', value: 'nosniff' },
@@ -23,3 +26,4 @@ const config: NextConfig = {
   },
 };
 export default config;
+
