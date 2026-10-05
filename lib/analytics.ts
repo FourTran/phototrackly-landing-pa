@@ -1,4 +1,6 @@
 export const ANALYTICS_CONSENT_KEY = 'phototrackly.analytics-consent.v1';
+export const GA_MEASUREMENT_ID = 'G-GJQ82ZDWL2';
+
 type EventName =
   | 'cta_click'
   | 'early_access_cta_click'
