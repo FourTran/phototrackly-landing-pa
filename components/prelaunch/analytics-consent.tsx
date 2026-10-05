@@ -4,7 +4,7 @@ import Script from 'next/script';
 import { useEffect, useState } from 'react';
 import { ANALYTICS_CONSENT_KEY, openCookieSettings, track } from '@/lib/analytics';
 
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-0PSP21DKNJ';
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-GJQ82ZDWL2';
 export function CookieSettingsButton() { return <button className="pl-footer-link" type="button" onClick={openCookieSettings}>Cookie settings</button>; }
 export default function AnalyticsConsent() {
   const [choice, setChoice] = useState<'accepted' | 'declined' | null>(null);
@@ -16,6 +16,7 @@ export default function AnalyticsConsent() {
     const click = (event: MouseEvent) => {
       const el = event.target instanceof Element ? event.target.closest<HTMLElement>('[data-track]') : null;
       if (el?.dataset.track === 'cta_click') track('cta_click', { location: el.dataset.location });
+      if (el?.dataset.track === 'early_access_cta_click') track('early_access_cta_click', { location: el.dataset.location });
     };
     document.addEventListener('click', click); window.addEventListener('phototrackly:cookie-settings', reopen);
     return () => { document.removeEventListener('click', click); window.removeEventListener('phototrackly:cookie-settings', reopen); };
