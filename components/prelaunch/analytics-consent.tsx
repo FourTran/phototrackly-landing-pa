@@ -2,9 +2,8 @@
 import Link from 'next/link';
 import Script from 'next/script';
 import { useEffect, useState } from 'react';
-import { ANALYTICS_CONSENT_KEY, openCookieSettings, track } from '@/lib/analytics';
+import { ANALYTICS_CONSENT_KEY, GA_MEASUREMENT_ID, openCookieSettings, track } from '@/lib/analytics';
 
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-GJQ82ZDWL2';
 export function CookieSettingsButton() { return <button className="pl-footer-link" type="button" onClick={openCookieSettings}>Cookie settings</button>; }
 export default function AnalyticsConsent() {
   const [choice, setChoice] = useState<'accepted' | 'declined' | null>(null);
@@ -44,8 +43,8 @@ export default function AnalyticsConsent() {
     window.gtag = function () { window.dataLayer!.push(arguments); };
     window.gtag('consent', 'default', { analytics_storage: 'granted', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
     window.gtag('js', new Date());
-    window.gtag('config', GA_ID, { send_page_view: false, allow_google_signals: false, allow_ad_personalization_signals: false, page_location: location.origin + location.pathname, page_referrer: document.referrer ? new URL(document.referrer).origin : '' });
+    window.gtag('config', GA_MEASUREMENT_ID, { send_page_view: false, allow_google_signals: false, allow_ad_personalization_signals: false, page_location: location.origin + location.pathname, page_referrer: document.referrer ? new URL(document.referrer).origin : '' });
     window.gtag('event', 'page_view', { page_location: location.origin + location.pathname, page_title: document.title });
   }
-  return <>{choice === 'accepted' && /^G-[A-Z0-9]+$/.test(GA_ID) && <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" onReady={init} />}{visible && <section className="pl-cookie" aria-label="Optional analytics cookies"><div><strong>A little insight, with your permission.</strong><p>May we use optional analytics to understand what’s useful? Your form details are never sent to analytics. <Link href="/privacy">Privacy notice</Link></p></div><div><button type="button" onClick={() => choose('declined')}>No thanks</button><button type="button" onClick={() => choose('accepted')}>Allow analytics</button></div></section>}</>;
+  return <>{choice === 'accepted' && <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} strategy="afterInteractive" onReady={init} />}{visible && <section className="pl-cookie" aria-label="Optional analytics cookies"><div><strong>A little insight, with your permission.</strong><p>May we use optional analytics to understand what’s useful? Your form details are never sent to analytics. <Link href="/privacy">Privacy notice</Link></p></div><div><button type="button" onClick={() => choose('declined')}>No thanks</button><button type="button" onClick={() => choose('accepted')}>Allow analytics</button></div></section>}</>;
 }
