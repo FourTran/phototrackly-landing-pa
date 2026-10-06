@@ -88,6 +88,23 @@ The routes below are assigned to [PR #19](https://github.com/FourTran/phototrack
 | Day 5 / #19 | 78 | `/insights/complete-property-shoot-job-instructions` |
 | Day 5 / #19 | 105 | `/insights/track-property-media-client-delivery-event` |
 
+## Sixth daily batch — PR #24
+
+The routes below are assigned to [PR #24](https://github.com/FourTran/phototrackly-landing-pa/pull/24). Confirm that the PR is merged before treating them as published.
+
+| Batch / PR | Catalog # | Article route |
+|---|---:|---|
+| Day 6 / [#24](https://github.com/FourTran/phototrackly-landing-pa/pull/24) | 17 | `/insights/identify-overdue-property-editor-work` |
+| Day 6 / #24 | 29 | `/insights/dropbox-workflow-real-estate-photo-editing` |
+| Day 6 / #24 | 47 | `/insights/ai-photo-editing-human-qc-checklist` |
+| Day 6 / #24 | 62 | `/insights/ordered-services-property-shoot-duration` |
+| Day 6 / #24 | 70 | `/insights/photographer-daily-shoot-capacity` |
+| Day 6 / #24 | 73 | `/insights/when-hire-second-real-estate-photographer` |
+| Day 6 / #24 | 77 | `/insights/document-real-estate-photography-shooting-workflow` |
+| Day 6 / #24 | 79 | `/insights/maintain-quality-across-property-photographers` |
+| Day 6 / #24 | 84 | `/insights/real-estate-photography-business-folder-structure` |
+| Day 6 / #24 | 91 | `/insights/large-property-video-files-photographer-editor` |
+
 ## Selection rule for future runs
 
 1. Read the current catalog, roadmap, brief and this record. Confirm actual routes and merged PRs on `main` before writing.

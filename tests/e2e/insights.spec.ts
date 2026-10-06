@@ -55,6 +55,16 @@ const slugs = [
   'travel-time-between-property-shoots',
   'complete-property-shoot-job-instructions',
   'track-property-media-client-delivery-event',
+  'identify-overdue-property-editor-work',
+  'dropbox-workflow-real-estate-photo-editing',
+  'ai-photo-editing-human-qc-checklist',
+  'ordered-services-property-shoot-duration',
+  'photographer-daily-shoot-capacity',
+  'when-hire-second-real-estate-photographer',
+  'document-real-estate-photography-shooting-workflow',
+  'maintain-quality-across-property-photographers',
+  'real-estate-photography-business-folder-structure',
+  'large-property-video-files-photographer-editor',
 ];
 
 test('the insights hub links to distinct articles', async ({ page }) => {
