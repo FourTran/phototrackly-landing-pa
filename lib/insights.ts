@@ -3,6 +3,7 @@ import { dayTwoInsights } from './insights-day-two';
 import { dayThreeInsights } from './insights-day-three';
 import { dayFourInsights } from './insights-day-four';
 import { dayFiveInsights } from './insights-day-five';
+import { daySixInsights } from './insights-day-six';
 
 export type Insight = {
   slug: string;
@@ -200,7 +201,7 @@ export const insights: Insight[] = [
   ...published(dayThreeInsights, '2026-10-03T02:38:00Z'),
   ...published(dayFourInsights, '2026-10-04T02:22:23Z'),
   ...published(dayFiveInsights, '2026-10-05T02:04:27Z'),
+  ...published(daySixInsights, '2026-10-06T02:10:20Z'),
 ];
 export const insightSlugs = insights.map(article => article.slug);
 export function getInsight(slug: string) { return insights.find(article => article.slug === slug); }
-
