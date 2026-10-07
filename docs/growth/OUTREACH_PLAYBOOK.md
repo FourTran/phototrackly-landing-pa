@@ -3,7 +3,7 @@
 > Source: historical private PhotoTrackly work in `FourTran4444/qrTrackly` (September 2026).
 > This file is now stored with the current PhotoTrackly website repository so growth work has one canonical project home.
 > Treat company/contact facts, dates, platform rules, URLs, and product assumptions as historical until reverified.
-> **Do not use any old `qrtrackly.com` PhotoTrackly link externally.** URL remediation is tracked separately in P1.2.
+> **Do not use any old `qrtrackly.com` PhotoTrackly link externally.** P1.2 remediated the actionable external links in this imported asset; retain this warning for historical references.
 
 # First-customer outreach playbook
 
@@ -162,19 +162,19 @@ The workflow/business megathread has explicitly said general brand solicitation 
 For individually researched outreach:
 
 ```text
-https://qrtrackly.com/?utm_source=cold-email&utm_medium=email&utm_campaign=first-customers-2026-09&utm_content=outreach-1
+https://phototrackly.com/?utm_source=cold-email&utm_medium=email&utm_campaign=founding-operator-research&utm_content=outreach-1
 ```
 
 For a second copy variant:
 
 ```text
-https://qrtrackly.com/?utm_source=cold-email&utm_medium=email&utm_campaign=first-customers-2026-09&utm_content=outreach-2
+https://phototrackly.com/?utm_source=cold-email&utm_medium=email&utm_campaign=founding-operator-research&utm_content=outreach-2
 ```
 
 For a relevant Reddit comment where a link is allowed:
 
 ```text
-https://qrtrackly.com/?utm_source=reddit&utm_medium=community&utm_campaign=first-customers-2026-09&utm_content=comment
+https://phototrackly.com/?utm_source=reddit&utm_medium=community&utm_campaign=founding-operator-research&utm_content=comment
 ```
 
 Do not put company, recipient, email, username or other identifiers in URLs.

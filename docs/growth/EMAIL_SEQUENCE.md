@@ -3,7 +3,7 @@
 > Source: historical private PhotoTrackly work in `FourTran4444/qrTrackly` (September 2026).
 > This file is now stored with the current PhotoTrackly website repository so growth work has one canonical project home.
 > Treat company/contact facts, dates, platform rules, URLs, and product assumptions as historical until reverified.
-> **Do not use any old `qrtrackly.com` PhotoTrackly link externally.** URL remediation is tracked separately in P1.2.
+> **Do not use any old `qrtrackly.com` PhotoTrackly link externally.** P1.2 remediated the actionable external links in this imported asset; retain this warning for historical references.
 
 # Early-access email sequence — six complete drafts
 
@@ -83,7 +83,7 @@ Before an editor starts, it helps to agree on what “ready” means: the expect
 
 A folder can exist while the package is still incomplete. A short readiness check makes that distinction explicit.
 
-We put a practical starting point here: https://qrtrackly.com/guides/photographer-editor-handoff
+We put a practical starting point here: https://phototrackly.com/resources/photographer-handoff-template
 
 It is an operating suggestion, not a claim that one checklist suits every team. You can use it with your current tools; PhotoTrackly itself is still in development.
 
