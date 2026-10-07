@@ -43,6 +43,7 @@ This means the previous GTM system was substantially prepared but distribution/c
 | Private CRM — Activity | Actual emails/DMs/posts/replies/follow-ups | Source of truth for execution |
 | Private CRM — Interviews | First-party discovery evidence | Source of truth for customer conversations |
 | Private CRM — Feedback | Repeated pain, objections, feature evidence | Source of truth for product-learning synthesis |
+| `ICP_V1.md` | Current target-customer definition and qualification model | **Locked v1 — 2026-10-07** |
 | `CUSTOMER_RESEARCH_BASELINE_2026-09.md` | Public-community pain research | Historical baseline; recheck current discussions before relying on it |
 | `DISCOVERY_INTERVIEW_PLAYBOOK.md` | Interview structure and evidence capture | Reusable |
 | `DISTRIBUTION_PLAN.md` | Channel/placement research | Reusable, but channel rules must be rechecked |
@@ -86,5 +87,6 @@ Use these labels when turning research into decisions:
 
 - **P1.1 — COMPLETE:** reusable September GTM assets consolidated into the current repo.
 - **P1.2 — COMPLETE:** actionable stale `qrtrackly.com` marketing links in the current growth docs were mapped to current `phototrackly.com` routes; the private CRM was verified to contain no remaining `qrtrackly.com` links in Prospects, Content, Activity, Interviews, or Feedback.
-- **P1.4/P1.5 — pending:** approve the current ICP and founding-operator offer.
+- **P1.4 — COMPLETE:** ICP v1 locked in `ICP_V1.md` and is now the default qualification model for prospecting, interviews, messaging, and distribution.
+- **P1.5 — pending:** define and approve the founding-operator offer.
 - **P1.6 — pending:** reverify all 20 seed prospects before outreach.
