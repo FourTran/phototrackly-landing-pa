@@ -1,6 +1,14 @@
 import type { NextConfig } from 'next';
 import { IMAGES } from './lib/images';
 
+const canonicalOrigin = 'https://phototrackly.com';
+const alternateHosts = [
+  'www.phototrackly.com',
+  'phototrackly.cloud',
+  'www.phototrackly.cloud',
+  'phototrackly-landing-pa.vercel.app',
+] as const;
+
 const config: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
@@ -15,7 +23,12 @@ const config: NextConfig = {
     minimumCacheTTL: 86400,
   },
   async redirects() {
-    return [{ source: '/:path*', has: [{ type: 'host', value: 'www.phototrackly.com' }], destination: 'https://phototrackly.com/:path*', permanent: true }];
+    return alternateHosts.map(host => ({
+      source: '/:path*',
+      has: [{ type: 'host' as const, value: host }],
+      destination: `${canonicalOrigin}/:path*`,
+      permanent: true,
+    }));
   },
   async headers() {
     return [{ source: '/:path*', headers: [
@@ -26,4 +39,3 @@ const config: NextConfig = {
   },
 };
 export default config;
-
