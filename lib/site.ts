@@ -12,12 +12,12 @@ function originFrom(value: string | undefined): string | null {
 }
 
 export function siteUrl(): string {
+  // Vercel-generated URLs can use *.vercel.app and environment variables can
+  // drift. Every deployed PhotoTrackly surface must declare the public domain.
+  if (process.env.VERCEL_ENV) return PRODUCTION_SITE_URL;
+
   const configured = originFrom(process.env.NEXT_PUBLIC_SITE_URL);
   if (configured) return configured;
-
-  // Vercel-generated production URLs can change or use *.vercel.app. Keep every
-  // deployed metadata/canonical surface pinned to the public PhotoTrackly domain.
-  if (process.env.VERCEL_ENV) return PRODUCTION_SITE_URL;
 
   return originFrom(process.env.VERCEL_URL) || 'http://localhost:3000';
 }
