@@ -65,6 +65,16 @@ const slugs = [
   'maintain-quality-across-property-photographers',
   'real-estate-photography-business-folder-structure',
   'large-property-video-files-photographer-editor',
+  'outsourced-editors-still-working-midnight',
+  'prevent-wrong-property-images-client-delivery',
+  'photographer-to-business-owner-transition',
+  'organize-branded-unbranded-property-media',
+  'best-way-deliver-real-estate-photos-agents',
+  'deliver-floor-plans-with-property-photography',
+  'why-property-media-workflows-fragment',
+  'folders-not-production-management',
+  'property-media-job-information-checklist',
+  'calendar-does-not-show-job-finished',
 ];
 
 test('the insights hub links to distinct articles', async ({ page }) => {
