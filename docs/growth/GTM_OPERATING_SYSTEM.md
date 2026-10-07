@@ -46,9 +46,9 @@ This means the previous GTM system was substantially prepared but distribution/c
 | `CUSTOMER_RESEARCH_BASELINE_2026-09.md` | Public-community pain research | Historical baseline; recheck current discussions before relying on it |
 | `DISCOVERY_INTERVIEW_PLAYBOOK.md` | Interview structure and evidence capture | Reusable |
 | `DISTRIBUTION_PLAN.md` | Channel/placement research | Reusable, but channel rules must be rechecked |
-| `OUTREACH_PLAYBOOK.md` | First-customer outreach approach | Reusable after prospect reverification |
-| `EMAIL_SEQUENCE.md` | Lifecycle/follow-up copy | Draft; needs current offer and URL review |
-| `SOCIAL_CONTENT_LIBRARY_US_AU.md` | Founder/social content source | Draft; needs URL/current-message review |
+| `OUTREACH_PLAYBOOK.md` | First-customer outreach approach | Current-domain links remediated; still requires prospect reverification |
+| `EMAIL_SEQUENCE.md` | Lifecycle/follow-up copy | Current-domain links remediated; still needs current offer review |
+| `SOCIAL_CONTENT_LIBRARY_US_AU.md` | Founder/social content source | Draft; no stale external PhotoTrackly URL found in P1.2; needs message review |
 | `REGIONAL_MESSAGING_US_AU.md` | US/Australia message variants | Research input, not validated positioning |
 | `CRM_DATA_DICTIONARY.md` | CRM field semantics | Reusable |
 | `SEO_INDEXING_AUDIT.md` | Technical/indexing evidence | Current SEO workstream |
@@ -82,11 +82,9 @@ Use these labels when turning research into decisions:
 9. Do not infer product-market fit from traffic, an isolated positive reply, or one interview.
 10. Keep product promises aligned with what is actually planned or approved.
 
-## Consolidation disposition
+## P1 maintenance status
 
-The September GTM work was not discarded. Its reusable research, playbooks, messaging and distribution assets have been brought into the current PhotoTrackly repository. Private prospect/contact execution remains in the CRM intentionally.
-
-The next maintenance work is separate from this consolidation:
-- P1.2 — replace stale old-domain links in marketing assets.
-- P1.4/P1.5 — approve the current ICP and founding-operator offer.
-- P1.6 — reverify all 20 seed prospects before outreach.
+- **P1.1 — COMPLETE:** reusable September GTM assets consolidated into the current repo.
+- **P1.2 — COMPLETE:** actionable stale `qrtrackly.com` marketing links in the current growth docs were mapped to current `phototrackly.com` routes; the private CRM was verified to contain no remaining `qrtrackly.com` links in Prospects, Content, Activity, Interviews, or Feedback.
+- **P1.4/P1.5 — pending:** approve the current ICP and founding-operator offer.
+- **P1.6 — pending:** reverify all 20 seed prospects before outreach.
