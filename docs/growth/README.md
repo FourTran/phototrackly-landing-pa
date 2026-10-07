@@ -15,6 +15,7 @@ This directory is the canonical repository home for PhotoTrackly growth, SEO, cu
 - [GTM operating system](GTM_OPERATING_SYSTEM.md)
 - [ICP v1](ICP_V1.md)
 - [Founding Operator Offer v1](FOUNDING_OPERATOR_OFFER_V1.md)
+- [Prospect reverification — 2026-10-07](PROSPECT_REVERIFICATION_2026-10-07.md)
 - [SEO/indexing audit](SEO_INDEXING_AUDIT.md)
 - [Customer-research baseline](CUSTOMER_RESEARCH_BASELINE_2026-09.md)
 - [Discovery interview playbook](DISCOVERY_INTERVIEW_PLAYBOOK.md)
