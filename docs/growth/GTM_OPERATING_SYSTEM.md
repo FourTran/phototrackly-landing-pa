@@ -45,6 +45,7 @@ This means the previous GTM system was substantially prepared but distribution/c
 | Private CRM — Feedback | Repeated pain, objections, feature evidence | Source of truth for product-learning synthesis |
 | `ICP_V1.md` | Current target-customer definition and qualification model | **Locked v1 — 2026-10-07** |
 | `FOUNDING_OPERATOR_OFFER_V1.md` | Current research/outreach offer for qualified operators | **Locked non-commercial v1 — 2026-10-07** |
+| `PROSPECT_REVERIFICATION_2026-10-07.md` | Current disposition of the 20-company seed list | **20/20 reverified — 2026-10-07** |
 | `CUSTOMER_RESEARCH_BASELINE_2026-09.md` | Public-community pain research | Historical baseline; recheck current discussions before relying on it |
 | `DISCOVERY_INTERVIEW_PLAYBOOK.md` | Interview structure and evidence capture | Reusable |
 | `DISTRIBUTION_PLAN.md` | Channel/placement research | Reusable, but channel rules must be rechecked |
@@ -90,4 +91,5 @@ Use these labels when turning research into decisions:
 - **P1.2 — COMPLETE:** actionable stale `qrtrackly.com` marketing links in the current growth docs were mapped to current `phototrackly.com` routes; the private CRM was verified to contain no remaining `qrtrackly.com` links in Prospects, Content, Activity, Interviews, or Feedback.
 - **P1.4 — COMPLETE:** ICP v1 locked in `ICP_V1.md` and is now the default qualification model for prospecting, interviews, messaging, and distribution.
 - **P1.5 — COMPLETE:** non-commercial Founding Operator Workflow Review locked in `FOUNDING_OPERATOR_OFFER_V1.md`; no pricing/discount/free-access promises are approved.
-- **P1.6 — pending:** reverify all 20 seed prospects before outreach.
+- **P1.6 — COMPLETE:** all 20 seed prospects were reverified in the private CRM on 2026-10-07; current non-sensitive disposition is summarized in `PROSPECT_REVERIFICATION_2026-10-07.md`.
+- **P1.7 — next:** deep-research the five first-cohort prospects immediately before outreach.
