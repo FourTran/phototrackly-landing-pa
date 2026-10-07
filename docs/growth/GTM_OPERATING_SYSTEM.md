@@ -46,6 +46,7 @@ This means the previous GTM system was substantially prepared but distribution/c
 | `ICP_V1.md` | Current target-customer definition and qualification model | **Locked v1 — 2026-10-07** |
 | `FOUNDING_OPERATOR_OFFER_V1.md` | Current research/outreach offer for qualified operators | **Locked non-commercial v1 — 2026-10-07** |
 | `PROSPECT_REVERIFICATION_2026-10-07.md` | Current disposition of the 20-company seed list | **20/20 reverified — 2026-10-07** |
+| `BATCH1_DEEP_RESEARCH_2026-10-07.md` | Deep research and personalization basis for the first five prospects | **P1.7 complete — 2026-10-07** |
 | `CUSTOMER_RESEARCH_BASELINE_2026-09.md` | Public-community pain research | Historical baseline; recheck current discussions before relying on it |
 | `DISCOVERY_INTERVIEW_PLAYBOOK.md` | Interview structure and evidence capture | Reusable |
 | `DISTRIBUTION_PLAN.md` | Channel/placement research | Reusable, but channel rules must be rechecked |
@@ -92,4 +93,5 @@ Use these labels when turning research into decisions:
 - **P1.4 — COMPLETE:** ICP v1 locked in `ICP_V1.md` and is now the default qualification model for prospecting, interviews, messaging, and distribution.
 - **P1.5 — COMPLETE:** non-commercial Founding Operator Workflow Review locked in `FOUNDING_OPERATOR_OFFER_V1.md`; no pricing/discount/free-access promises are approved.
 - **P1.6 — COMPLETE:** all 20 seed prospects were reverified in the private CRM on 2026-10-07; current non-sensitive disposition is summarized in `PROSPECT_REVERIFICATION_2026-10-07.md`.
-- **P1.7 — next:** deep-research the five first-cohort prospects immediately before outreach.
+- **P1.7 — COMPLETE:** the five first-cohort prospects were deep-researched and the private CRM was updated with current roles, workflow clues, personalization angles, and contact-route evidence; public summary is in `BATCH1_DEEP_RESEARCH_2026-10-07.md`.
+- **P1.8 — next:** write the five final outreach messages for user review before any sending.
