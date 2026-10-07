@@ -105,6 +105,23 @@ The routes below are assigned to [PR #24](https://github.com/FourTran/phototrack
 | Day 6 / #24 | 84 | `/insights/real-estate-photography-business-folder-structure` |
 | Day 6 / #24 | 91 | `/insights/large-property-video-files-photographer-editor` |
 
+## Seventh daily batch — PR #25
+
+The routes below are assigned to [PR #25](https://github.com/FourTran/phototrackly-landing-pa/pull/25). Confirm that the PR is merged before treating them as published.
+
+| Batch / PR | Catalog # | Article route |
+|---|---:|---|
+| Day 7 / [#25](https://github.com/FourTran/phototrackly-landing-pa/pull/25) | 40 | `/insights/outsourced-editors-still-working-midnight` |
+| Day 7 / #25 | 46 | `/insights/prevent-wrong-property-images-client-delivery` |
+| Day 7 / #25 | 83 | `/insights/photographer-to-business-owner-transition` |
+| Day 7 / #25 | 92 | `/insights/organize-branded-unbranded-property-media` |
+| Day 7 / #25 | 95 | `/insights/best-way-deliver-real-estate-photos-agents` |
+| Day 7 / #25 | 100 | `/insights/deliver-floor-plans-with-property-photography` |
+| Day 7 / #25 | 109 | `/insights/why-property-media-workflows-fragment` |
+| Day 7 / #25 | 115 | `/insights/folders-not-production-management` |
+| Day 7 / #25 | 117 | `/insights/property-media-job-information-checklist` |
+| Day 7 / #25 | 119 | `/insights/calendar-does-not-show-job-finished` |
+
 ## Selection rule for future runs
 
 1. Read the current catalog, roadmap, brief and this record. Confirm actual routes and merged PRs on `main` before writing.
