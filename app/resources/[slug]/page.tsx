@@ -20,6 +20,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 export default async function ResourceDetail({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params; const item = getResource(slug); if (!item) notFound();
+  // Explain the actual editorial guide; do not imply a launched product or customer results.
+  const guideSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: item.title,
+    description: item.description,
+    mainEntityOfPage: `${siteUrl()}/resources/${slug}`,
+    author: { '@type': 'Organization', name: 'PhotoTrackly', url: siteUrl() },
+    publisher: { '@type': 'Organization', name: 'PhotoTrackly', url: siteUrl() },
+  };
   return <div className="pl reference-site"><Navigation /><main id="main" className="seo-main">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(guideSchema).replace(/</g, '\\u003c') }} />
     <div className="seo-wrap seo-breadcrumb"><Link href="/">PhotoTrackly</Link><span aria-hidden="true">/</span><Link href="/resources">Resources</Link><span aria-hidden="true">/</span><span>{item.title}</span></div>
