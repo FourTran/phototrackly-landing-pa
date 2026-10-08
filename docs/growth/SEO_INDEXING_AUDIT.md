@@ -28,3 +28,43 @@ Use real permissioned interview insights or original operating assets when impro
 ## Validation
 
 This PR originally passed production build, ESLint, TypeScript, unit and desktop/mobile browser/API checks before the latest main synchronization. After synchronizing with main, GitHub/Vercel checks are the authoritative current verification and must pass again before merge. Receiver tests use isolated mocks and must not create production leads. Production canonical behavior should use NEXT_PUBLIC_SITE_URL=https://phototrackly.com.
+
+
+---
+
+## Live GSC MCP v2 follow-up — 8 October 2026
+
+This **newer inspection snapshot supersedes the historical October 5 tool-error and 66-URL observations above**. It is a point-in-time report, not a promise of Google ranking or full index coverage.
+
+### Scope and measured baseline
+
+- Canonical property: `sc-domain:phototrackly.com`.
+- Submitted sitemap: `https://phototrackly.com/sitemap.xml`; **88 submitted URLs**, last read October 7, **0 reported sitemap errors/warnings**.
+- GSC sitemap aggregate still reports **0 indexed**, but per-URL Inspection has confirmed indexed pages. Do not treat the aggregate as proof that no pages are indexed.
+- All **88 known sitemap URLs registered** in the GSC MCP v2 local indexing tracker; the first expanded inspection pass produced **55 completed URL states**: **35 "Submitted and indexed"**, **12 "Discovered - currently not indexed"**, **8 "URL is unknown to Google"**, and **33 uninspected/timeout**. The remaining 33 have no confirmed verdict, not a negative verdict.
+- **All four** commercial pages (`/real-estate-photography-business-software`, `/real-estate-photography-workflow-software`, `/real-estate-photography-scheduling-software`, `/real-estate-media-production-management`) have independently passed URL Inspection; the apex homepage is also indexed with matching HTTPS canonical.
+- `/insights`, `/resources` and `/contact` remain **discovered, currently not indexed**, with no recorded Google crawl date in their inspected results. They are already in the sitemap with canonical metadata and internal links; this is not a demonstrated robots block.
+- Search Performance (finalized **September 9–October 6**): **0 Google impressions, 0 clicks, no query rows** on the canonical property. GA4 property `557439732` has **no identifiable ChatGPT/Perplexity/Gemini/Copilot/Claude referral** in that period. Attribution cannot capture all AI influence.
+- Avoid interpreting today's inspection states as appearing in older finalized GSC performance data; many article batches were published **October 2–7**, and crawl/reporting may lag.
+
+### Cross-domain discovery — investigate without conflating traffic
+
+Public search results still surface *historically crawled* PhotoTrackly pages on `qrtrackly.com`; the archived `FourTran4444/qrTrackly` repository already defines permanent redirects for the old PhotoTrackly routes toward `https://phototrackly.com`. The live response of those old routes was **not independently confirmed** during this audit, so do not claim deployment/redirect success from code alone.
+
+The older GSC property `sc-domain:qrtrackly.com` shows **223 impressions and 3 clicks** for September 9–October 6, but its top pages are predominantly **former Craft House paths**. These are **not PhotoTrackly organic search results** and must not be included in PhotoTrackly growth KPIs.
+
+Do not publish new `qrtrackly.com` PhotoTrackly links. Verify deployment of existing old-domain redirects through hosting access before making DNS or redirect-rule changes; preserve the old Craft House redirects.
+
+### Conversion integrity and measurement
+
+- Current website explicitly sends consent-gated `early_access_success` only when `/api/early-access` returns a verified saved-registration receipt.
+- Website source has no explicit `generate_lead` emitter, although GA4 property `557439732` recorded one `generate_lead` on October 5. Its source could not be attributed from GA4 aggregate reporting; connector GTM operations currently error with `Illegal invocation`.
+- **Do not merge draft PR #36 or mark `generate_lead` as a key event** until any GA4/GTM event-creation rule has been inspected for attempt-based or duplicate firing. User authorized configuration only after successful-registration verification; that condition remains unmet. The private lead Sheet remains the registration source of truth.
+
+### Next evidence-driven priorities
+
+1. Continue inspecting the **33 unconfirmed URLs** when Google API quotas/timeouts allow; prioritize indexed commercial routes and high-intent editorial pages.
+2. Allow Google to recrawl the discovered hubs after PR #33 internal links and PR #35 factual collection metadata; do not resubmit the sitemap or fabricate fixes without evidence.
+3. Recheck finalized GSC impressions/clicks and GA4 attributable AI referrals after the indexed pages have had time to appear in reporting.
+4. Reconcile historical `qrtrackly.com` search-result links with actual deployed redirects only when reliable hosting or HTTP response evidence is available.
+5. Resume legitimate US/Australia discovery and distribution from the documented GTM workflow. **Do not equate research drafts with sent outreach or visits.**
