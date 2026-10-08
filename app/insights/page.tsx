@@ -7,6 +7,7 @@ import AnalyticsConsent, { CookieSettingsButton } from '@/components/prelaunch/a
 import { Wordmark } from '@/components/prelaunch/primitives';
 import { insightTopics, topicFor } from '@/lib/insight-topics';
 import { insights } from '@/lib/insights';
+import { siteUrl } from '@/lib/site';
 import '@/components/marketing/prelaunch.css';
 import '@/components/marketing/seo-page.css';
 import '@/components/marketing/insights.css';
@@ -20,7 +21,25 @@ export const metadata: Metadata = {
 };
 
 export default function InsightsPage() {
+  const collectionSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Property Media Operations Insights',
+    description: 'Practical articles for real estate photography studios on scheduling, job triage, quality review and choosing workflow software.',
+    url: `${siteUrl()}/insights`,
+    isPartOf: { '@type': 'WebSite', '@id': `${siteUrl()}/#website` },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: insights.map((item, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: item.title,
+        url: `${siteUrl()}/insights/${item.slug}`,
+      })),
+    },
+  };
   return <div className="pl reference-site"><Navigation /><main id="main" className="seo-main">
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema).replace(/</g, '\\u003c') }} />
     <div className="seo-wrap seo-breadcrumb"><Link href="/">PhotoTrackly</Link><span aria-hidden="true">/</span><span>Insights</span></div>
     <section className="seo-wrap in-hub"><p className="rf-eyebrow">FROM THE OPERATIONS DESK</p><h1>Make the work around every shoot clearer.</h1><p className="seo-intro">Practical decisions, worked examples and evaluation questions for growing property media teams. The examples are illustrative and can be used with your current tools.</p>
       <nav aria-label="Insight topics" className="in-related">{insightTopics.map(topic => <Link href={`#${topic.id}`} key={topic.id}>{topic.title}</Link>)}</nav>
