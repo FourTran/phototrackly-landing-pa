@@ -36,8 +36,11 @@ The receiver attempts one owner notification to `tranvantubk@gmail.com` after ea
 
 ## Conversion measurement
 
-The owner-supplied GA4 ID `G-0PSP21DKNJ` is retained behind optional analytics consent. Form values and private removal tokens are excluded from custom analytics events. `form_submit` is an attempt; **`generate_lead` fires only after a confirmed Sheet write**. The Sheet, not analytics, is the lead source of truth. CTA, sample-stage, board-filter, and FAQ events remain unchanged. Mark `generate_lead` as a key event in GA4 manually.
+The current consent-gated website uses GA4 measurement ID `G-GJQ82ZDWL2` (property `557439732`), as declared by `lib/analytics.ts`. The older `G-0PSP21DKNJ` property is historical and must not be assumed to receive current production traffic.
 
+`early_access_success` fires on the client only after the backend verifies an actual saved registration and returns the expected receipt. **The current production code does not explicitly emit `generate_lead`.** GA4 reported an isolated `generate_lead` event, but its creation source has not been verified. Do not mark `generate_lead` as a key event or merge the draft success-only event PR (#36) until the existing GA4/GTM rule is identified and duplicate or attempt-based events are excluded. The authorized conversion configuration remains unapplied.
+
+`form_submit` is an attempted submission, not proof of a saved lead. The private lead Sheet is the registration source of truth. Neither form values nor withdrawal tokens belong in analytics, and optional analytics consent remains required.
 ## Routes
 
 `/` is the pre-launch landing page; `/privacy` describes signup data handling; `/api/early-access` receives forms; `/early-access/preferences` and `/api/early-access/withdraw` handle explicit private removal. Existing `/workspace/*` and `/delivery/[id]` routes remain clearly labeled browser-only illustrative concepts; they have no product database or real media upload/delivery.
