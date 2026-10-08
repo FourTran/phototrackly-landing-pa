@@ -10,6 +10,7 @@ export default function LeadForm({ variant }: { variant: 'hero' | 'footer' }) {
   const full = variant === 'footer';
   const form = useRef<HTMLFormElement>(null); const success = useRef<HTMLDivElement>(null);
   const started = useRef(false); const requestId = useRef(''); const fingerprint = useRef('');
+  const reportedSuccessfulReference = useRef('');
   const [pending, setPending] = useState(false); const [errors, setErrors] = useState<FieldErrors>({});
   const [message, setMessage] = useState(''); const [receipt, setReceipt] = useState<Receipt | null>(null);
   const id = (name: string) => `${variant}-${name}`;
@@ -40,7 +41,14 @@ export default function LeadForm({ variant }: { variant: 'hero' | 'footer' }) {
         });
         return;
       }
-      setReceipt(body); track('early_access_success', { location: variant });
+      // Only report a conversion after the server confirms a persisted registration.
+      // A repeated success response for the same request must not double-count the lead.
+      if (reportedSuccessfulReference.current !== body.reference) {
+        reportedSuccessfulReference.current = body.reference;
+        track('early_access_success', { location: variant });
+        track('generate_lead', { location: variant });
+      }
+      setReceipt(body);
       requestAnimationFrame(() => success.current?.focus());
     } catch {
       setMessage('We could not confirm your registration. Please check your connection and try again. Retrying will not create a duplicate.');
