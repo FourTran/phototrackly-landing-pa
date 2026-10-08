@@ -7,6 +7,7 @@ type EventName =
   | 'early_access_form_start'
   | 'early_access_submit'
   | 'early_access_success'
+  | 'generate_lead'
   | 'early_access_error'
   | 'sample_stage_view'
   | 'board_filter'
