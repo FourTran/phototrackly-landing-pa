@@ -7,6 +7,7 @@ import LeadForm from '@/components/prelaunch/lead-form';
 import AnalyticsConsent, { CookieSettingsButton } from '@/components/prelaunch/analytics-consent';
 import { Wordmark } from '@/components/prelaunch/primitives';
 import { getResource, resourceSlugs, resources } from '@/lib/resources';
+import { siteUrl } from '@/lib/site';
 import '@/components/marketing/prelaunch.css';
 import '@/components/marketing/seo-page.css';
 
@@ -19,7 +20,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 export default async function ResourceDetail({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params; const item = getResource(slug); if (!item) notFound();
+  // Explain the actual editorial guide; do not imply a launched product or customer results.
+  const guideSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: item.title,
+    description: item.description,
+    mainEntityOfPage: `${siteUrl()}/resources/${slug}`,
+    author: { '@type': 'Organization', name: 'PhotoTrackly', url: siteUrl() },
+    publisher: { '@type': 'Organization', name: 'PhotoTrackly', url: siteUrl() },
+  };
   return <div className="pl reference-site"><Navigation /><main id="main" className="seo-main">
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(guideSchema).replace(/</g, '\\u003c') }} />
     <div className="seo-wrap seo-breadcrumb"><Link href="/">PhotoTrackly</Link><span aria-hidden="true">/</span><Link href="/resources">Resources</Link><span aria-hidden="true">/</span><span>{item.title}</span></div>
     <article className="seo-wrap resource-article"><header><p className="rf-eyebrow">PRACTICAL STUDIO GUIDE · {item.updated}</p><h1>{item.title}</h1><p className="seo-intro">{item.intro}</p><p className="resource-note">An operational template for property media teams. Adapt it to your services, client agreements and local requirements.</p></header>
       <figure className="resource-image"><Image src="/images/reference/on-site.webp" alt="Photographer working at a property shoot" fill sizes="(max-width: 900px) 100vw, 800px" /><figcaption>Illustrative property media imagery</figcaption></figure>
