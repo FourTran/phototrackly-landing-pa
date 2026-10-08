@@ -18,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const origin = siteUrl();
   return [
     // Do not fabricate a date when the last meaningful page update is unknown.
-    { url: origin },
+    { url: `${origin}/` },
     { url: `${origin}/about` },
     { url: `${origin}/contact` },
     { url: `${origin}/privacy` },
