@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRef, useState, type FormEvent } from 'react';
 import { COUNTRIES, ROLES, VOLUMES, type FieldErrors } from '@/lib/lead-schema';
 import { track } from '@/lib/analytics';
+import { sanitizedAnalyticsLocation } from '@/lib/campaign-attribution';
 import { Glyph } from './primitives';
 
 type Receipt = { reference: string; withdrawalToken: string };
@@ -19,14 +20,16 @@ export default function LeadForm({ variant }: { variant: 'hero' | 'footer' }) {
     event.preventDefault(); if (pending) return;
     const element = event.currentTarget; const data = new FormData(element);
     const fields = Object.fromEntries(data.entries());
-    const currentFingerprint = JSON.stringify(fields);
+    const campaignUrl = new URL(sanitizedAnalyticsLocation(window.location.href));
+    const campaign = Object.fromEntries(['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].map(key => [key, campaignUrl.searchParams.get(key) || '']));
+    const currentFingerprint = JSON.stringify({ fields, campaign });
     // A retry reuses its key; editing any field intentionally starts a new submission.
     if (!requestId.current || fingerprint.current !== currentFingerprint) { requestId.current = crypto.randomUUID(); fingerprint.current = currentFingerprint; }
     setPending(true); setMessage(''); setErrors({}); track('early_access_submit', { location: variant });
     try {
       const response = await fetch('/api/early-access', {
         method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: AbortSignal.timeout(15000),
-        body: JSON.stringify({ ...fields, source: variant, requestId: requestId.current, consent: data.get('consent') === 'on' }),
+        body: JSON.stringify({ ...fields, ...campaign, source: variant, requestId: requestId.current, consent: data.get('consent') === 'on' }),
       });
       const body = await response.json();
       if (!response.ok || body.ok !== true || !body.reference || !body.withdrawalToken) {
