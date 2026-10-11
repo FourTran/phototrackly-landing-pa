@@ -5,6 +5,7 @@ export const VOLUMES = ['Under 25', '25–99', '100–249', '250–499', '500+',
 export type LeadInput = {
   requestId: string; source: 'hero' | 'footer'; name: string; email: string; company: string;
   role: string; country: string; volume: string; challenge: string; consent: true;
+  utm_source?: string; utm_medium?: string; utm_campaign?: string; utm_content?: string;
 };
 export type FieldErrors = Partial<Record<keyof LeadInput | 'website', string>>;
 export class LeadValidationError extends Error {
@@ -35,8 +36,17 @@ export function validateLead(value: unknown): LeadInput {
   if (role && !ROLES.includes(role as typeof ROLES[number])) errors.role = 'Choose a role from the list.';
   if (country && !COUNTRIES.includes(country as typeof COUNTRIES[number])) errors.country = 'Choose a country from the list.';
   if (volume && !VOLUMES.includes(volume as typeof VOLUMES[number])) errors.volume = 'Choose a job range from the list.';
+  // Attribution is optional and strictly constrained; never store free-text query values.
+  const campaign = (key: 'utm_source' | 'utm_medium' | 'utm_campaign' | 'utm_content') => {
+    const value = typeof raw[key] === 'string' ? raw[key].trim() : '';
+    return /^[a-zA-Z0-9][a-zA-Z0-9._~-]{0,99}$/.test(value) ? value : '';
+  };
+  const utm_source = campaign('utm_source');
+  const utm_medium = campaign('utm_medium');
+  const utm_campaign = campaign('utm_campaign');
+  const utm_content = campaign('utm_content');
   if (raw.consent !== true) errors.consent = 'Please agree to be contacted about early access.';
   if (raw.website) errors.website = 'We could not accept this registration. Please try again.';
   if (Object.keys(errors).length) throw new LeadValidationError(errors);
-  return { requestId, source, name, email, company, role, country, volume, challenge, consent: true };
+  return { requestId, source, name, email, company, role, country, volume, challenge, consent: true, utm_source, utm_medium, utm_campaign, utm_content };
 }
