@@ -9,9 +9,10 @@ export function CookieSettingsButton() { return <button className="pl-footer-lin
 export default function AnalyticsConsent() {
   const [choice, setChoice] = useState<'accepted' | 'declined' | null>(null);
   const [visible, setVisible] = useState(false);
+  const [internalQa, setInternalQa] = useState(false);
   /* eslint-disable react-hooks/set-state-in-effect -- Synchronize this component with existing browser preferences after hydration. */
   useEffect(() => {
-    try { if (isInternalQaSession()) { setChoice(null); setVisible(false); } else { const saved = localStorage.getItem(ANALYTICS_CONSENT_KEY); if (saved === 'accepted' || saved === 'declined') setChoice(saved); else setVisible(true); } } catch { /* No optional tracking when browser storage is blocked. */ }
+    try { if (isInternalQaSession()) { setInternalQa(true); setChoice(null); setVisible(false); } else { const saved = localStorage.getItem(ANALYTICS_CONSENT_KEY); if (saved === 'accepted' || saved === 'declined') setChoice(saved); else setVisible(true); } } catch { /* No optional tracking when browser storage is blocked. */ }
     const reopen = () => setVisible(true);
     const click = (event: MouseEvent) => {
       const el = event.target instanceof Element ? event.target.closest<HTMLElement>('[data-track]') : null;
@@ -48,5 +49,5 @@ export default function AnalyticsConsent() {
     window.gtag('config', GA_MEASUREMENT_ID, { send_page_view: false, allow_google_signals: false, allow_ad_personalization_signals: false, page_location: sanitizedAnalyticsLocation(location.href), page_referrer: document.referrer ? new URL(document.referrer).origin : '' });
     window.gtag('event', 'page_view', { page_location: sanitizedAnalyticsLocation(location.href), page_title: document.title });
   }
-  return <>{choice === 'accepted' && <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} strategy="afterInteractive" onReady={init} />}{visible && <section className="pl-cookie" aria-label="Optional analytics cookies"><div><strong>A little insight, with your permission.</strong><p>May we use optional analytics to understand what’s useful? Your form details are never sent to analytics. <Link href="/privacy">Privacy notice</Link></p></div><div><button type="button" onClick={() => choose('declined')}>No thanks</button><button type="button" onClick={() => choose('accepted')}>Allow analytics</button></div></section>}</>;
+  return <>{choice === 'accepted' && !internalQa && <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} strategy="afterInteractive" onReady={init} />}{visible && <section className="pl-cookie" aria-label="Optional analytics cookies"><div><strong>A little insight, with your permission.</strong><p>May we use optional analytics to understand what’s useful? Your form details are never sent to analytics. <Link href="/privacy">Privacy notice</Link></p></div><div><button type="button" onClick={() => choose('declined')}>No thanks</button><button type="button" onClick={() => choose('accepted')}>Allow analytics</button></div></section>}</>;
 }
