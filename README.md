@@ -41,6 +41,16 @@ The current consent-gated website uses GA4 measurement ID `G-GJQ82ZDWL2` (proper
 `early_access_success` fires on the client only after the backend verifies an actual saved registration and returns the expected receipt. **The current production code does not explicitly emit `generate_lead`.** GA4 reported an isolated `generate_lead` event, but its creation source has not been verified. Do not mark `generate_lead` as a key event or merge the draft success-only event PR (#36) until the existing GA4/GTM rule is identified and duplicate or attempt-based events are excluded. The authorized conversion configuration remains unapplied.
 
 `form_submit` is an attempted submission, not proof of a saved lead. The private lead Sheet is the registration source of truth. Neither form values nor withdrawal tokens belong in analytics, and optional analytics consent remains required.
+## Privacy-safe acquisition attribution
+
+Campaign source labels on inbound links (`utm_source`, `utm_medium`, `utm_campaign`, `utm_content`) are allowlisted, length-bounded and saved with **successful** registrations in the Sheet's existing UTM columns. GA4 `page_location` includes supported bounded campaign parameters and click IDs, but removes all unrelated query parameters, email-like values and fragments. Attribution fields are not proof of a qualified customer.
+
+For internal browser analytics QA, open a link with `?pt_qa=1` (the exclusion lasts for that tab session). Do not send this parameter in real marketing campaigns, and do not use it as a general bot filter or to correct historical GA4 traffic. Consent remains required for GA4; decline prevents custom tracking. The `generate_lead` origin remains unverified: do not merge draft PR #36 or create a second emitter until the existing GA4/GTM rule is audited.
+
+**Receiver deployment required:** merging edits to `integrations/google-apps-script/Code.gs` does not update the live Google Apps Script web app. Use `docs/GOOGLE-SHEETS-LEADS.md` and re-verify storage, consent, receipts, retries, and notification delivery after deployment. Without that step, Google Sheets may continue recording blank UTM columns.
+
+See `docs/growth/RECOVERY_EXECUTION_2026-10-12.md` for the verified October 12 baseline, Vercel access mismatch and deployment gates.
+
 ## Routes
 
 `/` is the pre-launch landing page; `/privacy` describes signup data handling; `/api/early-access` receives forms; `/early-access/preferences` and `/api/early-access/withdraw` handle explicit private removal. Existing `/workspace/*` and `/delivery/[id]` routes remain clearly labeled browser-only illustrative concepts; they have no product database or real media upload/delivery.

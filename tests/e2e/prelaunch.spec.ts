@@ -12,7 +12,7 @@ function readLead(reference: string) {
 async function visit(page: Page, ip: string) {
   await page.setExtraHTTPHeaders({ 'x-forwarded-for': ip });
   await page.goto('/');
-  await expect(page.locator('.pl-hero h1')).toContainText('One tool for the');
+  await expect(page.locator('.pl-hero h1')).toContainText('Every shoot has a next step.');
   const decline = page.getByRole('button', { name: 'No thanks', exact: true });
   if (await decline.isVisible()) await decline.click();
 }
@@ -183,4 +183,33 @@ test('reference typography, section order and all five original photographs are 
   await expect(page.locator('.seo-home-grid a')).toHaveCount(8);
   await expect(page.locator('.in-home-list a')).toHaveCount(4);
   expect(await page.locator('.pl main > section').count()).toBe(13);
+});
+
+
+test('campaign links preserve safe UTMs while withholding personal query parameters', async ({ page }) => {
+  await page.route('https://www.googletagmanager.com/**', route => route.fulfill({ contentType: 'application/javascript', body: '/* isolated GA test */' }));
+  await page.goto('/?utm_source=linkedin&utm_medium=social&utm_campaign=workflow_launch&utm_content=checklist&email=do-not-track@example.com');
+  await page.getByRole('button', { name: 'Allow analytics' }).click();
+  await expect.poll(() => page.evaluate(() => typeof window.gtag)).toBe('function');
+  await expect.poll(async () => {
+    const queue = await page.evaluate(() => (window.dataLayer || []).map(value => Array.from(value as ArrayLike<unknown>)));
+    return JSON.stringify(queue);
+  }).toContain('utm_source=linkedin');
+  const queue = await page.evaluate(() => (window.dataLayer || []).map(value => Array.from(value as ArrayLike<unknown>)));
+  expect(JSON.stringify(queue)).toContain('utm_campaign=workflow_launch');
+  expect(JSON.stringify(queue)).not.toContain('do-not-track@example.com');
+});
+
+test('explicit internal QA session suppresses consent analytics across pages', async ({ page }) => {
+  const requests: string[] = [];
+  page.on('request', request => {
+    if (request.url().includes('googletagmanager.com/gtag/js')) requests.push(request.url());
+  });
+  await page.goto('/?pt_qa=1');
+  await expect(page.locator('.pl-hero')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Allow analytics' })).toHaveCount(0);
+  await page.goto('/about');
+  await expect(page.getByRole('heading', { name: 'Why we are building it' })).toBeVisible();
+  expect(requests).toEqual([]);
+  expect(await page.evaluate(() => sessionStorage.getItem('phototrackly.internal-analytics-qa.v1'))).toBe('1');
 });

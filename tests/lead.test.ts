@@ -66,3 +66,10 @@ test('missing configuration or non-Google endpoints are rejected before sending 
   process.env.LEAD_WEBHOOK_URL = url; process.env.LEAD_WEBHOOK_SECRET = '';
   await assert.rejects(captureLead(validateLead(valid()), 'ip'), status(503));
 });
+
+test('bounded campaign tags are kept for lead attribution; personal values are dropped', () => {
+  const lead = validateLead({ ...valid(), utm_source: 'linkedin', utm_medium: 'social', utm_campaign: 'studio_workflow', utm_content: 'checklist' });
+  assert.equal(lead.utm_source, 'linkedin'); assert.equal(lead.utm_campaign, 'studio_workflow');
+  const unsafe = validateLead({ ...valid(), utm_source: 'someone@example.com', utm_campaign: 'person%40example.com' });
+  assert.equal(unsafe.utm_source, ''); assert.equal(unsafe.utm_campaign, '');
+});

@@ -26,6 +26,8 @@ function validateInput(input) {
   const limits = { email: 254, company: 160, name: 100, role: 50, country: 50, volume: 50, challenge: 2000 };
   if (Object.keys(limits).some(key => typeof lead[key] !== 'string' || lead[key].length > limits[key] || /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/.test(lead[key]))) return false;
   if (!lead.company.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(lead.email)) return false;
+  if (['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].some(key =>
+    lead[key] !== undefined && (typeof lead[key] !== 'string' || (lead[key] && !/^[a-zA-Z0-9][a-zA-Z0-9._~-]{0,99}$/.test(lead[key]))))) return false;
   const choices = {
     role: ['Owner / founder', 'Operations / coordinator', 'Photographer', 'Editor / production', 'Other'],
     country: ['United States', 'Australia', 'Other'],
@@ -85,7 +87,8 @@ function doPost(event) {
     sheet.appendRow([
       submittedAt, 'early-access', safeCell(lead.name), safeCell(lead.email),
       safeCell(lead.company), '', safeCell(lead.role), safeCell(lead.volume), '', safeCell(lead.challenge),
-      'phototrackly-landing:' + lead.source, '', '', '', '', lead.requestId, 'pending',
+      'phototrackly-landing:' + lead.source, safeCell(lead.utm_source || ''), safeCell(lead.utm_medium || ''),
+      safeCell(lead.utm_campaign || ''), safeCell(lead.utm_content || ''), lead.requestId, 'pending',
       safeCell(lead.country), 'yes', input.consentVersion, input.requestHash, input.withdrawalHash
     ]);
     SpreadsheetApp.flush();
