@@ -102,3 +102,12 @@ test('manual test email targets the owner without adding fake leads', () => {
   assert.equal(receiver.messages()[0].to, 'tranvantubk@gmail.com'); assert.match(receiver.messages()[0].subject, /test/);
   assert.throws(() => createReceiver({ secret: '' }).sendTestEmail());
 });
+
+test('safe campaign values are saved to the designated source columns', () => {
+  const receiver = createReceiver(); const input = payload();
+  Object.assign(input.lead, { utm_source: 'linkedin', utm_medium: 'social', utm_campaign: 'studio_workflow', utm_content: 'checklist' });
+  assert.equal(receiver.post(input).saved, true);
+  assert.deepEqual(receiver.rows()[1].slice(11, 15), ['linkedin', 'social', 'studio_workflow', 'checklist']);
+  const bad = payload(); bad.lead.utm_source = 'email@example.com';
+  assert.equal(createReceiver().post(bad).ok, false);
+});
