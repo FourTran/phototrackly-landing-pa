@@ -1,0 +1,4 @@
+Property reference,Service,Stage,Next action,Owner,Due time,Time zone,Blocker,Delivery deadline
+SAMPLE-001 (fictional),Photography,Ready for review,Approve corrected photo set,Review lead,2026-10-14 10:00,America/Chicago,No,2026-10-14 17:00
+SAMPLE-001 (fictional),Floor plan,Revision required,Correct room label and resubmit,Floor plan editor,2026-10-14 12:00,America/Chicago,Room label pending,2026-10-14 17:00
+SAMPLE-002 (fictional),Drone,Waiting for editor,Assign editor and confirm source set,Production lead,2026-10-15 09:00,Australia/Sydney,Editor not yet assigned,2026-10-16 15:00
