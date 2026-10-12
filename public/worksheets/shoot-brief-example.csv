@@ -1,0 +1,4 @@
+Property reference,Service,Appointment date,Local start time,Time zone,Assigned photographer,Access confirmed,Required output,Source-file handoff owner,Delivery deadline
+SAMPLE-001 (fictional),Photography,2026-10-14,09:30,America/Chicago,Sample Photographer A,Pending coordinator confirmation,Interior and exterior still images,Production lead,2026-10-15
+SAMPLE-001 (fictional),Drone,2026-10-14,09:30,America/Chicago,Sample Photographer A,Pending local permissions review,Approved aerial image selection,Production lead,2026-10-15
+SAMPLE-001 (fictional),Floor plan,2026-10-14,09:30,America/Chicago,Sample Operator B,Pending coordinator confirmation,Client-agreed floor plan file,Floor plan editor,2026-10-15
