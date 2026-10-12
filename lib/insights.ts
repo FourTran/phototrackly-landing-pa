@@ -24,6 +24,7 @@ export type Insight = {
     table?: { headers: [string, string, string]; rows: [string, string, string][] };
   }[];
   closing: string;
+  sources?: { label: string; url: string }[];
   related: { href: string; label: string }[];
 };
 
@@ -156,8 +157,8 @@ const originalInsights: Insight[] = [
     slug: 'evaluate-property-media-workflow-software',
     category: 'Buying guide',
     title: 'How to evaluate software for a growing property media team',
-    description: 'A one-job evaluation script for real estate photography business software, covering scheduling, production handoffs, review, delivery and migration.',
-    answer: 'Test property-media software with one realistic job that includes several services and a late change. Follow the job from request to client delivery, and ask each role to show how it finds its next action. Record gaps before comparing prices or feature lists.',
+    description: 'Compare real estate photography workflow software by running a real-world shoot-to-delivery test, with cited Tonomo, HDPhotoHub, Aryeo and Spiro examples.',
+    answer: 'Compare real estate photography software by testing one multi-service property job in every candidate: booking and scheduling, photographer-to-editor handoff, revisions, approval and client delivery. Record which steps each product actually supports today, then weigh migration effort and price. Do not choose from feature lists alone.',
     intro: 'A long feature list does not show whether a coordinator can find the missing floor plan on a busy day. A realistic test job reveals where people would still need separate messages, spreadsheets and folders.',
     image: '/images/insights/evaluate-property-media-workflow-software.webp',
     imageAlt: 'Studio team comparing a property workflow with a sample job brief',
@@ -183,9 +184,29 @@ const originalInsights: Insight[] = [
         paragraphs: ['A good demonstration can still fail when the team has to move active jobs or change daily habits. Ask how current clients, service packages, schedules and files would be represented, which integrations exist today, and what remains manual. Confirm the actual product stage rather than assuming a roadmap feature is available.', 'Include the people who perform the handoffs in the evaluation. An owner may like a dashboard while an editor still lacks the instructions needed to finish work.'],
       },
       {
+        heading: 'What current industry software demonstrates',
+        paragraphs: [
+          'Use public feature documentation as a starting point, not as a substitute for a live trial. As of October 2026, Tonomo describes project tracking, booking and scheduling for real estate media teams; HDPhotoHub documents product-level and order-level workflow tasks with assigned people and due dates; Aryeo describes centralized property media storage and delivery; and Spiro presents ordering, scheduling, editing workflows and delivery as one operating sequence.',
+          'These are examples of publicly documented capabilities, not independent tests or an exhaustive feature comparison. A feature not mentioned on a vendor page may still exist. Check the provider’s current documentation and ask for a demonstration of your exact workflow before making any purchasing decision. PhotoTrackly itself is in development and is not yet a replacement you can trial against these live products.',
+        ],
+        bullets: [
+          'Tonomo: ask the vendor to demonstrate how project status, photographer assignment, and editing ownership are visible together.',
+          'HDPhotoHub: compare task dependencies, who receives task-ready notifications, due dates and multi-service orders.',
+          'Aryeo: trace one listing with photo, video and floor-plan assets, then test search and re-delivery.',
+          'Spiro: follow the same example job from ordering through editing workflow and delivery.',
+          'Your current stack: include calendars, chats and folders as a candidate. Record what genuinely breaks today before replacing anything.',
+        ],
+      },
+      {
         heading: 'Make a decision with known gaps',
         paragraphs: ['Record which problems the tool solves now, which require a workaround, and which are only planned. Set a short trial outcome such as “a coordinator can answer the next owner and readiness for every test job.” Do not choose solely on a generic AI label or a promised automation.'],
       },
+    ],
+    sources: [
+      { label: 'Tonomo — Real estate photography project management', url: 'https://www.tonomo.io/features/project-management' },
+      { label: 'HDPhotoHub — Using Workflow Tasks', url: 'https://support.hdphotohub.com/hc/en-us/articles/37685771899668-Using-Workflow-Tasks' },
+      { label: 'Aryeo — Real estate media content management', url: 'https://www.aryeo.com/products/content-management' },
+      { label: 'Spiro — Real estate media business software', url: 'https://spiro.media/' },
     ],
     closing: 'The best evaluation is whether your real team can move one representative job without losing its context.',
     related: [
