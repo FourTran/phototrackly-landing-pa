@@ -42,6 +42,18 @@ export default function InsightsPage() {
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema).replace(/</g, '\\u003c') }} />
     <div className="seo-wrap seo-breadcrumb"><Link href="/">PhotoTrackly</Link><span aria-hidden="true">/</span><span>Insights</span></div>
     <section className="seo-wrap in-hub"><p className="rf-eyebrow">FROM THE OPERATIONS DESK</p><h1>Make the work around every shoot clearer.</h1><p className="seo-intro">Practical decisions, worked examples and evaluation questions for growing property media teams. The examples are illustrative and can be used with your current tools.</p>
+
+      <section className="resource-takeaway" aria-labelledby="insight-start-here">
+        <h2 id="insight-start-here">Start with one real job, not a generic software checklist.</h2>
+        <p>Pick the handoff causing delays in your property-media studio. The guides below use illustrative property jobs so you can apply the operating steps with a spreadsheet, calendar or the tools you already use. They are not reports of PhotoTrackly customers or finished product features.</p>
+        <ul>
+          <li><Link href="/insights/property-media-job-triage">No one knows the next action? Triage the job board and assign an owner.</Link></li>
+          <li><Link href="/insights/multi-service-shoot-scheduling">A shoot includes photos, drone and floor plans? Check the complete assignment brief.</Link></li>
+          <li><Link href="/insights/real-estate-media-delivery-readiness">Files are finished but not approved? Review the delivery-ready checklist.</Link></li>
+          <li><Link href="/insights/evaluate-property-media-workflow-software">Comparing operating tools? Run one job through the same evaluation.</Link></li>
+        </ul>
+        <p>Looking for the planned PhotoTrackly product? <Link href="/real-estate-photography-workflow-software">Explore the shoot-to-delivery workspace concept</Link>. For editable checklists, <Link href="/resources">browse practical templates</Link>.</p>
+      </section>
       <nav aria-label="Insight topics" className="in-related">{insightTopics.map(topic => <Link href={`#${topic.id}`} key={topic.id}>{topic.title}</Link>)}</nav>
       {insightTopics.map(topic => <section key={topic.id} id={topic.id}><h2>{topic.title}</h2><div className="in-grid">{insights.filter(article => topicFor(article)?.id === topic.id).map(article => <article key={article.slug} className="in-card"><Link className="in-card-image" href={`/insights/${article.slug}`} aria-label={`Read ${article.title}`}><Image src={article.image} alt={article.imageAlt} fill sizes="(max-width: 700px) 100vw, 50vw" /></Link><div className="in-card-copy"><p className="in-meta">{article.category} · {article.readingMinutes} min read</p><h2><Link href={`/insights/${article.slug}`}>{article.title}</Link></h2><p>{article.description}</p><Link className="in-read" href={`/insights/${article.slug}`}>Read article <span aria-hidden="true">↗</span></Link></div></article>)}</div></section>)}
       <p className="in-resource-link">Need something to use today? <Link href="/resources">Browse the checklists and templates</Link>.</p>
