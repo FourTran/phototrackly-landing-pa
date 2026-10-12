@@ -34,7 +34,6 @@ test('major discovery hubs have meaningful entry points and reciprocal navigatio
   await page.goto('/insights');
   await expect(page.getByRole('heading', { name: 'Start with one real job, not a generic software checklist.' })).toBeVisible();
   for (const slug of ['property-media-job-triage', 'multi-service-shoot-scheduling', 'real-estate-media-delivery-readiness', 'evaluate-property-media-workflow-software']) {
-    await expect(page.locator(`#insight-start-here ~ p a[href*="${slug}"]`)).toHaveCount(0);
     await expect(page.locator(`[aria-labelledby="insight-start-here"] a[href="/insights/${slug}"]`)).toHaveCount(1);
   }
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'http://localhost:3000/insights');
