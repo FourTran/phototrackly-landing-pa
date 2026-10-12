@@ -31,8 +31,30 @@ export default function SeoPage({ page }: { page: MarketingPage }) {
   return <div className="pl reference-site"><Navigation /><main id="main" className="seo-main">
     <div className="seo-wrap seo-breadcrumb"><Link href="/">PhotoTrackly</Link><span aria-hidden="true">/</span><span>{page.title}</span></div>
     <section className="seo-wrap seo-hero"><div><p className="rf-eyebrow">{page.eyebrow}</p><h1>{page.heading}</h1><p className="seo-intro">{page.introduction}</p><a className="rf-button" href="#early-access" data-track="cta_click" data-location={page.slug}>Join early access <span aria-hidden="true">↗</span></a><p className="seo-status">In development · No payment or mandatory meeting</p></div><figure><Image src={page.image} alt={page.imageAlt} fill sizes="(max-width: 900px) 100vw, 45vw" /><figcaption>Illustrative property media imagery</figcaption></figure></section>
+    <section className="seo-wrap seo-buyer-answer" aria-labelledby="buyer-answer-heading">
+      <p className="rf-eyebrow">THE SHORT ANSWER</p>
+      <h2 id="buyer-answer-heading">What should this software help your studio do?</h2>
+      <p>{page.buyerGuide.directAnswer}</p>
+      <h3>Who this workflow is for</h3>
+      <ul>{page.buyerGuide.forTeams.map(role => <li key={role}>{role}</li>)}</ul>
+    </section>
     <section className="seo-wrap seo-context"><p className="rf-eyebrow">THE COORDINATION PROBLEM</p><h2>When work is scattered, status gets harder to see.</h2><p>{page.problem}</p></section>
     <section className="seo-band"><div className="seo-wrap"><p className="rf-eyebrow">A JOB IN PRACTICE</p><h2>One property. One connected story.</h2><p>{page.example}</p><ol className="seo-steps">{page.steps.map((step, index) => <li key={step.title}><span>{String(index + 1).padStart(2, '0')}</span><h3>{step.title}</h3><p>{step.detail}</p></li>)}</ol></div></section>
+    <section className="seo-wrap seo-decision-example" aria-labelledby="handoff-heading">
+      <p className="rf-eyebrow">ONE JOB, CLEAR RESPONSIBILITIES</p>
+      <h2 id="handoff-heading">An illustrative property-media job: who acts next?</h2>
+      <p>This fictional workflow describes a practice a studio can adopt with existing tools. It does not represent a live PhotoTrackly customer or a released automation.</p>
+      <div className="seo-decision-table-scroll"><table><caption>Example responsibilities and next actions for one property job</caption><thead><tr><th scope="col">Job checkpoint</th><th scope="col">Responsible role</th><th scope="col">What must be decided</th></tr></thead><tbody>{page.buyerGuide.exampleHandoffs.map(item => <tr key={item.checkpoint}><th scope="row">{item.checkpoint}</th><td>{item.owner}</td><td>{item.decision}</td></tr>)}</tbody></table></div>
+    </section>
+    <section className="seo-wrap seo-product-boundaries" aria-labelledby="scope-heading">
+      <p className="rf-eyebrow">PLANNED FIRST RELEASE</p>
+      <h2 id="scope-heading">What is planned — and what is not confirmed?</h2>
+      <div className="seo-boundary-grid">
+        <div><h3>Planned workflow scope</h3><ul>{page.buyerGuide.plannedFirstRelease.map(feature => <li key={feature}>{feature}</li>)}</ul></div>
+        <div><h3>Not currently promised</h3><ul>{page.buyerGuide.notPromised.map(feature => <li key={feature}>{feature}</li>)}</ul></div>
+      </div>
+      <p>PhotoTrackly is in development. Early-access registration records interest; it does not create an account, provide immediate access or guarantee a launch date.</p>
+    </section>
     <section className="seo-wrap seo-related"><div><p className="rf-eyebrow">EXPLORE THE WORKFLOW</p><h2>See how the pieces fit together.</h2></div><div>{[
       ['real-estate-photography-business-software', 'Business software'],
       ['real-estate-photography-workflow-software', 'Shoot-to-delivery workflow'],
