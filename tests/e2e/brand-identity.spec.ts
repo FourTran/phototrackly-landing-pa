@@ -5,6 +5,7 @@ test('brand identity is consistent and evidence-backed on home and About', async
   const identity = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent() || '{}');
   const organization = identity['@graph'].find((entry: { '@type': string }) => entry['@type'] === 'Organization');
   expect(organization.name).toBe('PhotoTrackly');
+  expect(organization.alternateName).toBe('photoTrackly');
   expect(organization.url).toBe('http://localhost:3000');
   expect(organization).not.toHaveProperty('sameAs');
   await expect(page.locator('footer a[href="/build-notes"]')).toHaveCount(1);
