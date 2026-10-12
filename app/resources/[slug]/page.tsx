@@ -29,6 +29,7 @@ export default async function ResourceDetail({ params }: { params: Promise<{ slu
     mainEntityOfPage: `${siteUrl()}/resources/${slug}`,
     author: { '@type': 'Organization', name: 'PhotoTrackly', url: siteUrl() },
     publisher: { '@type': 'Organization', name: 'PhotoTrackly', url: siteUrl() },
+    dateModified: '2026-10-12T00:00:00Z',
   };
   return <div className="pl reference-site"><Navigation /><main id="main" className="seo-main">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(guideSchema).replace(/</g, '\\u003c') }} />
@@ -36,6 +37,11 @@ export default async function ResourceDetail({ params }: { params: Promise<{ slu
     <article className="seo-wrap resource-article"><header><p className="rf-eyebrow">PRACTICAL STUDIO GUIDE · {item.updated}</p><h1>{item.title}</h1><p className="seo-intro">{item.intro}</p><p className="resource-note">An operational template for property media teams. Adapt it to your services, client agreements and local requirements.</p></header>
       <figure className="resource-image"><Image src="/images/reference/on-site.webp" alt="Photographer working at a property shoot" fill sizes="(max-width: 900px) 100vw, 800px" /><figcaption>Illustrative property media imagery</figcaption></figure>
       {item.sections.map(section => <section key={section.heading}><h2>{section.heading}</h2><p>{section.body}</p><ul>{section.items.map(text => <li key={text}>{text}</li>)}</ul></section>)}
+      <aside className="resource-takeaway" aria-label="Download original worksheets and worked sample"><h2>Try this template with your own workflow</h2>
+        <p>Start with a clean worksheet; compare it with a separate, completely fictional filled-in example. The sample IDs, roles and dates are invented for teaching purposes and must not be treated as PhotoTrackly customer information.</p>
+        <p><a href={`/worksheets/${item.worksheet.blank}.csv`} download>Download blank worksheet (CSV)</a> · <a href={`/worksheets/${item.worksheet.example}.csv`} download>Download worked fictional example (CSV)</a></p>
+        <ol>{item.worksheet.instructions.map(instruction => <li key={instruction}>{instruction}</li>)}</ol>
+      </aside>
       <aside className="resource-takeaway"><h2>One question to check</h2><p>{item.takeaway}</p></aside>
     </article>
     <section className="seo-wrap seo-related"><div><p className="rf-eyebrow">KEEP EXPLORING</p><h2>More practical resources</h2></div><div>{resources.filter(other => other.slug !== slug).map(other => <Link key={other.slug} href={`/resources/${other.slug}`}>{other.title}<span aria-hidden="true">↗</span></Link>)}<Link href="/real-estate-photography-workflow-software">Explore the planned PhotoTrackly workflow<span aria-hidden="true">↗</span></Link></div></section>
