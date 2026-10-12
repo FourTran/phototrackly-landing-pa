@@ -52,7 +52,7 @@ export default async function InsightDetail({ params }: { params: Promise<{ slug
       {article.sections.map(section => <section className="in-section" key={section.heading}><h2>{section.heading}</h2>{section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}{section.bullets && <ul>{section.bullets.map(item => <li key={item}>{item}</li>)}</ul>}{section.table && <div className="in-table-scroll"><table><thead><tr>{section.table.headers.map(header => <th scope="col" key={header}>{header}</th>)}</tr></thead><tbody>{section.table.rows.map((row, index) => <tr key={index}>{row.map((cell, column) => column === 0 ? <th scope="row" key={column}>{cell}</th> : <td key={column}>{cell}</td>)}</tr>)}</tbody></table></div>}</section>)}
       {article.vendorEvidence?.length ? <aside className="resource-takeaway vendor-evidence" aria-label="Vendor documentation and test questions">
         <h2>What vendor documentation shows — and what to verify</h2>
-        <p>Checked against publicly available vendor material on October 12, 2026. These are the vendors' published descriptions, not independent demonstrations or an endorsement. Availability may vary by product tier or change over time.</p>
+        <p>Checked against publicly available vendor material on October 12, 2026. These are vendor-published descriptions, not independent demonstrations or an endorsement. Availability may vary by product tier or change over time.</p>
         <div className="in-table-scroll"><table>
           <caption>Evidence-led real estate media software evaluation</caption>
           <thead><tr><th scope="col">Vendor</th><th scope="col">Documented workflow</th><th scope="col">Question for a real product demo</th></tr></thead>
