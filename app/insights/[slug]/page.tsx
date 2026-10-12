@@ -41,6 +41,7 @@ export default async function InsightDetail({ params }: { params: Promise<{ slug
     publisher: { '@type': 'Organization', name: 'PhotoTrackly', url: siteUrl() },
     author: { '@type': 'Organization', name: 'PhotoTrackly editorial', url: `${siteUrl()}/about#editorial` },
     datePublished: article.publishedAt,
+    ...(article.sources?.length ? { citation: article.sources.map(source => source.url) } : {}),
   };
   return <div className="pl reference-site"><Navigation /><main id="main" className="seo-main">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema).replace(/</g, '\\u003c') }} />
@@ -50,6 +51,7 @@ export default async function InsightDetail({ params }: { params: Promise<{ slug
       <section className="in-answer" aria-label="Quick answer"><p className="rf-eyebrow">QUICK ANSWER</p><p>{article.answer}</p></section>
       {article.sections.map(section => <section className="in-section" key={section.heading}><h2>{section.heading}</h2>{section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}{section.bullets && <ul>{section.bullets.map(item => <li key={item}>{item}</li>)}</ul>}{section.table && <div className="in-table-scroll"><table><thead><tr>{section.table.headers.map(header => <th scope="col" key={header}>{header}</th>)}</tr></thead><tbody>{section.table.rows.map((row, index) => <tr key={index}>{row.map((cell, column) => column === 0 ? <th scope="row" key={column}>{cell}</th> : <td key={column}>{cell}</td>)}</tr>)}</tbody></table></div>}</section>)}
       {worksheet && <aside className="resource-takeaway"><h2>Use the worksheet</h2><p>Download a starting worksheet for the process in this guide. Open the CSV in your spreadsheet app, adapt it to your team, and keep private job information in your own storage. These are operating templates, not PhotoTrackly product exports.</p><a href={`/worksheets/${worksheet.file}.csv`} download>{worksheet.label} (CSV)</a></aside>}
+      {article.sources?.length ? <aside className="resource-takeaway" aria-label="Sources and further reading"><h2>Sources and further reading</h2><p>The links below are primary vendor materials, checked for this guide in October 2026. They describe vendors' published capabilities, not independently tested performance. PhotoTrackly is in development.</p><ul>{article.sources.map(source => <li key={source.url}><a href={source.url} rel="noopener noreferrer">{source.label}</a></li>)}</ul></aside> : null}
       <aside className="resource-takeaway"><h2>Takeaway</h2><p>{article.closing}</p></aside>
       <div className="in-related"><h2>Continue with a practical tool</h2>{article.related.map(link => <Link key={link.href} href={link.href}>{link.label}<span aria-hidden="true">↗</span></Link>)}</div>
     </article>
