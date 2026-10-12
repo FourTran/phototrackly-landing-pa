@@ -50,6 +50,16 @@ export default async function InsightDetail({ params }: { params: Promise<{ slug
       <figure className="in-hero-image"><Image src={article.image} alt={article.imageAlt} fill sizes="(max-width: 900px) 100vw, 900px" priority /><figcaption>AI-generated illustration of a property media workflow</figcaption></figure>
       <section className="in-answer" aria-label="Quick answer"><p className="rf-eyebrow">QUICK ANSWER</p><p>{article.answer}</p></section>
       {article.sections.map(section => <section className="in-section" key={section.heading}><h2>{section.heading}</h2>{section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}{section.bullets && <ul>{section.bullets.map(item => <li key={item}>{item}</li>)}</ul>}{section.table && <div className="in-table-scroll"><table><thead><tr>{section.table.headers.map(header => <th scope="col" key={header}>{header}</th>)}</tr></thead><tbody>{section.table.rows.map((row, index) => <tr key={index}>{row.map((cell, column) => column === 0 ? <th scope="row" key={column}>{cell}</th> : <td key={column}>{cell}</td>)}</tr>)}</tbody></table></div>}</section>)}
+      {article.vendorEvidence?.length ? <aside className="resource-takeaway vendor-evidence" aria-label="Vendor documentation and test questions">
+        <h2>What vendor documentation shows — and what to verify</h2>
+        <p>Checked against publicly available vendor material on October 12, 2026. These are vendor-published descriptions, not independent demonstrations or an endorsement. Availability may vary by product tier or change over time.</p>
+        <div className="in-table-scroll"><table>
+          <caption>Evidence-led real estate media software evaluation</caption>
+          <thead><tr><th scope="col">Vendor</th><th scope="col">Documented workflow</th><th scope="col">Question for a real product demo</th></tr></thead>
+          <tbody>{article.vendorEvidence.map(item => <tr key={item.vendor}><th scope="row"><a href={item.sourceUrl} rel="noopener noreferrer">{item.vendor}</a></th><td>{item.publishedCapability}</td><td>{item.testQuestion}</td></tr>)}</tbody>
+        </table></div>
+        <p>For PhotoTrackly, compare the intended first-release scope rather than pretending a demo of an unreleased feature exists.</p>
+      </aside> : null}
       {worksheet && <aside className="resource-takeaway"><h2>Use the worksheet</h2><p>Download a starting worksheet for the process in this guide. Open the CSV in your spreadsheet app, adapt it to your team, and keep private job information in your own storage. These are operating templates, not PhotoTrackly product exports.</p><a href={`/worksheets/${worksheet.file}.csv`} download>{worksheet.label} (CSV)</a></aside>}
       {article.sources?.length ? <aside className="resource-takeaway" aria-label="Sources and further reading"><h2>Sources and further reading</h2><p>The links below are primary vendor materials, checked for this guide in October 2026. They describe vendor-published capabilities, not independently tested performance. PhotoTrackly is in development.</p><ul>{article.sources.map(source => <li key={source.url}><a href={source.url} rel="noopener noreferrer">{source.label}</a></li>)}</ul></aside> : null}
       <aside className="resource-takeaway"><h2>Takeaway</h2><p>{article.closing}</p></aside>

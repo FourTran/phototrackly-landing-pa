@@ -25,6 +25,7 @@ export type Insight = {
   }[];
   closing: string;
   sources?: { label: string; url: string }[];
+  vendorEvidence?: { vendor: string; publishedCapability: string; testQuestion: string; sourceUrl: string }[];
   related: { href: string; label: string }[];
 };
 
@@ -182,6 +183,7 @@ const originalInsights: Insight[] = [
           'Aryeo: trace a listing with photos, video and floor plans, then test finding or re-delivering its media.',
           'Spiro: follow the same job through booking, scheduling, editing workflow and delivery.',
           'Your current stack: include calendars, messaging and folders in the scorecard; compare real handoff problems rather than marketing checklists.',
+          'For every vendor, label each capability demonstrated in a trial, documented by the provider, not verified, or only promised; record the evidence date and the feature tier actually offered.',
         ],
         table: { headers: ['Checkpoint', 'What to demonstrate', 'Evidence to record'], rows: [
           ['Brief to schedule', 'Property, services, time and access travel together.', 'Extra messages required'],
@@ -199,13 +201,41 @@ const originalInsights: Insight[] = [
         paragraphs: ['Record which problems the tool solves now, which require a workaround, and which are only planned. Set a short trial outcome such as “a coordinator can answer the next owner and readiness for every test job.” Do not choose solely on a generic AI label or a promised automation.'],
       },
     ],
+    vendorEvidence: [
+      {
+        vendor: 'Tonomo',
+        publishedCapability: 'Its scheduling pages describe automated assignments, calendar availability, travel-aware scheduling and support for multiple photographers on a shoot.',
+        testQuestion: 'Which service/skill/location rules can a coordinator override, and what happens after a late reschedule?',
+        sourceUrl: 'https://www.tonomo.io/features/scheduling',
+      },
+      {
+        vendor: 'HDPhotoHub',
+        publishedCapability: 'Its help center documents order-level and product-level workflow tasks, assigned owners, due dates and ready-to-work email notifications.',
+        testQuestion: 'Can editors and reviewers see which task is ready, overdue, blocked or waiting on another service?',
+        sourceUrl: 'https://support.hdphotohub.com/hc/en-us/articles/37685771899668-Using-Workflow-Tasks',
+      },
+      {
+        vendor: 'Aryeo',
+        publishedCapability: 'Its content-management page describes centralized listing media including photography, video, 3D tours and floor plans, with search and re-delivery.',
+        testQuestion: 'Can a team recover the correct approved file version when an agent asks for a revision after delivery?',
+        sourceUrl: 'https://www.aryeo.com/products/content-management',
+      },
+      {
+        vendor: 'Spiro',
+        publishedCapability: 'Its help center describes a manual QC flow: inspect a property gallery, correct images, re-upload fixed files and initiate client delivery.',
+        testQuestion: 'Can a reviewer tell exactly which assets were revised and what was approved before releasing the client package?',
+        sourceUrl: 'https://support.spiro.media/en/articles/9325414-qc-and-delivery-process-in-spiro',
+      },
+    ],
     sources: [
       { label: 'Tonomo — Real estate photography project management', url: 'https://www.tonomo.io/features/project-management' },
+      { label: 'Tonomo — Scheduling software', url: 'https://www.tonomo.io/features/scheduling' },
       { label: 'HDPhotoHub — Using Workflow Tasks', url: 'https://support.hdphotohub.com/hc/en-us/articles/37685771899668-Using-Workflow-Tasks' },
       { label: 'Aryeo — Real estate media content management', url: 'https://www.aryeo.com/products/content-management' },
       { label: 'Spiro — Real estate media business software', url: 'https://spiro.media/' },
+      { label: 'Spiro — QC and delivery process', url: 'https://support.spiro.media/en/articles/9325414-qc-and-delivery-process-in-spiro' },
     ],
-    closing: 'The best evaluation is whether your real team can move one representative job without losing its context.',
+    closing: 'Use the same fictional job, documented evidence and specific role-by-role questions for every candidate. A vendor claim is a lead for a demo, not proof a feature fits your studio. PhotoTrackly remains in development.',
     related: [
       { href: '/resources/shoot-to-delivery-checklist', label: 'Use the shoot-to-delivery checklist' },
       { href: '/real-estate-photography-business-software', label: 'See PhotoTrackly’s planned first-release scope' },
