@@ -24,6 +24,7 @@ export type Insight = {
     table?: { headers: [string, string, string]; rows: [string, string, string][] };
   }[];
   closing: string;
+  sources?: { label: string; url: string }[];
   related: { href: string; label: string }[];
 };
 
@@ -156,8 +157,8 @@ const originalInsights: Insight[] = [
     slug: 'evaluate-property-media-workflow-software',
     category: 'Buying guide',
     title: 'How to evaluate software for a growing property media team',
-    description: 'A one-job evaluation script for real estate photography business software, covering scheduling, production handoffs, review, delivery and migration.',
-    answer: 'Test property-media software with one realistic job that includes several services and a late change. Follow the job from request to client delivery, and ask each role to show how it finds its next action. Record gaps before comparing prices or feature lists.',
+    description: 'Compare real estate photography workflow software by running a real-world shoot-to-delivery test, with cited Tonomo, HDPhotoHub, Aryeo and Spiro examples.',
+    answer: 'Compare real estate photography software by testing one multi-service property job in every candidate: booking and scheduling, photographer-to-editor handoff, revisions, approval and client delivery. Record which steps each product actually supports today, then weigh migration effort and price. Do not choose from feature lists alone.',
     intro: 'A long feature list does not show whether a coordinator can find the missing floor plan on a busy day. A realistic test job reveals where people would still need separate messages, spreadsheets and folders.',
     image: '/images/insights/evaluate-property-media-workflow-software.webp',
     imageAlt: 'Studio team comparing a property workflow with a sample job brief',
@@ -170,7 +171,18 @@ const originalInsights: Insight[] = [
       },
       {
         heading: 'Compare the same journey across tools',
-        paragraphs: ['Run the same job in your current stack and each candidate tool. A simple 0–2 score for each handoff can make discussion concrete: 0 means the team must reconstruct it elsewhere; 1 means the information is present but awkward; 2 means the next person can act from the job record. The score is an internal decision aid, not an industry benchmark.'],
+        paragraphs: [
+          'Run the same job in your current stack and each candidate tool. A simple 0–2 score for each handoff can make discussion concrete: 0 means the team must reconstruct it elsewhere; 1 means the information is present but awkward; 2 means the next person can act from the job record. The score is an internal decision aid, not an industry benchmark.',
+          'As of October 2026, public documentation gives useful examples of different approaches: Tonomo describes project management with order tracking and team assignments; HDPhotoHub documents order-level and product-level workflow tasks with due dates; Aryeo describes centralized property media storage and delivery; and Spiro describes the full ordering, scheduling, editing and delivery journey.',
+          'These are vendor-published capabilities, not independently tested evaluations. Features can change or exist outside the cited pages. Use each provider’s current documentation, then verify your exact job in a real demo. PhotoTrackly itself is in development, and cannot yet be trialed as a replacement for these existing products.',
+        ],
+        bullets: [
+          'Tonomo: demonstrate how a coordinator sees project status, photographer assignments and editor ownership.',
+          'HDPhotoHub: compare task dependencies, due dates and who receives ready-to-work notifications.',
+          'Aryeo: trace a listing with photos, video and floor plans, then test finding or re-delivering its media.',
+          'Spiro: follow the same job through booking, scheduling, editing workflow and delivery.',
+          'Your current stack: include calendars, messaging and folders in the scorecard; compare real handoff problems rather than marketing checklists.',
+        ],
         table: { headers: ['Checkpoint', 'What to demonstrate', 'Evidence to record'], rows: [
           ['Brief to schedule', 'Property, services, time and access travel together.', 'Extra messages required'],
           ['Shoot to edit', 'Source sets and editing instructions are identifiable.', 'Missing context or manual copying'],
@@ -186,6 +198,12 @@ const originalInsights: Insight[] = [
         heading: 'Make a decision with known gaps',
         paragraphs: ['Record which problems the tool solves now, which require a workaround, and which are only planned. Set a short trial outcome such as “a coordinator can answer the next owner and readiness for every test job.” Do not choose solely on a generic AI label or a promised automation.'],
       },
+    ],
+    sources: [
+      { label: 'Tonomo — Real estate photography project management', url: 'https://www.tonomo.io/features/project-management' },
+      { label: 'HDPhotoHub — Using Workflow Tasks', url: 'https://support.hdphotohub.com/hc/en-us/articles/37685771899668-Using-Workflow-Tasks' },
+      { label: 'Aryeo — Real estate media content management', url: 'https://www.aryeo.com/products/content-management' },
+      { label: 'Spiro — Real estate media business software', url: 'https://spiro.media/' },
     ],
     closing: 'The best evaluation is whether your real team can move one representative job without losing its context.',
     related: [
