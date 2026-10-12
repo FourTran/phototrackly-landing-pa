@@ -8,6 +8,25 @@ import type { MarketingPage } from '@/lib/marketing-pages';
 import './prelaunch.css';
 import './seo-page.css';
 
+const operationalGuideByPage: Record<string, { href: string; label: string }> = {
+  'real-estate-photography-business-software': {
+    href: '/insights/evaluate-property-media-workflow-software',
+    label: 'Evaluate business software with a real studio workflow',
+  },
+  'real-estate-photography-workflow-software': {
+    href: '/insights/property-media-job-triage',
+    label: 'Triage active property jobs and identify the next owner',
+  },
+  'real-estate-photography-scheduling-software': {
+    href: '/insights/multi-service-shoot-scheduling',
+    label: 'Plan a multi-service shoot with photos, drone and floor plans',
+  },
+  'real-estate-media-production-management': {
+    href: '/insights/real-estate-media-delivery-readiness',
+    label: 'Separate edited files from approved client deliverables',
+  },
+};
+
 export default function SeoPage({ page }: { page: MarketingPage }) {
   return <div className="pl reference-site"><Navigation /><main id="main" className="seo-main">
     <div className="seo-wrap seo-breadcrumb"><Link href="/">PhotoTrackly</Link><span aria-hidden="true">/</span><span>{page.title}</span></div>
@@ -20,7 +39,7 @@ export default function SeoPage({ page }: { page: MarketingPage }) {
       ['real-estate-photography-scheduling-software', 'Shoot scheduling'],
       ['real-estate-media-production-management', 'Production management'],
     ].filter(([slug]) => slug !== page.slug).map(([slug, label]) => <Link key={slug} href={`/${slug}`}>{label}<span aria-hidden="true">↗</span></Link>)}</div></section>
-    <section className="seo-wrap seo-related"><div><p className="rf-eyebrow">PRACTICAL NEXT STEPS</p><h2>Use the workflow with your team.</h2></div><div><Link href="/resources">Browse practical resources<span aria-hidden="true">↗</span></Link><Link href="/insights">Read operations insights<span aria-hidden="true">↗</span></Link><Link href="/resources/photographer-handoff-template">Use the photographer handoff template<span aria-hidden="true">↗</span></Link><Link href="/contact">Share workflow feedback<span aria-hidden="true">↗</span></Link></div></section>
+    <section className="seo-wrap seo-related"><div><p className="rf-eyebrow">PRACTICAL NEXT STEPS</p><h2>Use the workflow with your team.</h2></div><div><Link href="/resources">Browse practical resources<span aria-hidden="true">↗</span></Link><Link href="/insights">Read operations insights<span aria-hidden="true">↗</span></Link><Link href={operationalGuideByPage[page.slug].href}>{operationalGuideByPage[page.slug].label}<span aria-hidden="true">↗</span></Link><Link href="/resources/photographer-handoff-template">Use the photographer handoff template<span aria-hidden="true">↗</span></Link><Link href="/contact">Share workflow feedback<span aria-hidden="true">↗</span></Link></div></section>
     <section className="seo-wrap seo-questions"><p className="rf-eyebrow">CLEAR ANSWERS</p><h2>Before you join early access</h2>{page.questions.map(item => <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</section>
     <section className="seo-signup" id="early-access"><div className="seo-wrap seo-signup-grid"><div><p className="rf-eyebrow">JOIN EARLY ACCESS</p><h2>Help shape PhotoTrackly.</h2><p>We’re inviting real estate photography and property media teams in the United States and Australia to share where their current workflow gets stuck. Registering interest does not create an account or guarantee immediate access.</p></div><LeadForm variant="footer" /></div></section>
   </main><footer><div className="seo-wrap rf-foot-inner"><Wordmark /><p>Property media work, connected.</p><div className="rf-footer-links"><Link href="/privacy">Privacy</Link><CookieSettingsButton /><Link href="/">Home</Link></div></div></footer><AnalyticsConsent /></div>;
