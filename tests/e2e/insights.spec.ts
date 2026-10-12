@@ -114,3 +114,18 @@ test('production sitemap includes all insight URLs', async ({ request }) => {
   const body = await response.text();
   for (const slug of slugs) expect(body).toContain(`/insights/${slug}`);
 });
+
+
+test('software buying guide cites verified competitor product documentation without pretending PhotoTrackly is live', async ({ page }) => {
+  await page.goto('/insights/evaluate-property-media-workflow-software');
+  await expect(page.getByRole('heading', { name: 'What current industry software demonstrates' })).toBeVisible();
+  const sources = page.getByRole('complementary', { name: 'Sources and further reading' });
+  await expect(sources.getByRole('link')).toHaveCount(4);
+  for (const host of ['tonomo.io', 'hdphotohub.com', 'aryeo.com', 'spiro.media']) {
+    await expect(sources.locator(`a[href*="${host}"]`)).toHaveCount(1);
+  }
+  await expect(page.locator('article')).toContainText('PhotoTrackly itself is in development');
+  const schema = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent() || '{}');
+  expect(schema.citation).toHaveLength(4);
+  expect(schema.citation.every((url: string) => url.startsWith('https://'))).toBe(true);
+});
