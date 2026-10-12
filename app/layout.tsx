@@ -1,10 +1,17 @@
 /* eslint-disable @next/next/no-page-custom-font -- App Router root layout: this stylesheet is global across all routes, with system-font fallbacks. */
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
+import { DM_Sans, Manrope, JetBrains_Mono, Plus_Jakarta_Sans } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { siteUrl } from '@/lib/site';
 import './globals.css';
+
+// Self-host fonts at build time instead of blocking mobile rendering on a Google CSS request.
+const dmSans = DM_Sans({ subsets: ['latin'], variable: '--font-dm-sans', display: 'swap' });
+const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope', display: 'swap' });
+const jetBrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains', display: 'swap' });
+const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-jakarta', display: 'swap' });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl()),
@@ -21,12 +28,7 @@ export const viewport: Viewport = { width: 'device-width', initialScale: 1, them
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-      </head>
-      <body>
+      <body className={`${dmSans.variable} ${manrope.variable} ${jetBrainsMono.variable} ${plusJakartaSans.variable}`}>
         <a className="skip-link" href="#main">Skip to content</a>
         {children}
         <Analytics />
