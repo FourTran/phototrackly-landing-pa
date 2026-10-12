@@ -28,7 +28,7 @@ test('public build notes distinguish tested sample logic from a released SaaS', 
   await expect(body).toContainText('a fictional product concept');
   await expect(body).toContainText('Not customer evidence');
   await expect(body).toContainText('not a deployed multi-tenant service');
-  await expect(body).toContainText('not a released application');
+  await expect(body).toContainText('are available in a finished PhotoTrackly application');
   await expect(body.locator('a[href="https://github.com/FourTran/phototrackly-landing-pa/blob/main/lib/model.ts"]')).toHaveCount(1);
   await expect(body.locator('a[href="https://github.com/FourTran/phototrackly-landing-pa/blob/main/tests/model.test.ts"]')).toHaveCount(1);
   const schema = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent() || '{}');
