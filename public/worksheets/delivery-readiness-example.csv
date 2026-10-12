@@ -1,0 +1,4 @@
+Property reference,Ordered deliverable,Approved version,Reviewer,Approval time,Client link checked,Recipient confirmed,Remaining work,Delivery owner,Delivery time,Time zone
+SAMPLE-001 (fictional),Photography images,v3,Sample Reviewer,2026-10-15 11:00,Yes - sample only,Pending client agreement,Floor plan label still needs approval,Delivery coordinator,Not delivered,America/Chicago
+SAMPLE-001 (fictional),Floor plan,Not approved,Sample Reviewer,Not approved,No,Pending,Editor correcting room label,Floor plan editor,Not delivered,America/Chicago
+SAMPLE-001 (fictional),Video,Not exported,Unassigned,Not reviewed,No,Pending,Await final export and review,Video editor,Not delivered,America/Chicago
