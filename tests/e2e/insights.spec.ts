@@ -118,7 +118,7 @@ test('production sitemap includes all insight URLs', async ({ request }) => {
 
 test('software buying guide cites verified competitor product documentation without pretending PhotoTrackly is live', async ({ page }) => {
   await page.goto('/insights/evaluate-property-media-workflow-software');
-  await expect(page.getByRole('heading', { name: 'What current industry software demonstrates' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Compare the same journey across tools' })).toBeVisible();
   const sources = page.getByRole('complementary', { name: 'Sources and further reading' });
   await expect(sources.getByRole('link')).toHaveCount(4);
   for (const host of ['tonomo.io', 'hdphotohub.com', 'aryeo.com', 'spiro.media']) {
