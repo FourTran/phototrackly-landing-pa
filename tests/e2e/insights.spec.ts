@@ -121,8 +121,8 @@ test('software buying guide cites verified competitor product documentation with
   await expect(page.getByRole('heading', { name: 'Compare the same journey across tools' })).toBeVisible();
   const sources = page.getByRole('complementary', { name: 'Sources and further reading' });
   await expect(sources.getByRole('link')).toHaveCount(6);
-  for (const host of ['tonomo.io', 'hdphotohub.com', 'aryeo.com', 'spiro.media']) {
-    await expect(sources.locator(`a[href*="${host}"]`)).toHaveCount(1);
+  for (const [host, count] of Object.entries({ 'tonomo.io': 2, 'hdphotohub.com': 1, 'aryeo.com': 1, 'spiro.media': 2 })) {
+    await expect(sources.locator(`a[href*="${host}"]`)).toHaveCount(count);
   }
   const matrix = page.getByRole('complementary', { name: 'Vendor documentation and test questions' });
   await expect(matrix.getByRole('row')).toHaveCount(5);
