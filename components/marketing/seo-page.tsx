@@ -48,7 +48,7 @@ export default function SeoPage({ page }: { page: MarketingPage }) {
     </section>
     <section className="seo-wrap seo-product-boundaries" aria-labelledby="scope-heading">
       <p className="rf-eyebrow">PLANNED FIRST RELEASE</p>
-      <h2 id="scope-heading">What's planned — and what's not confirmed?</h2>
+      <h2 id="scope-heading">What is planned — and what is not confirmed?</h2>
       <div className="seo-boundary-grid">
         <div><h3>Planned workflow scope</h3><ul>{page.buyerGuide.plannedFirstRelease.map(feature => <li key={feature}>{feature}</li>)}</ul></div>
         <div><h3>Not currently promised</h3><ul>{page.buyerGuide.notPromised.map(feature => <li key={feature}>{feature}</li>)}</ul></div>
