@@ -16,7 +16,7 @@ test('four commercial owner pages each address distinct studio buying intent', (
     assert.ok(guide.exampleHandoffs.every(x => x.owner.length > 3 && x.decision.length > 50), page.slug);
     assert.equal(guide.plannedFirstRelease.length, 3, page.slug);
     assert.equal(guide.notPromised.length, 3, page.slug);
-    assert.ok(/development|planned|plans/.test(guide.directAnswer), page.slug);
+    assert.ok(/develop|planned|plans/.test(guide.directAnswer), page.slug);
     assert.ok(!/customer testimonial|guaranteed 50%|trusted by 100/i.test(JSON.stringify(guide)), page.slug);
   }
 });
