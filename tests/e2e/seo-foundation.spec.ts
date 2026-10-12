@@ -21,6 +21,7 @@ test('homepage identity, trust pages and article metadata are consistent', async
   const sitemap = await request.get('/sitemap.xml');
   expect(await sitemap.text()).toContain('/about');
   expect(await sitemap.text()).toContain('/contact');
+  expect(await sitemap.text()).toContain('/build-notes');
 });
 
 test('www redirect keeps paths and campaign parameters without affecting other hosts', async ({ request }) => {

@@ -18,9 +18,9 @@ function inVercelEnvironment(value: string, run: () => void) {
 test('production sitemap publishes each canonical public page once', () => {
   inVercelEnvironment('production', () => {
     const entries = sitemap();
-    const expectedCount = 4 + marketingPageSlugs.length + 1 + resourceSlugs.length + 1 + insightSlugs.length;
+    const expectedCount = 5 + marketingPageSlugs.length + 1 + resourceSlugs.length + 1 + insightSlugs.length;
     assert.equal(entries.length, expectedCount);
-    assert.equal(entries.length, 88);
+    assert.equal(entries.length, 89);
     const urls = entries.map(entry => entry.url);
     assert.equal(new Set(urls).size, urls.length);
     for (const url of urls) {
@@ -36,6 +36,7 @@ test('sitemap dates use verified historical updates, never current build time', 
     const byPath = new Map(entries.map(entry => [new URL(entry.url).pathname, entry]));
     assert.equal((byPath.get('/')?.lastModified as Date).toISOString(), '2026-10-12T00:00:00.000Z');
     assert.equal(byPath.get('/contact')?.lastModified, undefined);
+    assert.equal((byPath.get('/build-notes')?.lastModified as Date).toISOString(), '2026-10-12T00:00:00.000Z');
     const hubModified = byPath.get('/insights')?.lastModified;
     assert.ok(hubModified instanceof Date);
     assert.equal(hubModified.toISOString(), '2026-10-12T00:00:00.000Z');
