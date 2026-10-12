@@ -229,9 +229,11 @@ const originalInsights: Insight[] = [
     ],
     sources: [
       { label: 'Tonomo — Real estate photography project management', url: 'https://www.tonomo.io/features/project-management' },
+      { label: 'Tonomo — Scheduling software', url: 'https://www.tonomo.io/features/scheduling' },
       { label: 'HDPhotoHub — Using Workflow Tasks', url: 'https://support.hdphotohub.com/hc/en-us/articles/37685771899668-Using-Workflow-Tasks' },
       { label: 'Aryeo — Real estate media content management', url: 'https://www.aryeo.com/products/content-management' },
       { label: 'Spiro — Real estate media business software', url: 'https://spiro.media/' },
+      { label: 'Spiro — QC and delivery process', url: 'https://support.spiro.media/en/articles/9325414-qc-and-delivery-process-in-spiro' },
     ],
     closing: 'Use the same fictional job, documented evidence and specific role-by-role questions for every candidate. A vendor claim is a lead for a demo, not proof a feature fits your studio. PhotoTrackly remains in development.',
     related: [
