@@ -8,6 +8,25 @@ import type { MarketingPage } from '@/lib/marketing-pages';
 import './prelaunch.css';
 import './seo-page.css';
 
+const operationalGuideByPage: Record<string, { href: string; label: string }> = {
+  'real-estate-photography-business-software': {
+    href: '/insights/evaluate-property-media-workflow-software',
+    label: 'Evaluate business software with a real studio workflow',
+  },
+  'real-estate-photography-workflow-software': {
+    href: '/insights/property-media-job-triage',
+    label: 'Triage active property jobs and identify the next owner',
+  },
+  'real-estate-photography-scheduling-software': {
+    href: '/insights/multi-service-shoot-scheduling',
+    label: 'Plan a multi-service shoot with photos, drone and floor plans',
+  },
+  'real-estate-media-production-management': {
+    href: '/insights/real-estate-media-delivery-readiness',
+    label: 'Separate edited files from approved client deliverables',
+  },
+};
+
 export default function SeoPage({ page }: { page: MarketingPage }) {
   return <div className="pl reference-site"><Navigation /><main id="main" className="seo-main">
     <div className="seo-wrap seo-breadcrumb"><Link href="/">PhotoTrackly</Link><span aria-hidden="true">/</span><span>{page.title}</span></div>
