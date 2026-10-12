@@ -3,6 +3,7 @@ import { siteUrl } from '@/lib/site';
 import { marketingPageSlugs } from '@/lib/marketing-pages';
 import { resourceSlugs } from '@/lib/resources';
 import { insights } from '@/lib/insights';
+import { workflowExamples } from '@/lib/workflow-examples';
 
 // Use recorded substantive content-update dates, never a build-time "last modified" value.
 // PR #40 updated the homepage and four commercial-page copy on October 12.
@@ -14,6 +15,7 @@ const articleNavigationUpdated = new Date('2026-10-07T19:39:45Z');
 const buyingGuideUpdated = new Date('2026-10-12T00:00:00Z');
 const resourceSchemaUpdated = new Date('2026-10-08T07:41:41Z');
 const contentHubsUpdated = new Date('2026-10-12T00:00:00Z');
+const originalResourceExamplesUpdated = new Date('2026-10-12T00:00:00Z');
 
 export default function sitemap(): MetadataRoute.Sitemap {
   if (process.env.VERCEL_ENV === 'preview') return [];
@@ -32,7 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${origin}/resources`, lastModified: contentHubsUpdated },
     ...resourceSlugs.map(slug => ({
       url: `${origin}/resources/${slug}`,
-      lastModified: resourceSchemaUpdated,
+      lastModified: originalResourceExamplesUpdated > resourceSchemaUpdated ? originalResourceExamplesUpdated : resourceSchemaUpdated,
     })),
     { url: `${origin}/insights`, lastModified: contentHubsUpdated },
     ...insights.map(article => ({
@@ -40,6 +42,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(Math.max(
         articleNavigationUpdated.getTime(),
         article.slug === 'evaluate-property-media-workflow-software' ? buyingGuideUpdated.getTime() : 0,
+        Object.prototype.hasOwnProperty.call(workflowExamples, article.slug) ? originalResourceExamplesUpdated.getTime() : 0,
         article.publishedAt ? Date.parse(article.publishedAt) : 0,
       )),
     })),

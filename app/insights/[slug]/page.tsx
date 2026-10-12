@@ -9,6 +9,7 @@ import { Wordmark } from '@/components/prelaunch/primitives';
 import { getInsight, insightSlugs } from '@/lib/insights';
 import { relatedInsights, topicFor, publicationLabel, insightWorksheets } from '@/lib/insight-topics';
 import { siteUrl } from '@/lib/site';
+import { workflowExamples } from '@/lib/workflow-examples';
 import '@/components/marketing/prelaunch.css';
 import '@/components/marketing/seo-page.css';
 import '@/components/marketing/insights.css';
@@ -29,6 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 export default async function InsightDetail({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params; const article = getInsight(slug); if (!article) notFound();
+  const practice = workflowExamples[slug];
   const worksheet = insightWorksheets[slug];
   const articleUrl = `${siteUrl()}/insights/${slug}`;
   const articleSchema = {
@@ -41,14 +43,22 @@ export default async function InsightDetail({ params }: { params: Promise<{ slug
     publisher: { '@type': 'Organization', name: 'PhotoTrackly', url: siteUrl() },
     author: { '@type': 'Organization', name: 'PhotoTrackly editorial', url: `${siteUrl()}/about#editorial` },
     datePublished: article.publishedAt,
+    ...(practice ? { dateModified: '2026-10-12T00:00:00Z' } : {}),
     ...(article.sources?.length ? { citation: article.sources.map(source => source.url) } : {}),
   };
   return <div className="pl reference-site"><Navigation /><main id="main" className="seo-main">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema).replace(/</g, '\\u003c') }} />
     <div className="seo-wrap seo-breadcrumb"><Link href="/">PhotoTrackly</Link><span aria-hidden="true">/</span><Link href="/insights">Insights</Link><span aria-hidden="true">/</span><span>{article.title}</span></div>
-    <article className="seo-wrap in-article"><header><p className="rf-eyebrow">{article.category.toUpperCase()} · {article.readingMinutes} MIN READ</p><h1>{article.title}</h1><p className="in-byline"><Link href="/about#editorial">PhotoTrackly editorial</Link>{article.publishedAt && <> · Published <time dateTime={article.publishedAt}>{publicationLabel(article.publishedAt)}</time></>}</p><p className="seo-intro">{article.intro}</p></header>
+    <article className="seo-wrap in-article"><header><p className="rf-eyebrow">{article.category.toUpperCase()} · {article.readingMinutes} MIN READ</p><h1>{article.title}</h1><p className="in-byline"><Link href="/about#editorial">PhotoTrackly editorial</Link>{article.publishedAt && <> · Published <time dateTime={article.publishedAt}>{publicationLabel(article.publishedAt)}</time></>}{practice && <> · Updated <time dateTime="2026-10-12">October 12, 2026</time></>}</p><p className="seo-intro">{article.intro}</p></header>
       <figure className="in-hero-image"><Image src={article.image} alt={article.imageAlt} fill sizes="(max-width: 900px) 100vw, 900px" priority /><figcaption>AI-generated illustration of a property media workflow</figcaption></figure>
       <section className="in-answer" aria-label="Quick answer"><p className="rf-eyebrow">QUICK ANSWER</p><p>{article.answer}</p></section>
+      {practice && <figure className="in-workflow-practice" aria-label="Illustrative job workflow example">
+        <p className="rf-eyebrow">WORKED OPERATING EXAMPLE</p>
+        <h2>{practice.title}</h2>
+        <p>{practice.scenario}</p>
+        <ol className="in-practice-steps">{practice.checkpoints.map(step => <li key={step.stage}><h3>{step.stage}</h3><p><strong>Owner:</strong> {step.owner}</p><p><strong>Signal:</strong> {step.signal}</p><p><strong>Next action:</strong> {step.nextAction}</p><p><strong>Proof of completion:</strong> {step.evidence}</p></li>)}</ol>
+        <figcaption><strong>Decision rule:</strong> {practice.decisionRule} This is fictional sample data, not an observed studio, case study, or PhotoTrackly product screenshot. <a href={`/worksheets/${practice.worksheet}.csv`} download>{practice.worksheetLabel} (CSV)</a> or <a href={`/worksheets/${practice.worksheet}-example.csv`} download>study the fictional filled-in version (CSV)</a>.</figcaption>
+      </figure>}
       {article.sections.map(section => <section className="in-section" key={section.heading}><h2>{section.heading}</h2>{section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}{section.bullets && <ul>{section.bullets.map(item => <li key={item}>{item}</li>)}</ul>}{section.table && <div className="in-table-scroll"><table><thead><tr>{section.table.headers.map(header => <th scope="col" key={header}>{header}</th>)}</tr></thead><tbody>{section.table.rows.map((row, index) => <tr key={index}>{row.map((cell, column) => column === 0 ? <th scope="row" key={column}>{cell}</th> : <td key={column}>{cell}</td>)}</tr>)}</tbody></table></div>}</section>)}
       {article.vendorEvidence?.length ? <aside className="resource-takeaway vendor-evidence" aria-label="Vendor documentation and test questions">
         <h2>What vendor documentation shows — and what to verify</h2>
