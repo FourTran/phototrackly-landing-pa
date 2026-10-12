@@ -15,7 +15,8 @@ test('homepage identity, trust pages and article metadata are consistent', async
   const article = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent() || '{}');
   expect(article.author).toMatchObject({ name: 'PhotoTrackly editorial' });
   expect(article.datePublished).toBe('2026-10-02T07:12:50Z');
-  await expect(page.locator('time')).toHaveAttribute('datetime', article.datePublished);
+  await expect(page.locator('time').first()).toHaveAttribute('datetime', article.datePublished);
+  await expect(page.locator('time').last()).toHaveAttribute('datetime', '2026-10-12');
   expect(await page.locator('.in-more > div a').count()).toBeLessThanOrEqual(4);
   const sitemap = await request.get('/sitemap.xml');
   expect(await sitemap.text()).toContain('/about');
