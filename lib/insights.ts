@@ -171,7 +171,18 @@ const originalInsights: Insight[] = [
       },
       {
         heading: 'Compare the same journey across tools',
-        paragraphs: ['Run the same job in your current stack and each candidate tool. A simple 0–2 score for each handoff can make discussion concrete: 0 means the team must reconstruct it elsewhere; 1 means the information is present but awkward; 2 means the next person can act from the job record. The score is an internal decision aid, not an industry benchmark.'],
+        paragraphs: [
+          'Run the same job in your current stack and each candidate tool. A simple 0–2 score for each handoff can make discussion concrete: 0 means the team must reconstruct it elsewhere; 1 means the information is present but awkward; 2 means the next person can act from the job record. The score is an internal decision aid, not an industry benchmark.',
+          'As of October 2026, public documentation gives useful examples of different approaches: Tonomo describes project management with order tracking and team assignments; HDPhotoHub documents order-level and product-level workflow tasks with due dates; Aryeo describes centralized property media storage and delivery; and Spiro describes the full ordering, scheduling, editing and delivery journey.',
+          'These are vendor-published capabilities, not independently tested evaluations. Features can change or exist outside the cited pages. Use each provider’s current documentation, then verify your exact job in a real demo. PhotoTrackly itself is in development, and cannot yet be trialed as a replacement for these existing products.',
+        ],
+        bullets: [
+          'Tonomo: demonstrate how a coordinator sees project status, photographer assignments and editor ownership.',
+          'HDPhotoHub: compare task dependencies, due dates and who receives ready-to-work notifications.',
+          'Aryeo: trace a listing with photos, video and floor plans, then test finding or re-delivering its media.',
+          'Spiro: follow the same job through booking, scheduling, editing workflow and delivery.',
+          'Your current stack: include calendars, messaging and folders in the scorecard; compare real handoff problems rather than marketing checklists.',
+        ],
         table: { headers: ['Checkpoint', 'What to demonstrate', 'Evidence to record'], rows: [
           ['Brief to schedule', 'Property, services, time and access travel together.', 'Extra messages required'],
           ['Shoot to edit', 'Source sets and editing instructions are identifiable.', 'Missing context or manual copying'],
@@ -182,20 +193,6 @@ const originalInsights: Insight[] = [
       {
         heading: 'Ask about adoption and migration',
         paragraphs: ['A good demonstration can still fail when the team has to move active jobs or change daily habits. Ask how current clients, service packages, schedules and files would be represented, which integrations exist today, and what remains manual. Confirm the actual product stage rather than assuming a roadmap feature is available.', 'Include the people who perform the handoffs in the evaluation. An owner may like a dashboard while an editor still lacks the instructions needed to finish work.'],
-      },
-      {
-        heading: 'What current industry software demonstrates',
-        paragraphs: [
-          'Use public feature documentation as a starting point, not as a substitute for a live trial. As of October 2026, Tonomo describes project tracking, booking and scheduling for real estate media teams; HDPhotoHub documents product-level and order-level workflow tasks with assigned people and due dates; Aryeo describes centralized property media storage and delivery; and Spiro presents ordering, scheduling, editing workflows and delivery as one operating sequence.',
-          'These are examples of publicly documented capabilities, not independent tests or an exhaustive feature comparison. A feature not mentioned on a vendor page may still exist. Check the provider’s current documentation and ask for a demonstration of your exact workflow before making any purchasing decision. PhotoTrackly itself is in development and is not yet a replacement you can trial against these live products.',
-        ],
-        bullets: [
-          'Tonomo: ask the vendor to demonstrate how project status, photographer assignment, and editing ownership are visible together.',
-          'HDPhotoHub: compare task dependencies, who receives task-ready notifications, due dates and multi-service orders.',
-          'Aryeo: trace one listing with photo, video and floor-plan assets, then test search and re-delivery.',
-          'Spiro: follow the same example job from ordering through editing workflow and delivery.',
-          'Your current stack: include calendars, chats and folders as a candidate. Record what genuinely breaks today before replacing anything.',
-        ],
       },
       {
         heading: 'Make a decision with known gaps',
