@@ -136,3 +136,27 @@ test('software buying guide cites verified competitor product documentation with
   expect(schema.citation).toHaveLength(6);
   expect(schema.citation.every((url: string) => url.startsWith('https://'))).toBe(true);
 });
+
+test('five expanded articles show original example figures and correctly dated source evidence', async ({ page }) => {
+  const examples = [
+    ['property-media-job-triage', 'P-101'],
+    ['multi-service-shoot-scheduling', 'Late access change'],
+    ['real-estate-media-delivery-readiness', 'Photos'],
+    ['evaluate-property-media-workflow-software', 'Brief to appointment'],
+    ['handle-client-delivery-revisions-property-media', 'Revision request'],
+  ];
+  for (const [slug, term] of examples) {
+    await page.goto('/insights/' + slug);
+    const example = page.getByRole('figure', { name: 'Illustrative job workflow example' });
+    await expect(example).toContainText('WORKED OPERATING EXAMPLE');
+    await expect(example).toContainText(term);
+    await expect(example).toContainText('Proof of completion:');
+    await expect(example.getByRole('listitem')).toHaveCount(slug === 'property-media-job-triage' ? 3 : 4);
+    await expect(example.getByRole('link', { name: /Download the blank/ })).toHaveAttribute('href', /worksheets\/.*\.csv$/);
+    await expect(example).toContainText('fictional sample data');
+    const article = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent() || '{}');
+    expect(article.dateModified).toBe('2026-10-12T00:00:00Z');
+    await expect(page.locator('.in-section')).toHaveCount(4);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 2)).toBe(true);
+  }
+});
