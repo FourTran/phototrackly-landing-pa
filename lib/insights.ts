@@ -206,7 +206,11 @@ const originalInsights: Insight[] = [
       },
       {
         heading: 'Make a decision with known gaps',
-        paragraphs: ['Record which problems the tool solves now, which require a workaround, and which are only planned. Set a short trial outcome such as “a coordinator can answer the next owner and readiness for every test job.” Do not choose solely on a generic AI label or a promised automation.'],
+        paragraphs: [
+          'Record which problems the tool solves now, which require a workaround, and which are only planned. Set a short trial outcome such as “a coordinator can answer the next owner and readiness for every test job.” Do not choose solely on a generic AI label or a promised automation.',
+          'Keep a source-and-status ledger for each comparison claim. Separate (1) vendor documentation checked on a recorded date, (2) a feature actually observed by your team in a working trial, (3) functionality only on a provider roadmap, and (4) anything still unknown. Do not promote a third-party marketing description to a demonstrated result.',
+          'Use the same fictional photos-plus-drone-plus-floor-plan job to compare checkpoints. For example, note whether a missing floor-plan file blocks only that deliverable or whether the whole job appears ready: record who noticed, who owned the fix and which final version the reviewer approved. The result is a reusable evaluation method, not measured PhotoTrackly customer performance.',
+        ],
       },
     ],
     vendorEvidence: [
