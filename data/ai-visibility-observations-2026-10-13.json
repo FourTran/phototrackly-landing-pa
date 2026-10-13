@@ -1,0 +1,333 @@
+{
+  "schemaVersion": 1,
+  "snapshotDate": "2026-10-13",
+  "market": "US",
+  "promptSet": "phototrackly-12-v1",
+  "method": "Direct AI search surface observations only; public web-search results and GA4 referrals belong to separate evidence classes.",
+  "observations": [
+    {
+      "surface": "chatgpt_search",
+      "promptId": "A01",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "chatgpt_search",
+      "promptId": "A02",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "chatgpt_search",
+      "promptId": "A03",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "chatgpt_search",
+      "promptId": "A04",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "chatgpt_search",
+      "promptId": "A05",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "chatgpt_search",
+      "promptId": "A06",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "chatgpt_search",
+      "promptId": "A07",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "chatgpt_search",
+      "promptId": "A08",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "chatgpt_search",
+      "promptId": "A09",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "chatgpt_search",
+      "promptId": "A10",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "chatgpt_search",
+      "promptId": "A11",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "chatgpt_search",
+      "promptId": "A12",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "google_ai_mode",
+      "promptId": "A01",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "google_ai_mode",
+      "promptId": "A02",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "google_ai_mode",
+      "promptId": "A03",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "google_ai_mode",
+      "promptId": "A04",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "google_ai_mode",
+      "promptId": "A05",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "google_ai_mode",
+      "promptId": "A06",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "google_ai_mode",
+      "promptId": "A07",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "google_ai_mode",
+      "promptId": "A08",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "google_ai_mode",
+      "promptId": "A09",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "google_ai_mode",
+      "promptId": "A10",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "google_ai_mode",
+      "promptId": "A11",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "google_ai_mode",
+      "promptId": "A12",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "perplexity",
+      "promptId": "A01",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "perplexity",
+      "promptId": "A02",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "perplexity",
+      "promptId": "A03",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "perplexity",
+      "promptId": "A04",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "perplexity",
+      "promptId": "A05",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "perplexity",
+      "promptId": "A06",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "perplexity",
+      "promptId": "A07",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "perplexity",
+      "promptId": "A08",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "perplexity",
+      "promptId": "A09",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "perplexity",
+      "promptId": "A10",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "perplexity",
+      "promptId": "A11",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "perplexity",
+      "promptId": "A12",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    }
+  ]
+}
