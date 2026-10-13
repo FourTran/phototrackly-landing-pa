@@ -85,3 +85,14 @@ GitHub Actions runs types, lint, unit/receiver tests, production build, and desk
 ## Owner-approved UI reference
 
 The landing now follows the supplied operations-site UI and uses its five original photographs as local assets. See [reference notes](docs/REFERENCE-UI.md) and `reference-media.json`. Google Sheets remains the only lead destination; no application database is required. Both forms require work email, company and explicit consent. Other context is optional.
+
+
+## AI-search visibility benchmarking (Milestone 7)
+
+PhotoTrackly keeps a **12-question, versioned AI search panel** in `data/ai-visibility-prompts.json` and a dated evidence ledger in `data/ai-visibility-observations-2026-10-13.json`. Each question should be tested independently in ChatGPT Search, Google AI Mode, and Perplexity, with an actual response URL/screenshot saved to the project Drive. Public web-search results, GA4 referral traffic, Search Console query heuristics and indexed pages are **separate signals** and must not be substituted for direct AI citations.
+
+Run `npm run ai:scorecard` to see the current citation coverage; observations marked `not_tested` deliberately show **not measured**, never zero citations. The scorecard counts only exact HTTPS `phototrackly.com` citation links as canonical URL citations, not historical `qrtrackly.com` references or uncited brand mentions. To record a direct, observed AI result, supply a dated snapshot file with `status: "observed"`, boolean `brandMention`, actual `citedUrls`, actual `competitorDomains` and a trustworthy HTTPS `evidenceUrl`. Save the snapshot as a new dated file so comparisons remain reproducible; never overwrite previously observed screenshots or invent AI-surface output.
+
+GSC/GA4 evidence uses the connected GSC MCP v2 property `sc-domain:phototrackly.com` and GA4 property `557439732`. Referral metrics count attributable `chatgpt.com`, `perplexity.ai`, `gemini.google.com`, `claude.ai`, and Copilot traffic only when they appear in GA4 source/medium. A direct/no-referrer visit does not prove an AI referral. The consented GA4 page location preserves bounded `utm_source=chatgpt.com`; campaign test coverage prevents unsafe parameters from leaking. No GA4/GTM event emitter, key-event configuration or crawler-training directive is changed by this milestone.
+
+Full source, competitor-web-proxy findings, release gates and limitations: [Milestone 7 evidence and runbook](docs/growth/AI_SEARCH_MILESTONE_7_2026-10-13.md).
