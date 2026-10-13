@@ -15,6 +15,7 @@ export type MarketingPage = {
     directAnswer: string;
     forTeams: string[];
     exampleHandoffs: { checkpoint: string; owner: string; decision: string }[];
+    selectionChecks: { question: string; test: string; limit: string }[];
     plannedFirstRelease: string[];
     notPromised: string[];
   };
@@ -23,10 +24,10 @@ export type MarketingPage = {
 export const marketingPages: MarketingPage[] = [
   {
     slug: 'real-estate-photography-business-software',
-    title: 'Real Estate Photography Business Software',
-    description: 'Explore a planned real estate photography business workspace for studio owners coordinating photographers, editors, job handoffs and client delivery.',
+    title: 'Real Estate Photography Business Software for Studios',
+    description: 'Explore PhotoTrackly’s planned real estate photography business software for studios coordinating shoots, photographers, editors and client handoffs.',
     eyebrow: 'FOR PROPERTY MEDIA BUSINESSES',
-    heading: 'Real estate photography business software for the work around every shoot',
+    heading: 'Real estate photography business software for studio operations',
     introduction: 'For studio owners balancing shoots, edits and delivery deadlines, the hardest question is often who owns the next step. PhotoTrackly is being built to connect the property brief, assigned people, files, review and delivery in one planned job workspace.',
     image: '/images/reference/on-site.webp',
     imageAlt: 'Photographer working on a property media shoot',
@@ -50,6 +51,11 @@ export const marketingPages: MarketingPage[] = [
         { checkpoint: "Production", owner: "Editor or production lead", decision: "Check that every required source set arrived and identify the next owner for missing media." },
         { checkpoint: "Client handoff", owner: "Reviewer / delivery owner", decision: "Confirm individual deliverables are approved before sending the agreed package." },
       ],
+      selectionChecks: [
+        { question: "Can one property order retain every promised deliverable?", test: "Walk through a photo, drone and floor-plan job. Verify that the order, due date, current brief and responsible person remain together when someone changes a service.", limit: "A shared job record is not the same as accounting, CRM or automated customer acquisition." },
+        { question: "Can an owner see the next accountable person without asking the team?", test: "Ask who is waiting on missing files, who reviews the edit and who can authorize delivery. Check whether the answer is visible at the job level.", limit: "Do not assume automated dispatch, AI approval or integrations without a working demonstration." },
+        { question: "Does the operating workflow fit the studio's existing tools?", test: "List the booking, billing and delivery tools you must keep. Evaluate handoffs and data ownership before replacing any current system.", limit: "PhotoTrackly is still in development; early access is registration of interest, not a ready-to-use platform." },
+      ],
       plannedFirstRelease: [
       "One shared job record for client, property, services and add-ons",
       "Scheduling and manual assignment of the responsible photographer",
@@ -69,10 +75,10 @@ export const marketingPages: MarketingPage[] = [
   },
   {
     slug: 'real-estate-photography-workflow-software',
-    title: 'Real Estate Photography Workflow Software',
-    description: 'Follow a real estate photography job from brief and photographer assignment to editor handoffs, approval and delivery in PhotoTrackly’s planned workflow.',
+    title: 'Real Estate Photography Workflow Software for Teams',
+    description: 'PhotoTrackly is developing real estate photography workflow software for shoot briefs, photographer-to-editor handoffs, human review and client delivery.',
     eyebrow: 'SHOOT TO DELIVERY',
-    heading: 'A clearer workflow from property brief to client delivery',
+    heading: 'Real estate photography workflow software from brief to delivery',
     introduction: 'When several shoots overlap, an editor needs more than a folder, and a coordinator needs more than a calendar. This planned workflow puts each handoff, missing item and next responsible person in the context of the same property job.',
     image: '/images/reference/interior.webp',
     imageAlt: 'Residential interior photographed for a property media job',
@@ -97,6 +103,11 @@ export const marketingPages: MarketingPage[] = [
         { checkpoint: "Editing to review", owner: "Editor → reviewer", decision: "Associate a revision request with a specific asset/version and assign its next owner." },
         { checkpoint: "Review to delivery", owner: "Reviewer → coordinator", decision: "Separate approved files from still-revising assets before the client receives a link." },
       ],
+      selectionChecks: [
+        { question: "Does each handoff have an owner and a completion signal?", test: "For one property, follow the brief to the photographer, the shoot to the editor and the edit to the reviewer. Record what proves each step is ready.", limit: "A visual status label does not prove source files arrived or that human review passed." },
+        { question: "Can the team recover when files are missing or versions change?", test: "Simulate a missing drone set and a requested photo revision. Verify the next owner, affected deliverables and latest approved version can be identified.", limit: "Do not assume a file-storage integration, automatic retouching or AI quality control exists." },
+        { question: "Does the workflow support a mixed delivery package?", test: "Test a job where photos are approved but a floor plan still needs changes. Ask who decides whether delivery is partial or delayed.", limit: "PhotoTrackly describes planned coordination, not a live hosted gallery or fulfillment service." },
+      ],
       plannedFirstRelease: [
       "Visible stages and next action for each property job",
       "Source-file and editing handoffs linked to ordered services",
@@ -116,10 +127,10 @@ export const marketingPages: MarketingPage[] = [
   },
   {
     slug: 'real-estate-photography-scheduling-software',
-    title: 'Real Estate Photography Scheduling Software',
-    description: 'Plan real estate photography shoots with the assigned photographer, property access notes and ordered photo, drone or floor-plan services tied to one job.',
+    title: 'Real Estate Photography Scheduling Software for Teams',
+    description: 'Explore planned real estate photography scheduling software with manual photographer assignments, current property briefs and service-specific shoot instructions.',
     eyebrow: 'SHOOT PLANNING',
-    heading: 'Schedule the shoot with its full property brief',
+    heading: 'Real estate photography scheduling software with the full shoot brief',
     introduction: 'A confirmed calendar appointment does not answer who is shooting, which services are included or whether the photographer has the latest access instructions. PhotoTrackly’s planned manual assignment links the appointment with the property job and the details required for a complete handoff.',
     image: '/images/reference/exterior.webp',
     imageAlt: 'Residential property exterior representing a scheduled photo shoot',
@@ -143,6 +154,11 @@ export const marketingPages: MarketingPage[] = [
         { checkpoint: "When the client reschedules", owner: "Coordinator → affected team", decision: "Update the job brief, reconfirm availability and identify any affected editing or delivery deadline." },
         { checkpoint: "After capture", owner: "Photographer → production", decision: "Mark the shoot handoff and tell the next owner which source files to expect." },
       ],
+      selectionChecks: [
+        { question: "Does the booking include enough detail for a photographer to arrive prepared?", test: "Test a photo-and-drone appointment with access notes, property contact, service requirements and shoot time. Check the exact current brief the assignee sees.", limit: "A calendar slot alone does not confirm service requirements or property access." },
+        { question: "What happens when an appointment or assignment changes?", test: "Move the shoot time and ask which photographer, editor and delivery deadline need reconfirmation. Check who communicates the change.", limit: "PhotoTrackly plans human-coordinated changes, not automatic routing or conflict-free dispatch." },
+        { question: "Is automatic scheduling actually part of the product being considered?", test: "Ask vendors to demonstrate availability, calendar synchronization, travel-time handling and reassignment independently rather than treating them as one feature.", limit: "Two-way calendar sync, skills-based assignment and route optimization are not confirmed PhotoTrackly capabilities." },
+      ],
       plannedFirstRelease: [
       "Job-linked appointment details and manual assignment",
       "Service-specific brief and current property access instructions",
@@ -162,11 +178,11 @@ export const marketingPages: MarketingPage[] = [
   },
   {
     slug: 'real-estate-media-production-management',
-    title: 'Real Estate Media Production Management',
-    description: 'Keep photo, video and floor-plan editing, quality review, revision ownership and delivery readiness visible in a planned property-media workflow.',
+    title: 'Real Estate Media Production Management Software',
+    description: 'Explore planned real estate media production management for editor assignments, human quality checks, revision ownership and delivery readiness.',
     eyebrow: 'AFTER THE SHOOT',
-    heading: 'Keep editing, review and delivery tied to the property job',
-    introduction: 'Finishing a property shoot does not mean the client deliverables are ready. PhotoTrackly is being built to distinguish received source files, editing in progress, requested changes and approved media — with a clear owner for the next action.',
+    heading: 'Real estate media production management from editing to delivery',
+    introduction: 'A real estate photography production or project manager needs to distinguish received source files, editing in progress, requested changes and approved media before client delivery. PhotoTrackly is being built to make each handoff and its responsible owner visible within the same property job.',
     image: '/images/reference/in-studio.webp',
     imageAlt: 'Property media editor at work in a studio',
     problem: 'When photos, video and floor plans move through different hands, a folder alone cannot explain what is missing or whether revisions were approved. The owner becomes the person everyone asks for status.',
@@ -189,6 +205,11 @@ export const marketingPages: MarketingPage[] = [
         { checkpoint: "Editing assigned", owner: "Production lead → editor", decision: "Record the export style, due time, owner and what is missing before work starts." },
         { checkpoint: "Quality review", owner: "Editor → reviewer", decision: "Mark individual items approved or needing revision, with a specific reason and next owner." },
         { checkpoint: "Delivery decision", owner: "Reviewer → delivery owner", decision: "Recheck final versions, partial-delivery agreement and package access before release." },
+      ],
+      selectionChecks: [
+        { question: "Can production identify missing source materials before editing begins?", test: "Run a multi-service job with completed photos but missing floor-plan inputs. Check that each required source set and the responsible follow-up owner are explicit.", limit: "Files appearing in a folder does not by itself establish the editing job is ready." },
+        { question: "Can a reviewer approve or return a specific asset version?", test: "Flag one edited image for revision while other media pass review. Verify that the next editor, change reason and approved version remain clear.", limit: "The planned workflow involves human quality decisions, not autonomous visual QC." },
+        { question: "Can the delivery owner prove that every required asset is ready?", test: "Check photos, video and floor plans separately before final handoff; document any approved partial delivery and outstanding revision.", limit: "PhotoTrackly is prelaunch and does not claim a production-available gallery or automated fulfillment." },
       ],
       plannedFirstRelease: [
       "Editor and reviewer responsibilities visible on the job",

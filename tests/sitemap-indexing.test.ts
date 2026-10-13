@@ -34,7 +34,7 @@ test('sitemap dates use verified historical updates, never current build time', 
   inVercelEnvironment('production', () => {
     const entries = sitemap();
     const byPath = new Map(entries.map(entry => [new URL(entry.url).pathname, entry]));
-    assert.equal((byPath.get('/')?.lastModified as Date).toISOString(), '2026-10-12T00:00:00.000Z');
+    assert.equal((byPath.get('/')?.lastModified as Date).toISOString(), '2026-10-13T00:00:00.000Z');
     assert.equal(byPath.get('/contact')?.lastModified, undefined);
     assert.equal((byPath.get('/build-notes')?.lastModified as Date).toISOString(), '2026-10-12T00:00:00.000Z');
     const hubModified = byPath.get('/insights')?.lastModified;
@@ -42,7 +42,7 @@ test('sitemap dates use verified historical updates, never current build time', 
     assert.equal(hubModified.toISOString(), '2026-10-12T00:00:00.000Z');
     assert.equal((byPath.get('/resources')?.lastModified as Date).toISOString(), '2026-10-12T00:00:00.000Z');
     assert.equal((byPath.get('/resources/shoot-to-delivery-checklist')?.lastModified as Date).toISOString(), '2026-10-12T00:00:00.000Z');
-    assert.equal((byPath.get('/real-estate-photography-workflow-software')?.lastModified as Date).toISOString(), '2026-10-12T00:00:00.000Z');
+    assert.equal((byPath.get('/real-estate-photography-workflow-software')?.lastModified as Date).toISOString(), '2026-10-13T00:00:00.000Z');
     assert.equal((byPath.get('/insights/evaluate-property-media-workflow-software')?.lastModified as Date).toISOString(), '2026-10-12T00:00:00.000Z');
     const article = byPath.get('/insights/property-media-job-triage');
     assert.equal((article?.lastModified as Date).toISOString(), '2026-10-12T00:00:00.000Z');

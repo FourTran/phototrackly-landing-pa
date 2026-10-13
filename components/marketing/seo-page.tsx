@@ -46,6 +46,17 @@ export default function SeoPage({ page }: { page: MarketingPage }) {
       <p>This fictional workflow describes a practice a studio can adopt with existing tools. It does not represent a live PhotoTrackly customer or a released automation.</p>
       <div className="seo-decision-table-scroll"><table><caption>Example responsibilities and next actions for one property job</caption><thead><tr><th scope="col">Job checkpoint</th><th scope="col">Responsible role</th><th scope="col">What must be decided</th></tr></thead><tbody>{page.buyerGuide.exampleHandoffs.map(item => <tr key={item.checkpoint}><th scope="row">{item.checkpoint}</th><td>{item.owner}</td><td>{item.decision}</td></tr>)}</tbody></table></div>
     </section>
+    <section className="seo-wrap seo-selection-checks" aria-labelledby="software-evaluation-heading">
+      <p className="rf-eyebrow">HOW TO EVALUATE A SOFTWARE OPTION</p>
+      <h2 id="software-evaluation-heading">Three questions to check before choosing a workflow tool</h2>
+      <p>Use one representative property job to compare options. These are buyer evaluation questions, not claims that PhotoTrackly currently provides the described features.</p>
+      <ol className="seo-selection-grid">{page.buyerGuide.selectionChecks.map(item => <li key={item.question}>
+        <h3>{item.question}</h3>
+        <p><strong>How to verify:</strong> {item.test}</p>
+        <p><strong>Important boundary:</strong> {item.limit}</p>
+      </li>)}</ol>
+      <p>For a documented cross-vendor evaluation, see the <Link href="/insights/evaluate-property-media-workflow-software">property-media software evaluation guide</Link>.</p>
+    </section>
     <section className="seo-wrap seo-product-boundaries" aria-labelledby="scope-heading">
       <p className="rf-eyebrow">PLANNED FIRST RELEASE</p>
       <h2 id="scope-heading">What is planned — and what is not confirmed?</h2>
