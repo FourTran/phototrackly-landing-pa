@@ -6,9 +6,11 @@ const panel = JSON.parse(readFileSync('data/ai-visibility-prompts.json', 'utf8')
 const initial = JSON.parse(readFileSync('data/ai-visibility-observations-2026-10-13.json', 'utf8'));
 const clone = value => structuredClone(value);
 
-test('the baseline has 12 stable questions and 36 strictly untested AI surfaces', () => {
+test('the baseline has 12 US/AU questions and 48 strictly untested AI surface checks', () => {
   const score = buildScorecard(panel, initial);
-  assert.equal(score.surfaces.length, 3);
+  assert.equal(score.surfaces.length, 4);
+  assert.equal(panel.prompts.filter(p => p.market === 'US').length, 6);
+  assert.equal(panel.prompts.filter(p => p.market === 'AU').length, 6);
   for (const surface of score.surfaces) {
     assert.equal(surface.tested, 0);
     assert.equal(surface.untested, 12);
