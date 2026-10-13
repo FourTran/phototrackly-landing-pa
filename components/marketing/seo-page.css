@@ -15,6 +15,14 @@
 .seo-decision-table-scroll th,.seo-decision-table-scroll td{padding:15px 16px;border:1px solid #cad7cb;text-align:left;vertical-align:top}
 .seo-decision-table-scroll thead th{background:#e3ece2;font-weight:750}
 .seo-decision-table-scroll tbody th{width:23%;font-weight:700}
+.seo-selection-checks{padding-block:60px 60px}
+.seo-selection-checks>p{max-width:900px;font-size:17px;line-height:1.7}
+.seo-selection-checks a{color:inherit;font-weight:700}
+.seo-selection-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;list-style:none;margin:32px 0;padding:0}
+.seo-selection-grid li{background:#fff;border:1px solid #d2ded3;border-radius:12px;padding:24px}
+.seo-selection-grid h3{font-size:20px;line-height:1.35;margin:0 0 20px}
+.seo-selection-grid p{font-size:15px;line-height:1.6}
+@media(max-width:900px){.seo-selection-grid{grid-template-columns:1fr}}
 .seo-product-boundaries{padding-block:70px 80px}
 .seo-boundary-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:20px}
 .seo-boundary-grid>div{background:#fff;border:1px solid #d2ded3;padding:24px;border-radius:12px}
