@@ -1,0 +1,143 @@
+{
+  "version": "1.0",
+  "preparedOn": "2026-10-13",
+  "canonicalDomain": "https://phototrackly.com",
+  "audience": "Growing US and Australian real-estate photography and property-media studios",
+  "baselineStatus": "NOT_TESTED",
+  "baselineNote": "No assistant answers were executed in the four target platforms. UNTESTED must never be represented as zero citations. Google Search Console query shapes and standard web results are not proof of citations.",
+  "platforms": [
+    {
+      "id": "chatgpt-search",
+      "label": "ChatGPT Search",
+      "measurement": "Inspect ChatGPT's own answer and supporting source links"
+    },
+    {
+      "id": "google-ai",
+      "label": "Google AI Overviews / AI Mode",
+      "measurement": "Inspect actual Google AI results, when shown, separately from classic organic"
+    },
+    {
+      "id": "perplexity",
+      "label": "Perplexity",
+      "measurement": "Inspect Perplexity response and cited source URLs"
+    },
+    {
+      "id": "gemini",
+      "label": "Gemini",
+      "measurement": "Inspect Gemini response and explicit source links"
+    }
+  ],
+  "prompts": [
+    {
+      "id": "us-business",
+      "market": "US",
+      "intent": "software-discovery",
+      "query": "What is the best software to manage a growing real estate photography business with photographers and editors?",
+      "ownerPath": "/real-estate-photography-business-software"
+    },
+    {
+      "id": "au-business",
+      "market": "AU",
+      "intent": "software-discovery",
+      "query": "What software helps an Australian property photography studio coordinate shoots, editors and floor plans?",
+      "ownerPath": "/real-estate-photography-business-software"
+    },
+    {
+      "id": "us-workflow",
+      "market": "US",
+      "intent": "software-workflow",
+      "query": "Which tools manage a real estate photo shoot from booking through editing, QA and delivery?",
+      "ownerPath": "/real-estate-photography-workflow-software"
+    },
+    {
+      "id": "au-workflow",
+      "market": "AU",
+      "intent": "software-workflow",
+      "query": "How can an Australian property-media team coordinate a photographer-to-editor handoff?",
+      "ownerPath": "/real-estate-photography-workflow-software"
+    },
+    {
+      "id": "us-scheduling",
+      "market": "US",
+      "intent": "scheduling",
+      "query": "What is a good system for managing several real estate photographers and their shoot schedules?",
+      "ownerPath": "/real-estate-photography-scheduling-software"
+    },
+    {
+      "id": "au-scheduling",
+      "market": "AU",
+      "intent": "scheduling",
+      "query": "Which real estate photography booking software suits an Australian studio with contractor photographers?",
+      "ownerPath": "/real-estate-photography-scheduling-software"
+    },
+    {
+      "id": "us-production",
+      "market": "US",
+      "intent": "post-production",
+      "query": "How do property photo businesses track outsourced editing, human QC and revisions?",
+      "ownerPath": "/real-estate-media-production-management"
+    },
+    {
+      "id": "au-production",
+      "market": "AU",
+      "intent": "post-production",
+      "query": "What software helps manage property photography production and client delivery readiness?",
+      "ownerPath": "/real-estate-media-production-management"
+    },
+    {
+      "id": "us-comparison",
+      "market": "US",
+      "intent": "comparison",
+      "query": "Compare Aryeo, Tonomo, Spiro and HDPhotoHub for a multi-photographer real estate media team.",
+      "ownerPath": "/insights/evaluate-property-media-workflow-software"
+    },
+    {
+      "id": "au-comparison",
+      "market": "AU",
+      "intent": "comparison",
+      "query": "How does Ubookr compare with other real estate photography management software for Australian studios?",
+      "ownerPath": "/insights/evaluate-property-media-workflow-software"
+    },
+    {
+      "id": "us-handoff",
+      "market": "US",
+      "intent": "workflow-howto",
+      "query": "What should be included in a real estate photographer-to-editor handoff checklist?",
+      "ownerPath": "/resources/photographer-handoff-template"
+    },
+    {
+      "id": "au-proof",
+      "market": "AU",
+      "intent": "brand-trust",
+      "query": "What is PhotoTrackly, who is it for, and is the software available yet?",
+      "ownerPath": "/about"
+    }
+  ],
+  "observationFields": [
+    "observedAtIso",
+    "platformId",
+    "promptId",
+    "country",
+    "productNamed",
+    "productLinked",
+    "citationUrls",
+    "canonicalDomainCitation",
+    "legacyDomainCitation",
+    "supportingAnswerAccurate",
+    "notes",
+    "evidenceLocation",
+    "tester"
+  ],
+  "acceptedStates": [
+    "NOT_TESTED",
+    "TESTED_WITH_CITATION",
+    "TESTED_WITHOUT_CITATION",
+    "TEST_UNAVAILABLE"
+  ],
+  "notes": [
+    "Capture original answer, source URLs, platform version, country, time and screenshot/export in permissioned project storage; never invent citations.",
+    "Classify a brand mention without a clickable source link separately from a supporting URL citation.",
+    "Score a click on phototrackly.com separately from a link to qrtrackly.com; do not merge the two.",
+    "Repeat the same 12 prompts per platform and market after production deployment and recrawl; record each run separately."
+  ]
+}
