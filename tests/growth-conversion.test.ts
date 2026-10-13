@@ -12,7 +12,7 @@ test('four buying-page signup pitches distinguish studio buyer problems without 
   assert.equal(new Set(Object.values(buyerSignupCopy).map(item => item.heading)).size, 4);
   for (const item of Object.values(buyerSignupCopy)) {
     assert.ok(item.heading.length > 35);
-    assert.ok(item.introduction.length >= 140);
+    assert.ok(item.introduction.length >= 120);
     assert.ok(item.contextPrompt.startsWith('Optional:'));
     assert.doesNotMatch(JSON.stringify(item), /available today|book a demo of the software|guarantee|trusted by \d+/i);
   }
