@@ -13,9 +13,9 @@ Nine individually checked URLs on October 13:
 - NEUTRAL, unknown to Google (no last crawl): `/insights`.
 - Results can oscillate between `Discovered` and `Unknown` on consecutive inspections without establishing a regression. Prior check observed `/contact` unknown and `/insights` discovered.
 
-Saved tracking summary at outset: 88 tracked URL entries; **60 indexed**, **22 discovered**, **6 unknown**, all inspected. This is a latest-verdict snapshot, not the aggregate Google Page Indexing report.
+Saved tracking summary at outset: 88 tracked URL entries; **60 indexed**, **22 discovered**, **6 unknown**, all inspected. On October 13, the missing `/build-notes` URL was added to the *local GSC MCP v2 indexing tracker* and inspected as **Discovered - currently not indexed**, making the latest complete inventory **89 tracked: 60 indexed / 23 discovered / 6 unknown**. This is a latest-verdict snapshot, not the aggregate Google Page Indexing report.
 
-The submitted sitemap `https://phototrackly.com/sitemap.xml` was last downloaded October 13, reported **89 submitted**, **0 warnings**, **0 errors** and **0** in an inconsistent aggregate indexed field. Source code and a unit test verify **89 distinct public sitemap URLs**; the earlier 88 count is a historical count and does not indicate this PR adds a URL. The 88 individually tracked URLs are *not* a guaranteed match for the current 89 sitemap entries. We are not claiming a new indexing defect solely because these two inventories differ.
+The submitted sitemap `https://phototrackly.com/sitemap.xml` was last downloaded October 13, reported **89 submitted**, **0 warnings**, **0 errors** and **0** in an inconsistent aggregate indexed field. Source code and a unit test verify **89 distinct public sitemap URLs**; the earlier 88 count is a historical count and does not indicate this PR adds a URL. Before reconciliation, the local tracker had 88 entries while the live sitemap reported 89. The missing URL was `/build-notes`. It is now tracked, restoring matched totals of 89, and no extra sitemap route was generated.
 
 Latest finalized 28-day GSC performance through October 11: **29 impressions, 0 clicks**. No search-performance improvement may be attributed to this PR at this time.
 
@@ -54,6 +54,6 @@ Automated assertions:
 ## Decisions and constraints
 
 - **Indexing not yet confirmed:** Google still decides which of three hub/contact routes to crawl and index; treat this as an outcome under observation, not a milestone coding failure.
-- **One remaining 89-versus-88 inventory gap:** reconcile current 89 sitemap routes with the local 88-URL inspection tracker before citing full site coverage; do not remove or re-register URLs without auditing the exact difference.
+- **Indexing inventory reconciliation completed:** the missing `/build-notes` was added to the local tracker and inspected. Counting 89 tracked URLs does not mean Google has indexed them all.
 - **Prelaunch truthfulness:** no fake software integrations, product usage statistics, real customer cases, AI citation guarantees or artificial backlinks.
-- **No GA4/GTM edits, no customer contacts, no outreach, no sitemap submission or Search Console write action.**
+- **No GA4/GTM edits, customer contacts, outreach, sitemap submission or Google Search Console configuration change.** Local GSC MCP v2 tracking was updated for one already published URL.
