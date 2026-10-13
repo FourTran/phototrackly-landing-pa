@@ -19,6 +19,10 @@ test('four commercial owner pages each address distinct studio buying intent', (
     assert.ok(guide.directAnswer.length > 145, page.slug);
     assert.equal(guide.forTeams.length, 3, page.slug);
     assert.equal(guide.exampleHandoffs.length, 4, page.slug);
+    assert.equal(guide.selectionChecks.length, 3, page.slug);
+    assert.equal(new Set(guide.selectionChecks.map(item => item.question)).size, 3, page.slug);
+    assert.ok(guide.selectionChecks.every(item => item.question.length > 35 && item.test.length > 100 && item.limit.length > 45), page.slug);
+    assert.ok(guide.selectionChecks.every(item => !/guarantee|trusted by|save \d+%/i.test(item.test)), page.slug);
     assert.equal(new Set(guide.exampleHandoffs.map(x => x.checkpoint)).size, 4, page.slug);
     assert.ok(guide.exampleHandoffs.every(x => x.owner.length > 3 && x.decision.length > 50), page.slug);
     assert.equal(guide.plannedFirstRelease.length, 3, page.slug);
