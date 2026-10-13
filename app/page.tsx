@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Landing from '@/components/marketing/landing';
 import { siteUrl } from '@/lib/site';
-export const metadata: Metadata = { title: { absolute: 'Real Estate Photography Workflow Software — PhotoTrackly' }, alternates: { canonical: '/' }, openGraph: { title: 'Real Estate Photography Workflow Software — PhotoTrackly', url: '/' }, twitter: { title: 'Real Estate Photography Workflow Software — PhotoTrackly' } };
+export const metadata: Metadata = { title: { absolute: 'PhotoTrackly — Property Media Operations for Growing Studios' }, description: 'PhotoTrackly is developing a property media operations workspace for studios coordinating shoots, photographers, editing, human review and client delivery.', alternates: { canonical: '/' }, openGraph: { title: 'PhotoTrackly — Property Media Operations for Growing Studios', url: '/' }, twitter: { title: 'PhotoTrackly — Property Media Operations for Growing Studios' } };
 export default function HomePage() {
   const url = siteUrl();
   const schema = { '@context': 'https://schema.org', '@graph': [
