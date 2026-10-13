@@ -4,7 +4,15 @@ import { productAnswers } from '../lib/geo-evidence.ts';
 import { marketingPageSlugs } from '../lib/marketing-pages.ts';
 import { insightSlugs } from '../lib/insights.ts';
 import { resourceSlugs } from '../lib/resources.ts';
-import prompts from '../docs/growth/geo-visibility-prompts-v1.json' with { type: 'json' };
+import { readFileSync } from 'node:fs';
+const prompts: {
+  baselineStatus: string;
+  canonicalDomain: string;
+  platforms: { id: string }[];
+  prompts: { id: string; market: string; query: string; ownerPath: string }[];
+  observationFields: string[];
+  acceptedStates: string[];
+} = JSON.parse(readFileSync(new URL('../docs/growth/geo-visibility-prompts-v1.json', import.meta.url), 'utf8'));
 
 const publicPaths = new Set([
   '/', '/about', '/build-notes', '/contact', '/insights', '/resources',
