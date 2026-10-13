@@ -43,7 +43,7 @@ test('sitemap dates use verified historical updates, never current build time', 
     assert.equal((byPath.get('/resources')?.lastModified as Date).toISOString(), '2026-10-13T00:00:00.000Z');
     assert.equal((byPath.get('/resources/shoot-to-delivery-checklist')?.lastModified as Date).toISOString(), '2026-10-12T00:00:00.000Z');
     assert.equal((byPath.get('/real-estate-photography-workflow-software')?.lastModified as Date).toISOString(), '2026-10-13T00:00:00.000Z');
-    assert.equal((byPath.get('/insights/evaluate-property-media-workflow-software')?.lastModified as Date).toISOString(), '2026-10-12T00:00:00.000Z');
+    assert.equal((byPath.get('/insights/evaluate-property-media-workflow-software')?.lastModified as Date).toISOString(), '2026-10-13T00:00:00.000Z');
     const article = byPath.get('/insights/property-media-job-triage');
     assert.equal((article?.lastModified as Date).toISOString(), '2026-10-12T00:00:00.000Z');
     assert.equal((byPath.get('/insights/handle-client-delivery-revisions-property-media')?.lastModified as Date).toISOString(), '2026-10-12T00:00:00.000Z');
