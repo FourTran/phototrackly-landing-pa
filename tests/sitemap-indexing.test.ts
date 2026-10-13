@@ -37,6 +37,7 @@ test('sitemap dates use verified historical updates, never current build time', 
     assert.equal((byPath.get('/')?.lastModified as Date).toISOString(), '2026-10-13T00:00:00.000Z');
     assert.equal((byPath.get('/contact')?.lastModified as Date).toISOString(), '2026-10-13T00:00:00.000Z');
     assert.equal((byPath.get('/build-notes')?.lastModified as Date).toISOString(), '2026-10-12T00:00:00.000Z');
+    assert.equal((byPath.get('/about')?.lastModified as Date).toISOString(), '2026-10-13T00:00:00.000Z');
     const hubModified = byPath.get('/insights')?.lastModified;
     assert.ok(hubModified instanceof Date);
     assert.equal(hubModified.toISOString(), '2026-10-13T00:00:00.000Z');
