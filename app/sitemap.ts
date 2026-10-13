@@ -9,13 +9,13 @@ import { workflowExamples } from '@/lib/workflow-examples';
 // Milestone 2 refreshed homepage and four commercial-page copy on October 13.
 // Milestone 4 expanded the existing vendor-evaluation guide with researched changes on October 13.
 // The two navigation hubs gained new task-focused guidance on October 12.
-// Earlier article navigation, resource schema and hub schema dates are retained.
+// Resource guides gained new, visible source and sharing guidance on October 13. Earlier article dates are retained.
 const homepageAndCommercialContentUpdated = new Date('2026-10-13T00:00:00Z');
 const articleNavigationUpdated = new Date('2026-10-07T19:39:45Z');
 const buyingGuideUpdated = new Date('2026-10-13T00:00:00Z');
 const resourceSchemaUpdated = new Date('2026-10-08T07:41:41Z');
 const contentHubsUpdated = new Date('2026-10-13T00:00:00Z');
-const originalResourceExamplesUpdated = new Date('2026-10-12T00:00:00Z');
+const originalResourceExamplesUpdated = new Date('2026-10-13T00:00:00Z');
 
 export default function sitemap(): MetadataRoute.Sitemap {
   if (process.env.VERCEL_ENV === 'preview') return [];
