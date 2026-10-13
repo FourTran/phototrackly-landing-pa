@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "snapshotDate": "2026-10-13",
-  "market": "US",
-  "promptSet": "phototrackly-12-v1",
+  "market": "US+AU",
+  "promptSet": "phototrackly-12-v2",
   "method": "Direct AI search surface observations only; public web-search results and GA4 referrals belong to separate evidence classes.",
   "observations": [
     {
@@ -322,6 +322,114 @@
     },
     {
       "surface": "perplexity",
+      "promptId": "A12",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "gemini",
+      "promptId": "A01",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "gemini",
+      "promptId": "A02",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "gemini",
+      "promptId": "A03",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "gemini",
+      "promptId": "A04",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "gemini",
+      "promptId": "A05",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "gemini",
+      "promptId": "A06",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "gemini",
+      "promptId": "A07",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "gemini",
+      "promptId": "A08",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "gemini",
+      "promptId": "A09",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "gemini",
+      "promptId": "A10",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "gemini",
+      "promptId": "A11",
+      "status": "not_tested",
+      "brandMention": null,
+      "citedUrls": [],
+      "competitorDomains": [],
+      "evidenceUrl": null
+    },
+    {
+      "surface": "gemini",
       "promptId": "A12",
       "status": "not_tested",
       "brandMention": null,

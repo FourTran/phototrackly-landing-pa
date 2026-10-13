@@ -1,78 +1,90 @@
 {
-  "version": "phototrackly-12-v1",
-  "market": "US",
+  "version": "phototrackly-12-v2",
+  "market": "US+AU",
   "prompts": [
     {
       "id": "A01",
       "prompt": "software to manage real estate photography shoots and editors",
       "intent": "workflow",
-      "ownerPath": "/real-estate-photography-workflow-software"
+      "ownerPath": "/real-estate-photography-workflow-software",
+      "market": "US"
     },
     {
       "id": "A02",
       "prompt": "real estate media workflow software",
       "intent": "workflow",
-      "ownerPath": "/real-estate-photography-workflow-software"
+      "ownerPath": "/real-estate-photography-workflow-software",
+      "market": "US"
     },
     {
       "id": "A03",
       "prompt": "how to track photo editor revisions before delivery",
       "intent": "production",
-      "ownerPath": "/insights/handle-client-delivery-revisions-property-media"
+      "ownerPath": "/insights/handle-client-delivery-revisions-property-media",
+      "market": "US"
     },
     {
       "id": "A04",
       "prompt": "best tools to manage real estate photography teams",
       "intent": "business",
-      "ownerPath": "/real-estate-photography-business-software"
+      "ownerPath": "/real-estate-photography-business-software",
+      "market": "US"
     },
     {
       "id": "A05",
       "prompt": "Tonomo HDPhotoHub Spiro alternatives for production coordination",
       "intent": "comparison",
-      "ownerPath": "/insights/evaluate-property-media-workflow-software"
+      "ownerPath": "/insights/evaluate-property-media-workflow-software",
+      "market": "US"
     },
     {
       "id": "A06",
       "prompt": "property media client delivery checklist",
       "intent": "delivery",
-      "ownerPath": "/resources/shoot-to-delivery-checklist"
+      "ownerPath": "/resources/shoot-to-delivery-checklist",
+      "market": "US"
     },
     {
       "id": "A07",
-      "prompt": "manage outsourced photo editors for property shoots",
+      "prompt": "How do Australian property photography studios coordinate outsourced photo editors?",
       "intent": "production",
-      "ownerPath": "/real-estate-media-production-management"
+      "ownerPath": "/real-estate-media-production-management",
+      "market": "AU"
     },
     {
       "id": "A08",
-      "prompt": "software for real estate photo QC workflow",
+      "prompt": "Which software manages human QC and photo revisions for Australian property-media teams?",
       "intent": "quality-control",
-      "ownerPath": "/real-estate-media-production-management"
+      "ownerPath": "/real-estate-media-production-management",
+      "market": "AU"
     },
     {
       "id": "A09",
-      "prompt": "coordinate photographer assignments and floor plans",
+      "prompt": "How can an Australian property-media studio coordinate contractor photographers and floor-plan appointments?",
       "intent": "scheduling",
-      "ownerPath": "/real-estate-photography-scheduling-software"
+      "ownerPath": "/real-estate-photography-scheduling-software",
+      "market": "AU"
     },
     {
       "id": "A10",
-      "prompt": "multi service shoot scheduling workflow",
+      "prompt": "How should an Australian real estate photography business schedule a multi-service property shoot?",
       "intent": "scheduling",
-      "ownerPath": "/insights/multi-service-shoot-scheduling"
+      "ownerPath": "/insights/multi-service-shoot-scheduling",
+      "market": "AU"
     },
     {
       "id": "A11",
-      "prompt": "how to prevent wrong images delivered to agents",
+      "prompt": "How do Australian property media teams prevent sending the wrong listing images to agents?",
       "intent": "delivery",
-      "ownerPath": "/insights/prevent-wrong-property-images-client-delivery"
+      "ownerPath": "/insights/prevent-wrong-property-images-client-delivery",
+      "market": "AU"
     },
     {
       "id": "A12",
-      "prompt": "real estate photography job status board template",
+      "prompt": "What job-status-board template can Australian property photography studios use to track each handoff?",
       "intent": "operations",
-      "ownerPath": "/resources/property-job-status-board-template"
+      "ownerPath": "/resources/property-job-status-board-template",
+      "market": "AU"
     }
   ]
 }

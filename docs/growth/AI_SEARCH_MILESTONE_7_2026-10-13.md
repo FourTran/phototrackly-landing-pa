@@ -1,5 +1,8 @@
 # PhotoTrackly Milestone 7 — AI search visibility, citations and referral measurement
 
+> **Later October 13 update — canonical panel v2:** Growth Roadmap Milestone 5 extended this earlier 3-surface, US-only baseline to 4 surfaces (ChatGPT Search, Google AI Mode, Perplexity and Gemini) and 12 prompts balanced between the US and Australia. The current canonical files under `data/` now represent **48 direct AI answer slots, all still `not_tested`**. The historical v1 / 36-slot discussion below documents the state before that update; for the current implementation and gating decisions see `docs/growth/SEO_GROWTH_MILESTONE_5_2026-10-13.md`. No actual AI citation claims were added.
+
+
 Audit date: **2026-10-13** (Asia/Ho_Chi_Minh). Property: `sc-domain:phototrackly.com`. GA4 property: `557439732`. Canonical code: `FourTran/phototrackly-landing-pa`.
 
 ## Executive decision
