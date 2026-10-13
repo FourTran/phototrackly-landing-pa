@@ -33,6 +33,9 @@ export default async function InsightDetail({ params }: { params: Promise<{ slug
   const practice = workflowExamples[slug];
   const worksheet = insightWorksheets[slug];
   const commercialOwner = commercialOwnerForInsight(article);
+  const buyerGuideUpdated = slug === 'evaluate-property-media-workflow-software';
+  const visibleUpdateDate = buyerGuideUpdated ? '2026-10-13' : '2026-10-12';
+  const visibleUpdateLabel = buyerGuideUpdated ? 'October 13, 2026' : 'October 12, 2026';
   const articleUrl = `${siteUrl()}/insights/${slug}`;
   const articleSchema = {
     '@context': 'https://schema.org',
@@ -44,13 +47,13 @@ export default async function InsightDetail({ params }: { params: Promise<{ slug
     publisher: { '@type': 'Organization', name: 'PhotoTrackly', url: siteUrl() },
     author: { '@type': 'Organization', name: 'PhotoTrackly editorial', url: `${siteUrl()}/about#editorial` },
     datePublished: article.publishedAt,
-    ...(practice ? { dateModified: '2026-10-12T00:00:00Z' } : {}),
+    ...(practice ? { dateModified: `${visibleUpdateDate}T00:00:00Z` } : {}),
     ...(article.sources?.length ? { citation: article.sources.map(source => source.url) } : {}),
   };
   return <div className="pl reference-site"><Navigation /><main id="main" className="seo-main">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema).replace(/</g, '\\u003c') }} />
     <div className="seo-wrap seo-breadcrumb"><Link href="/">PhotoTrackly</Link><span aria-hidden="true">/</span><Link href="/insights">Insights</Link><span aria-hidden="true">/</span><span>{article.title}</span></div>
-    <article className="seo-wrap in-article"><header><p className="rf-eyebrow">{article.category.toUpperCase()} · {article.readingMinutes} MIN READ</p><h1>{article.title}</h1><p className="in-byline"><Link href="/about#editorial">PhotoTrackly editorial</Link>{article.publishedAt && <> · Published <time dateTime={article.publishedAt}>{publicationLabel(article.publishedAt)}</time></>}{practice && <> · Updated <time dateTime="2026-10-12">October 12, 2026</time></>}</p><p className="seo-intro">{article.intro}</p></header>
+    <article className="seo-wrap in-article"><header><p className="rf-eyebrow">{article.category.toUpperCase()} · {article.readingMinutes} MIN READ</p><h1>{article.title}</h1><p className="in-byline"><Link href="/about#editorial">PhotoTrackly editorial</Link>{article.publishedAt && <> · Published <time dateTime={article.publishedAt}>{publicationLabel(article.publishedAt)}</time></>}{practice && <> · Updated <time dateTime={visibleUpdateDate}>{visibleUpdateLabel}</time></>}</p><p className="seo-intro">{article.intro}</p></header>
       <figure className="in-hero-image"><Image src={article.image} alt={article.imageAlt} fill sizes="(max-width: 900px) 100vw, 900px" priority /><figcaption>AI-generated illustration of a property media workflow</figcaption></figure>
       <section className="in-answer" aria-label="Quick answer"><p className="rf-eyebrow">QUICK ANSWER</p><p>{article.answer}</p></section>
       {practice && <figure className="in-workflow-practice" aria-label="Illustrative job workflow example">
