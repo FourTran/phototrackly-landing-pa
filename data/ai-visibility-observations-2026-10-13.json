@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "snapshotDate": "2026-10-13",
   "market": "US+AU",
-  "promptSet": "phototrackly-12-v1",
+  "promptSet": "phototrackly-12-v2",
   "method": "Direct AI search surface observations only; public web-search results and GA4 referrals belong to separate evidence classes.",
   "observations": [
     {
