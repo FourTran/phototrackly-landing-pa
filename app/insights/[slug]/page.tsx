@@ -7,7 +7,7 @@ import LeadForm from '@/components/prelaunch/lead-form';
 import AnalyticsConsent, { CookieSettingsButton } from '@/components/prelaunch/analytics-consent';
 import { Wordmark } from '@/components/prelaunch/primitives';
 import { getInsight, insightSlugs } from '@/lib/insights';
-import { relatedInsights, topicFor, publicationLabel, insightWorksheets } from '@/lib/insight-topics';
+import { commercialOwnerForInsight, relatedInsights, topicFor, publicationLabel, insightWorksheets } from '@/lib/insight-topics';
 import { siteUrl } from '@/lib/site';
 import { workflowExamples } from '@/lib/workflow-examples';
 import '@/components/marketing/prelaunch.css';
@@ -32,6 +32,7 @@ export default async function InsightDetail({ params }: { params: Promise<{ slug
   const { slug } = await params; const article = getInsight(slug); if (!article) notFound();
   const practice = workflowExamples[slug];
   const worksheet = insightWorksheets[slug];
+  const commercialOwner = commercialOwnerForInsight(article);
   const articleUrl = `${siteUrl()}/insights/${slug}`;
   const articleSchema = {
     '@context': 'https://schema.org',
@@ -75,7 +76,9 @@ export default async function InsightDetail({ params }: { params: Promise<{ slug
       <aside className="resource-takeaway"><h2>Takeaway</h2><p>{article.closing}</p></aside>
       <div className="in-related"><h2>Continue with a practical tool</h2>{article.related.map(link => <Link key={link.href} href={link.href}>{link.label}<span aria-hidden="true">↗</span></Link>)}</div>
     </article>
-    <section className="seo-wrap in-more"><p className="rf-eyebrow">MORE FROM PHOTOTRACKLY</p><h2>Keep exploring</h2><p><Link href={`/insights#${topicFor(article)?.id || "operations"}`}>Browse this topic</Link> · <Link href="/insights">All insights</Link></p><div>{relatedInsights(article).map(other => <Link key={other.slug} href={`/insights/${other.slug}`}>{other.title}<span aria-hidden="true">↗</span></Link>)}</div></section>
+    <section className="seo-wrap in-more"><p className="rf-eyebrow">MORE FROM PHOTOTRACKLY</p><h2>Keep exploring</h2>
+      <p><Link href={`/insights#${topicFor(article)?.id || "operations"}`}>Browse this topic</Link> · <Link href="/insights">All insights</Link> · <Link href="/resources">Free property-media templates</Link></p>
+      {commercialOwner && <p>Considering a connected workflow for your team? <Link href={commercialOwner.href}>Explore {commercialOwner.label}</Link>. PhotoTrackly is in development, not available as production software today.</p>}<div>{relatedInsights(article).map(other => <Link key={other.slug} href={`/insights/${other.slug}`}>{other.title}<span aria-hidden="true">↗</span></Link>)}</div></section>
     <section className="seo-signup" id="early-access"><div className="seo-wrap seo-signup-grid"><div><p className="rf-eyebrow">JOIN EARLY ACCESS</p><h2>Help shape a connected workflow.</h2><p>PhotoTrackly is in development for property media teams in the US and Australia. Registering interest does not create an account or guarantee immediate access. No payment or mandatory meeting.</p></div><LeadForm variant="footer" /></div></section>
   </main><footer><div className="seo-wrap rf-foot-inner"><Wordmark /><p>Property media work, connected.</p><div className="rf-footer-links"><Link href="/insights">Insights</Link><Link href="/resources">Resources</Link><Link href="/about">About</Link><Link href="/contact">Contact</Link><Link href="/build-notes">Build notes</Link><Link href="/privacy">Privacy</Link><CookieSettingsButton /></div></div></footer><AnalyticsConsent /></div>;
 }

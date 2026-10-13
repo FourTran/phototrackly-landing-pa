@@ -14,7 +14,7 @@ const homepageAndCommercialContentUpdated = new Date('2026-10-13T00:00:00Z');
 const articleNavigationUpdated = new Date('2026-10-07T19:39:45Z');
 const buyingGuideUpdated = new Date('2026-10-12T00:00:00Z');
 const resourceSchemaUpdated = new Date('2026-10-08T07:41:41Z');
-const contentHubsUpdated = new Date('2026-10-12T00:00:00Z');
+const contentHubsUpdated = new Date('2026-10-13T00:00:00Z');
 const originalResourceExamplesUpdated = new Date('2026-10-12T00:00:00Z');
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -26,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${origin}/`, lastModified: homepageAndCommercialContentUpdated },
     { url: `${origin}/about` },
     { url: `${origin}/build-notes`, lastModified: new Date('2026-10-12T00:00:00Z') },
-    { url: `${origin}/contact` },
+    { url: `${origin}/contact`, lastModified: new Date('2026-10-13T00:00:00Z') },
     { url: `${origin}/privacy` },
     ...marketingPageSlugs.map(slug => ({
       url: `${origin}/${slug}`,

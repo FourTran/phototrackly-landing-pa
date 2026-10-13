@@ -35,6 +35,9 @@ test('www redirect keeps paths and campaign parameters without affecting other h
 test('major discovery hubs have meaningful entry points and reciprocal navigation', async ({ page }) => {
   await page.goto('/insights');
   await expect(page.getByRole('heading', { name: 'Start with one real job, not a generic software checklist.' })).toBeVisible();
+  for (const slug of ['real-estate-photography-business-software', 'real-estate-photography-workflow-software', 'real-estate-photography-scheduling-software', 'real-estate-media-production-management']) {
+    await expect(page.locator(`[aria-labelledby="insights-choose-workflow"] a[href="/${slug}"]`)).toHaveCount(1);
+  }
   for (const slug of ['property-media-job-triage', 'multi-service-shoot-scheduling', 'real-estate-media-delivery-readiness', 'evaluate-property-media-workflow-software']) {
     await expect(page.locator(`[aria-labelledby="insight-start-here"] a[href="/insights/${slug}"]`)).toHaveCount(1);
   }
@@ -45,6 +48,9 @@ test('major discovery hubs have meaningful entry points and reciprocal navigatio
     await expect(page.locator(`[aria-labelledby="resource-usage-order"] a[href="/resources/${slug}"]`)).toHaveCount(1);
   }
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'http://localhost:3000/resources');
+  for (const path of ['/insights', '/contact', '/real-estate-photography-workflow-software', '/real-estate-media-production-management']) {
+    await expect(page.locator(`[aria-labelledby="resources-choose-next"] a[href="${path}"]`)).toHaveCount(1);
+  }
 });
 
 test('public crawlers get indexable HTML and public sitemap routes', async ({ request }) => {
@@ -56,7 +62,7 @@ test('public crawlers get indexable HTML and public sitemap routes', async ({ re
   expect(robotsText).toContain('Disallow: /workspace/');
   expect(robotsText).toContain('Sitemap: http://localhost:3000/sitemap.xml');
   for (const crawler of ['Googlebot', 'OAI-SearchBot', 'Bingbot']) {
-    for (const path of ['/insights', '/resources']) {
+    for (const path of ['/insights', '/resources', '/contact']) {
       const response = await request.get(path, { headers: { 'user-agent': crawler } });
       expect(response.status()).toBe(200);
       const html = await response.text();
@@ -64,6 +70,24 @@ test('public crawlers get indexable HTML and public sitemap routes', async ({ re
       expect(html).toContain('rel="canonical"');
     }
   }
+});
+
+test('discovery paths connect articles, owner pages, and templates', async ({ page }) => {
+  const links = [
+    ['/insights/property-media-job-triage', '/real-estate-photography-business-software'],
+    ['/insights/multi-service-shoot-scheduling', '/real-estate-photography-scheduling-software'],
+    ['/insights/real-estate-photography-editing-workflow', '/real-estate-media-production-management'],
+  ];
+  for (const [articleUrl, ownerUrl] of links) {
+    await page.goto(articleUrl);
+    await expect(page.locator('.in-more a[href="' + ownerUrl + '"]')).toHaveCount(1);
+    await expect(page.locator('.in-more a[href="/resources"]')).toHaveCount(1);
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'http://localhost:3000' + articleUrl);
+  }
+  await page.goto('/contact');
+  await expect(page.locator('article a[href="/resources"]')).toHaveCount(1);
+  await expect(page.locator('article a[href="/insights"]')).toHaveCount(1);
+  await expect(page.getByRole('form', { name: 'Early-access registration' })).toBeVisible();
 });
 
 test('commercial intent pages link to their corresponding operational guide', async ({ page }) => {
