@@ -21,7 +21,7 @@ test('editorial topics lead to distinct software responsibilities rather than id
     ['property-media-job-triage', '/real-estate-photography-business-software'],
     ['multi-service-shoot-scheduling', '/real-estate-photography-scheduling-software'],
     ['real-estate-photography-editing-workflow', '/real-estate-media-production-management'],
-    ['real-estate-media-delivery-readiness', '/real-estate-photography-workflow-software'],
+    ['handle-client-delivery-revisions-property-media', '/real-estate-photography-workflow-software'],
   ];
   for (const [slug, expected] of sample) {
     const article = insights.find(item => item.slug === slug);
