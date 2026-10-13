@@ -7,12 +7,12 @@ import { workflowExamples } from '@/lib/workflow-examples';
 
 // Use recorded substantive content-update dates, never a build-time "last modified" value.
 // Milestone 2 refreshed homepage and four commercial-page copy on October 13.
-// PR #41 updated the existing software-evaluation article on October 12.
+// Milestone 4 expanded the existing vendor-evaluation guide with researched changes on October 13.
 // The two navigation hubs gained new task-focused guidance on October 12.
 // Earlier article navigation, resource schema and hub schema dates are retained.
 const homepageAndCommercialContentUpdated = new Date('2026-10-13T00:00:00Z');
 const articleNavigationUpdated = new Date('2026-10-07T19:39:45Z');
-const buyingGuideUpdated = new Date('2026-10-12T00:00:00Z');
+const buyingGuideUpdated = new Date('2026-10-13T00:00:00Z');
 const resourceSchemaUpdated = new Date('2026-10-08T07:41:41Z');
 const contentHubsUpdated = new Date('2026-10-13T00:00:00Z');
 const originalResourceExamplesUpdated = new Date('2026-10-12T00:00:00Z');

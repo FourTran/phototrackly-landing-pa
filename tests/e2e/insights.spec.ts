@@ -120,20 +120,23 @@ test('software buying guide cites verified competitor product documentation with
   await page.goto('/insights/evaluate-property-media-workflow-software');
   await expect(page.getByRole('heading', { name: 'Compare the same journey across tools' })).toBeVisible();
   const sources = page.getByRole('complementary', { name: 'Sources and further reading' });
-  await expect(sources.getByRole('link')).toHaveCount(6);
-  for (const [host, count] of Object.entries({ 'tonomo.io': 2, 'hdphotohub.com': 1, 'aryeo.com': 1, 'spiro.media': 2 })) {
+  await expect(sources.getByRole('link')).toHaveCount(9);
+  for (const [host, count] of Object.entries({ 'tonomo.io': 2, 'hdphotohub.com': 1, 'aryeo.com': 1, 'spiro.media': 2, 'skylineos.app': 1, 'opsicom.com': 1, 'ubookr.com': 1 })) {
     await expect(sources.locator(`a[href*="${host}"]`)).toHaveCount(count);
   }
   const matrix = page.getByRole('complementary', { name: 'Vendor documentation and test questions' });
-  await expect(matrix.getByRole('row')).toHaveCount(5);
-  for (const vendor of ['Tonomo', 'HDPhotoHub', 'Aryeo', 'Spiro']) {
+  await expect(matrix.getByRole('row')).toHaveCount(8);
+  for (const vendor of ['Tonomo', 'HDPhotoHub', 'Aryeo', 'Spiro', 'Skyline OS', 'Opsicom', 'Ubookr']) {
     await expect(matrix.getByRole('rowheader', { name: vendor })).toBeVisible();
   }
   await expect(matrix).toContainText('What vendor documentation shows');
   await expect(matrix).toContainText('not independent demonstrations');
   await expect(page.locator('article')).toContainText('PhotoTrackly itself is in development');
   const schema = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent() || '{}');
-  expect(schema.citation).toHaveLength(6);
+  expect(schema.citation).toHaveLength(9);
+  expect(schema.dateModified).toBe('2026-10-13T00:00:00Z');
+  await expect(page.locator('time').last()).toHaveAttribute('datetime', '2026-10-13');
+  await expect(page.getByRole('heading', { name: 'Choose a software category and check migration requirements' })).toBeVisible();
   expect(schema.citation.every((url: string) => url.startsWith('https://'))).toBe(true);
 });
 
@@ -155,7 +158,7 @@ test('five expanded articles show original example figures and correctly dated s
     await expect(example.getByRole('link', { name: /Download the blank/ })).toHaveAttribute('href', /worksheets\/.*\.csv$/);
     await expect(example).toContainText('fictional sample data');
     const article = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent() || '{}');
-    expect(article.dateModified).toBe('2026-10-12T00:00:00Z');
+    expect(article.dateModified).toBe(slug === 'evaluate-property-media-workflow-software' ? '2026-10-13T00:00:00Z' : '2026-10-12T00:00:00Z');
     await expect(page.locator('.in-section')).toHaveCount(4);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 2)).toBe(true);
   }

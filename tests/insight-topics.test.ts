@@ -24,8 +24,11 @@ test('related links stay in the current topic, exclude self and stay bounded', (
 test('buyer guide grounds every vendor comparison in a visible primary citation', () => {
   const article = insights.find(item => item.slug === 'evaluate-property-media-workflow-software');
   assert.ok(article);
-  assert.equal(article.vendorEvidence?.length, 4);
-  assert.equal(new Set(article.vendorEvidence?.map(item => item.vendor)).size, 4);
+  assert.equal(article.vendorEvidence?.length, 7);
+  assert.equal(new Set(article.vendorEvidence?.map(item => item.vendor)).size, 7);
+  for (const vendor of ['Tonomo', 'HDPhotoHub', 'Aryeo', 'Spiro', 'Skyline OS', 'Opsicom', 'Ubookr']) {
+    assert.ok(article.vendorEvidence?.some(item => item.vendor === vendor), vendor);
+  }
   const sources = new Set(article.sources?.map(source => source.url));
   for (const item of article.vendorEvidence || []) {
     assert.ok(item.publishedCapability.length >= 80, item.vendor);

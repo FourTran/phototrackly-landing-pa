@@ -157,13 +157,13 @@ const originalInsights: Insight[] = [
   {
     slug: 'evaluate-property-media-workflow-software',
     category: 'Buying guide',
-    title: 'How to evaluate software for a growing property media team',
-    description: 'Compare real estate photography workflow software by running a real-world shoot-to-delivery test, with cited Tonomo, HDPhotoHub, Aryeo and Spiro examples.',
-    answer: 'Compare real estate photography software by testing one multi-service property job in every candidate: booking and scheduling, photographer-to-editor handoff, revisions, approval and client delivery. Record which steps each product actually supports today, then weigh migration effort and price. Do not choose from feature lists alone.',
+    title: 'Real Estate Photography Software Comparison for Teams',
+    description: 'Compare real estate photography software for scheduling, editing, QC and delivery, with primary-source evidence for Aryeo, Tonomo, Spiro and more.',
+    answer: 'To compare real estate photography software, start with the bottleneck: booking and scheduling, photographer-to-editor production, gallery delivery or whole-business coordination. Test one property job with photos, drone and floor plans through each shortlisted tool. Check handoff ownership, actual capability, regional availability, price and migration work; a vendor-published feature is not a proven trial result.',
     intro: 'A long feature list does not show whether a coordinator can find the missing floor plan on a busy day. A realistic test job reveals where people would still need separate messages, spreadsheets and folders.',
     image: '/images/insights/evaluate-property-media-workflow-software.webp',
     imageAlt: 'Studio team comparing a property workflow with a sample job brief',
-    readingMinutes: 6,
+    readingMinutes: 8,
     sections: [
       {
         heading: 'Create a test job that exposes handoffs',
@@ -174,14 +174,17 @@ const originalInsights: Insight[] = [
         heading: 'Compare the same journey across tools',
         paragraphs: [
           'Run the same job in your current stack and each candidate tool. A simple 0–2 score for each handoff can make discussion concrete: 0 means the team must reconstruct it elsewhere; 1 means the information is present but awkward; 2 means the next person can act from the job record. The score is an internal decision aid, not an industry benchmark.',
-          'As of October 2026, public documentation gives useful examples of different approaches: Tonomo describes project management with order tracking and team assignments; HDPhotoHub documents order-level and product-level workflow tasks with due dates; Aryeo describes centralized property media storage and delivery; and Spiro describes the full ordering, scheduling, editing and delivery journey.',
-          'These are vendor-published capabilities, not independently tested evaluations. Features can change or exist outside the cited pages. Use each provider’s current documentation, then verify your exact job in a real demo. PhotoTrackly itself is in development, and cannot yet be trialed as a replacement for these existing products.',
+          'As of October 2026, first-party documentation illustrates different priorities: Tonomo and Ubookr publish booking and scheduling workflows; HDPhotoHub documents order-level and product-level task ownership; Aryeo describes centralised listing media; Spiro documents hands-on quality review; Skyline OS describes photographer and editor portals; and Opsicom describes a job record connecting the property, services, schedule and files.',
+          'These are vendor-published capabilities, not independently tested evaluations. Features can vary by subscription, region or product date. Demonstrate your exact workflow in a live trial, then verify support, billing, integrations and data portability for your country. PhotoTrackly itself is in development and cannot yet replace production tools.',
         ],
         bullets: [
           'Tonomo: demonstrate how a coordinator sees project status, photographer assignments and editor ownership.',
           'HDPhotoHub: compare task dependencies, due dates and who receives ready-to-work notifications.',
           'Aryeo: trace a listing with photos, video and floor plans, then test finding or re-delivering its media.',
-          'Spiro: follow the same job through booking, scheduling, editing workflow and delivery.',
+          'Spiro: trace a human quality-review correction before a final client handoff.',
+          'Skyline OS: trace a photographer accepting a job and handing RAW files to an editor, then an editor returning finals for human QC.',
+          'Opsicom: confirm that property, services, price, schedule and assets stay attached to the same job without re-entry.',
+          'Ubookr: test contractor online booking, changed appointments, storage and reporting within your actual Australian operating needs.',
           'Your current stack: include calendars, messaging and folders in the scorecard; compare real handoff problems rather than marketing checklists.',
           'For every vendor, label each capability demonstrated in a trial, documented by the provider, not verified, or only promised; record the evidence date and the feature tier actually offered.',
         ],
@@ -193,8 +196,13 @@ const originalInsights: Insight[] = [
         ] },
       },
       {
-        heading: 'Ask about adoption and migration',
-        paragraphs: ['A good demonstration can still fail when the team has to move active jobs or change daily habits. Ask how current clients, service packages, schedules and files would be represented, which integrations exist today, and what remains manual. Confirm the actual product stage rather than assuming a roadmap feature is available.', 'Include the people who perform the handoffs in the evaluation. An owner may like a dashboard while an editor still lacks the instructions needed to finish work.'],
+        heading: 'Choose a software category and check migration requirements',
+        paragraphs: [
+          'Booking-first solutions emphasise client ordering and team calendars. Post-production-focused tools emphasise RAW files, editor queues, revisions and QC. Delivery-focused tools organise approved media for agents. Broad operations systems connect multiple stages around the same property job. These categories overlap: never infer that one tool lacks a feature just because its marketing highlights another.',
+          'If you already have a booking portal but cannot tell which editor owns a revision, trial production and QC evidence first. If the team is double-booked, trial calendar and assignment controls. If every stage is disconnected, check whether the vendor stores the brief, source assets, decision history and final handoff on a common job record.',
+          'A good demo can still fail during migration. Ask how existing clients, ordered services, historical deliveries, appointments and files move into the product, which integrations are live, how data is exported, and which functions stay manual. Check your actual country, currency and tax requirements before adopting pricing or payment claims.',
+          'Include the people who perform the handoffs in the evaluation. A studio owner may like the dashboard while the editor still lacks the instructions needed to complete the work.',
+        ],
       },
       {
         heading: 'Make a decision with known gaps',
@@ -202,6 +210,24 @@ const originalInsights: Insight[] = [
       },
     ],
     vendorEvidence: [
+      {
+        vendor: 'Skyline OS',
+        publishedCapability: 'Its team-management page describes photographer accept/decline assignments and RAW upload, plus an editor portal for retrieving RAW files, uploading edits and submitting work for human QC.',
+        testQuestion: 'Can a real order trace photographer acceptance, RAW receipt, editor assignment, revision notes and final approval without shifting between tools?',
+        sourceUrl: 'https://www.skylineos.app/features/team-management',
+      },
+      {
+        vendor: 'Opsicom',
+        publishedCapability: 'Its jobs page describes a booking becoming a job with the client, property, services, price and schedule attached, with files and history added as production progresses.',
+        testQuestion: 'When a service, appointment or file version changes, does that same job record preserve the responsible owner, decision and final client handoff?',
+        sourceUrl: 'https://www.opsicom.com/product/jobs',
+      },
+      {
+        vendor: 'Ubookr',
+        publishedCapability: 'Its real-estate industry page describes online contractor calendar bookings, changing bookings, mobile job details, notifications, reporting and digital asset storage.',
+        testQuestion: 'Can an Australian studio schedule contractors, change a property appointment, export activity and deliver the right media without losing current job details?',
+        sourceUrl: 'https://ubookr.com/industries/software-for-real-estate',
+      },
       {
         vendor: 'Tonomo',
         publishedCapability: 'Its scheduling pages describe automated assignments, calendar availability, travel-aware scheduling and support for multiple photographers on a shoot.',
@@ -228,6 +254,9 @@ const originalInsights: Insight[] = [
       },
     ],
     sources: [
+      { label: 'Skyline OS — Team management and editor portals', url: 'https://www.skylineos.app/features/team-management' },
+      { label: 'Opsicom — Project and job management', url: 'https://www.opsicom.com/product/jobs' },
+      { label: 'Ubookr — Real estate booking and contractor scheduling', url: 'https://ubookr.com/industries/software-for-real-estate' },
       { label: 'Tonomo — Real estate photography project management', url: 'https://www.tonomo.io/features/project-management' },
       { label: 'Tonomo — Scheduling software', url: 'https://www.tonomo.io/features/scheduling' },
       { label: 'HDPhotoHub — Using Workflow Tasks', url: 'https://support.hdphotohub.com/hc/en-us/articles/37685771899668-Using-Workflow-Tasks' },
@@ -235,7 +264,7 @@ const originalInsights: Insight[] = [
       { label: 'Spiro — Real estate media business software', url: 'https://spiro.media/' },
       { label: 'Spiro — QC and delivery process', url: 'https://support.spiro.media/en/articles/9325414-qc-and-delivery-process-in-spiro' },
     ],
-    closing: 'Use the same fictional job, documented evidence and specific role-by-role questions for every candidate. A vendor claim is a lead for a demo, not proof a feature fits your studio. PhotoTrackly remains in development.',
+    closing: 'Shortlist for your real bottleneck and local market, then run the same fictional job through every candidate. Record each demo result, current tier, export options and remaining manual work. These vendor pages are sources to verify, not proof of customer outcomes. PhotoTrackly remains in development.' ,
     related: [
       { href: '/resources/shoot-to-delivery-checklist', label: 'Use the shoot-to-delivery checklist' },
       { href: '/real-estate-photography-business-software', label: 'See PhotoTrackly’s planned first-release scope' },
