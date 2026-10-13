@@ -6,7 +6,7 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
-export const SURFACES = ['chatgpt_search', 'google_ai_mode', 'perplexity'];
+export const SURFACES = ['chatgpt_search', 'google_ai_mode', 'perplexity', 'gemini'];
 const canonical = 'phototrackly.com';
 
 function validEvidenceURL(url) {
@@ -28,7 +28,7 @@ export function buildScorecard(panel, snapshot) {
     throw new Error('Prompt IDs and owner paths must be unique and complete');
   }
   const observations = snapshot.observations;
-  if (!Array.isArray(observations) || observations.length !== 36) {
+  if (!Array.isArray(observations) || observations.length !== SURFACES.length * panel.prompts.length) {
     throw new Error('One observation per surface and prompt is required');
   }
   const seen = new Set();
