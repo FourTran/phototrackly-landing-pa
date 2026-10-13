@@ -136,7 +136,7 @@ test('software buying guide cites verified competitor product documentation with
   expect(schema.citation).toHaveLength(9);
   expect(schema.dateModified).toBe('2026-10-13T00:00:00Z');
   await expect(page.locator('time').last()).toHaveAttribute('datetime', '2026-10-13');
-  await expect(page.locator('.in-section')).toContainText('Choose a software category and check migration requirements');
+  await expect(page.getByRole('heading', { name: 'Choose a software category and check migration requirements' })).toBeVisible();
   expect(schema.citation.every((url: string) => url.startsWith('https://'))).toBe(true);
 });
 
