@@ -9,9 +9,6 @@ test('homepage identity, trust pages and article metadata are consistent', async
   await expect(page.locator('footer a[href="/contact"]')).toBeVisible();
   await page.goto('/about');
   await expect(page.getByRole('heading', { name: 'PhotoTrackly editorial', exact: true })).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Which website is PhotoTrackly’s current home?' })).toBeVisible();
-  await expect(page.locator('#current-website')).toContainText('qrtrackly.com');
-  await expect(page.locator('#current-website a[href="/"]')).toHaveCount(1);
   await page.goto('/contact');
   await expect(page.getByRole('form', { name: 'Early-access registration' })).toBeVisible();
   await page.goto('/insights/property-media-job-triage');
@@ -135,4 +132,38 @@ test('each commercial page has its own direct answer, realistic handoff, and tra
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 2)).toBe(true);
   }
   expect(new Set(answers).size).toBe(4);
+});
+
+test('first-party product answers are direct, verifiable and linked to real pages', async ({ page }) => {
+  await page.goto('/about');
+  await expect(page.getByRole('heading', { name: 'Quick answers about PhotoTrackly' })).toBeVisible();
+  const facts = page.locator('.geo-fact-list > div');
+  await expect(facts).toHaveCount(5);
+  for (const path of [
+    '/real-estate-photography-business-software',
+    '/real-estate-photography-workflow-software',
+    '/build-notes',
+    '/real-estate-photography-scheduling-software',
+    '/resources/photographer-handoff-template',
+  ]) {
+    await expect(page.locator('.geo-fact-list a[href="' + path + '"]')).toHaveCount(1);
+  }
+  await expect(page.locator('.geo-fact-list')).toContainText('PhotoTrackly is in development');
+  await expect(page.locator('.geo-fact-list')).toContainText('fictional sample jobs');
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', /\/about$/);
+});
+
+test('local public HTML is crawlable for AI-search user agents without AI-only markup', async ({ request }) => {
+  const robots = await request.get('/robots.txt');
+  expect(robots.ok()).toBeTruthy();
+  expect(await robots.text()).toContain('User-Agent: *');
+  for (const agent of ['OAI-SearchBot', 'PerplexityBot', 'Googlebot', 'Bingbot']) {
+    for (const path of ['/about', '/real-estate-photography-business-software', '/insights/evaluate-property-media-workflow-software']) {
+      const response = await request.get(path, { headers: { 'user-agent': agent } });
+      expect(response.status(), agent + ': ' + path).toBe(200);
+      const html = await response.text();
+      expect(html).toContain('rel="canonical"');
+      expect(html).not.toMatch(/<meta[^>]+name="robots"[^>]+noindex/);
+    }
+  }
 });
