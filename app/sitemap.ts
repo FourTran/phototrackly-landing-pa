@@ -15,7 +15,8 @@ const articleNavigationUpdated = new Date('2026-10-07T19:39:45Z');
 const buyingGuideUpdated = new Date('2026-10-13T00:00:00Z');
 const resourceSchemaUpdated = new Date('2026-10-08T07:41:41Z');
 const contentHubsUpdated = new Date('2026-10-13T00:00:00Z');
-const originalResourceExamplesUpdated = new Date('2026-10-13T00:00:00Z');
+const originalResourceExamplesUpdated = new Date('2026-10-12T00:00:00Z');
+const resourceSharingUpdated = new Date('2026-10-13T00:00:00Z');
 
 export default function sitemap(): MetadataRoute.Sitemap {
   if (process.env.VERCEL_ENV === 'preview') return [];
@@ -35,7 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${origin}/resources`, lastModified: contentHubsUpdated },
     ...resourceSlugs.map(slug => ({
       url: `${origin}/resources/${slug}`,
-      lastModified: originalResourceExamplesUpdated > resourceSchemaUpdated ? originalResourceExamplesUpdated : resourceSchemaUpdated,
+      lastModified: resourceSharingUpdated,
     })),
     { url: `${origin}/insights`, lastModified: contentHubsUpdated },
     ...insights.map(article => ({
