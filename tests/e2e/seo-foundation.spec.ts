@@ -35,6 +35,9 @@ test('www redirect keeps paths and campaign parameters without affecting other h
 test('major discovery hubs have meaningful entry points and reciprocal navigation', async ({ page }) => {
   await page.goto('/insights');
   await expect(page.getByRole('heading', { name: 'Start with one real job, not a generic software checklist.' })).toBeVisible();
+  for (const slug of ['real-estate-photography-business-software', 'real-estate-photography-workflow-software', 'real-estate-photography-scheduling-software', 'real-estate-media-production-management']) {
+    await expect(page.locator(`[aria-labelledby="insights-choose-workflow"] a[href="/${slug}"]`)).toHaveCount(1);
+  }
   for (const slug of ['property-media-job-triage', 'multi-service-shoot-scheduling', 'real-estate-media-delivery-readiness', 'evaluate-property-media-workflow-software']) {
     await expect(page.locator(`[aria-labelledby="insight-start-here"] a[href="/insights/${slug}"]`)).toHaveCount(1);
   }
@@ -45,6 +48,9 @@ test('major discovery hubs have meaningful entry points and reciprocal navigatio
     await expect(page.locator(`[aria-labelledby="resource-usage-order"] a[href="/resources/${slug}"]`)).toHaveCount(1);
   }
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'http://localhost:3000/resources');
+  for (const path of ['/insights', '/contact', '/real-estate-photography-workflow-software', '/real-estate-media-production-management']) {
+    await expect(page.locator(`[aria-labelledby="resources-choose-next"] a[href="${path}"]`)).toHaveCount(1);
+  }
 });
 
 test('public crawlers get indexable HTML and public sitemap routes', async ({ request }) => {
@@ -56,7 +62,7 @@ test('public crawlers get indexable HTML and public sitemap routes', async ({ re
   expect(robotsText).toContain('Disallow: /workspace/');
   expect(robotsText).toContain('Sitemap: http://localhost:3000/sitemap.xml');
   for (const crawler of ['Googlebot', 'OAI-SearchBot', 'Bingbot']) {
-    for (const path of ['/insights', '/resources']) {
+    for (const path of ['/insights', '/resources', '/contact']) {
       const response = await request.get(path, { headers: { 'user-agent': crawler } });
       expect(response.status()).toBe(200);
       const html = await response.text();
@@ -64,6 +70,67 @@ test('public crawlers get indexable HTML and public sitemap routes', async ({ re
       expect(html).toContain('rel="canonical"');
     }
   }
+});
+
+test('discovery paths connect an indexed article, an owner page, and a template without duplicate hub routes', async ({ page }) => {
+  const links = [
+    ['/insights/property-media-job-triage', '/real-estate-photography-business-software'],
+    ['/insights/multi-service-shoot-scheduling', '/real-estate-photography-scheduling-software'],
+    ['/insights/real-estate-photography-editing-workflow', '/real-estate-media-production-management'],
+  ];
+  for (const [articleUrl, ownerUrl] of links) {
+    await page.goto(articleUrl);
+    await expect(page.locator(`.in-more a[href="${ownerUrl}"]`)).toHaveCount(1);
+    await expect(page.locator('.in-more a[href="/resources"]')).toHaveCount(1);
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', new RegExp(articleUrl + '
+  const mapping = [
+    ['real-estate-photography-business-software', 'evaluate-property-media-workflow-software'],
+    ['real-estate-photography-workflow-software', 'property-media-job-triage'],
+    ['real-estate-photography-scheduling-software', 'multi-service-shoot-scheduling'],
+    ['real-estate-media-production-management', 'real-estate-media-delivery-readiness'],
+  ];
+  for (const [pageSlug, guideSlug] of mapping) {
+    await page.goto('/' + pageSlug);
+    await expect(page.locator(`.seo-related a[href="/insights/${guideSlug}"]`)).toHaveCount(1);
+  }
+});
+
+
+test('each commercial page has its own direct answer, realistic handoff, and transparent product scope', async ({ page }) => {
+  const commercial = [
+    ['real-estate-photography-business-software', 'Order accepted', 'billing'],
+    ['real-estate-photography-workflow-software', 'Capture to edit', 'automation'],
+    ['real-estate-photography-scheduling-software', 'At assignment', 'calendar'],
+    ['real-estate-media-production-management', 'Quality review', 'quality'],
+  ];
+  const answers: string[] = [];
+  for (const [slug, checkpoint] of commercial) {
+    await page.goto('/' + slug);
+    await expect(page.locator('main h1')).toHaveCount(1);
+    await expect(page.locator('main h1')).toContainText(new RegExp(slug.replaceAll('-', ' '), 'i'));
+    const answer = page.locator('.seo-buyer-answer');
+    await expect(answer).toContainText('PhotoTrackly');
+    answers.push((await answer.textContent()) || '');
+    await expect(page.locator('.seo-decision-table-scroll tbody tr')).toHaveCount(4);
+    await expect(page.locator('.seo-decision-table-scroll')).toContainText(checkpoint);
+    await expect(page.locator('.seo-selection-grid li')).toHaveCount(3);
+    await expect(page.locator('.seo-selection-checks')).toContainText('How to verify:');
+    await expect(page.locator('.seo-selection-checks')).toContainText('Important boundary:');
+    await expect(page.locator('.seo-selection-checks a[href="/insights/evaluate-property-media-workflow-software"]')).toHaveCount(1);
+    await expect(page.locator('.seo-boundary-grid > div')).toHaveCount(2);
+    await expect(page.locator('.seo-boundary-grid li')).toHaveCount(6);
+    await expect(page.locator('.seo-product-boundaries')).toContainText('in development');
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', new RegExp('/' + slug + '$'));
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 2)).toBe(true);
+  }
+  expect(new Set(answers).size).toBe(4);
+});
+));
+  }
+  await page.goto('/contact');
+  await expect(page.locator('article a[href="/resources"]')).toHaveCount(1);
+  await expect(page.locator('article a[href="/insights"]')).toHaveCount(1);
+  await expect(page.getByRole('form', { name: 'Early-access registration' })).toBeVisible();
 });
 
 test('commercial intent pages link to their corresponding operational guide', async ({ page }) => {
