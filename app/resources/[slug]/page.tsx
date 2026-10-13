@@ -7,7 +7,7 @@ import LeadForm from '@/components/prelaunch/lead-form';
 import AnalyticsConsent, { CookieSettingsButton } from '@/components/prelaunch/analytics-consent';
 import { Wordmark } from '@/components/prelaunch/primitives';
 import { getResource, resourceSlugs, resources } from '@/lib/resources';
-import { siteUrl } from '@/lib/site';
+import { PRODUCTION_SITE_URL, siteUrl } from '@/lib/site';
 import '@/components/marketing/prelaunch.css';
 import '@/components/marketing/seo-page.css';
 
@@ -21,6 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function ResourceDetail({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params; const item = getResource(slug); if (!item) notFound();
   // Explain the actual editorial guide; do not imply a launched product or customer results.
+  const canonicalResourceUrl = `${PRODUCTION_SITE_URL}/resources/${slug}`;
   const guideSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -29,7 +30,7 @@ export default async function ResourceDetail({ params }: { params: Promise<{ slu
     mainEntityOfPage: `${siteUrl()}/resources/${slug}`,
     author: { '@type': 'Organization', name: 'PhotoTrackly', url: siteUrl() },
     publisher: { '@type': 'Organization', name: 'PhotoTrackly', url: siteUrl() },
-    dateModified: '2026-10-12T00:00:00Z',
+    dateModified: '2026-10-13T00:00:00Z',
   };
   return <div className="pl reference-site"><Navigation /><main id="main" className="seo-main">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(guideSchema).replace(/</g, '\\u003c') }} />
@@ -41,6 +42,11 @@ export default async function ResourceDetail({ params }: { params: Promise<{ slu
         <p>Start with a clean worksheet; compare it with a separate, completely fictional filled-in example. The sample IDs, roles and dates are invented for teaching purposes and must not be treated as PhotoTrackly customer information.</p>
         <p><a href={`/worksheets/${item.worksheet.blank}.csv`} download>Download blank worksheet (CSV)</a> · <a href={`/worksheets/${item.worksheet.example}.csv`} download>Download worked fictional example (CSV)</a></p>
         <ol>{item.worksheet.instructions.map(instruction => <li key={instruction}>{instruction}</li>)}</ol>
+      </aside>
+      <aside className="resource-takeaway" aria-label="Source and sharing"><h2>Share or reference this free template</h2>
+        <p>This PhotoTrackly guide and its blank worksheet are available to read without registering for early access. If you reference the workflow in an article, newsletter or industry discussion, link to the source so readers can inspect the current instructions and download the original template.</p>
+        <p><strong>Source:</strong> <a href={canonicalResourceUrl}>{canonicalResourceUrl}</a></p>
+        <p>The filled-in worksheet is a fictional teaching example, not observed customer data or an endorsement by another organisation. Do not include real client or property details when sharing.</p>
       </aside>
       <aside className="resource-takeaway"><h2>One question to check</h2><p>{item.takeaway}</p></aside>
     </article>

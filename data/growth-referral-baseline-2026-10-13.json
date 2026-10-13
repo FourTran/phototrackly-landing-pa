@@ -1,0 +1,36 @@
+{
+  "snapshotOn": "2026-10-13",
+  "source": "GSC MCP v2 connected GA4 property 557439732",
+  "dateRange": {
+    "start": "2026-09-15",
+    "end": "2026-10-12"
+  },
+  "activeUsers": 519,
+  "sessions": 523,
+  "engagedSessions": 27,
+  "acquisition": [
+    {
+      "sourceMedium": "(direct) / (none)",
+      "sessions": 521,
+      "engaged": 26,
+      "classification": "unattributed; likely test/automation noise, not verified bots"
+    },
+    {
+      "sourceMedium": "(not set)",
+      "sessions": 1,
+      "engaged": 0,
+      "classification": "unassigned"
+    },
+    {
+      "sourceMedium": "tagassistant.google.com / referral",
+      "sessions": 1,
+      "engaged": 1,
+      "classification": "internal Google Tag Assistant test"
+    }
+  ],
+  "externalAcquisitionConfirmed": 0,
+  "thirdPartyPublisherReferralsConfirmed": 0,
+  "qualifiedExternalSignupsConfirmed": 0,
+  "keyEventsRecorded": 0,
+  "notes": "A recorded form_submit / generate_lead event is not proof of a qualified registration. High Direct traffic cannot establish acquisition. The 28-day snapshot predates any Milestone 6 external publication."
+}

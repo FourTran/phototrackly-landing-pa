@@ -18,7 +18,13 @@ test('four resource guides preserve blank sheets alongside fictional worked exam
     expect(exampleFile.ok()).toBe(true);
     expect(await exampleFile.text()).toContain('SAMPLE-001 (fictional)');
     const schema = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent() || '{}');
-    expect(schema.dateModified).toBe('2026-10-12T00:00:00Z');
+    expect(schema.dateModified).toBe('2026-10-13T00:00:00Z');
+    const canonical = 'https://phototrackly.com/resources/' + slug;
+    const sharing = page.getByRole('complementary', { name: 'Source and sharing' });
+    await expect(sharing.getByRole('link', { name: canonical })).toHaveAttribute('href', canonical);
+    await expect(sharing).toContainText('without registering for early access');
+    await expect(sharing).toContainText('fictional teaching example');
+    expect(schema.mainEntityOfPage).toBe('http://localhost:3000/resources/' + slug);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 2)).toBe(true);
   }
 });
