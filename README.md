@@ -96,3 +96,12 @@ Run `npm run ai:scorecard` to see the current citation coverage; observations ma
 GSC/GA4 evidence uses the connected GSC MCP v2 property `sc-domain:phototrackly.com` and GA4 property `557439732`. Referral metrics count attributable `chatgpt.com`, `perplexity.ai`, `gemini.google.com`, `claude.ai`, and Copilot traffic only when they appear in GA4 source/medium. A direct/no-referrer visit does not prove an AI referral. The consented GA4 page location preserves bounded `utm_source=chatgpt.com`; campaign test coverage prevents unsafe parameters from leaking. No GA4/GTM event emitter, key-event configuration or crawler-training directive is changed by this milestone.
 
 Full source, competitor-web-proxy findings, release gates and limitations: [Milestone 7 evidence and runbook](docs/growth/AI_SEARCH_MILESTONE_7_2026-10-13.md).
+
+
+## Private Vercel weekly AI scorecard cron
+
+`vercel.json` schedules `GET /api/internal/ai-scorecard` at `0 3 * * 1` (Mondays 03:00 UTC; around 10:00 ICT). This invokes the same citation scorecard as `npm run ai:scorecard`, but **only evaluates the committed evidence snapshot**. It does NOT autonomously query ChatGPT/Google AI/Perplexity/Gemini or write new persistent observation records.
+
+The route is always unauthorized unless Vercel injects a strong Production `CRON_SECRET` as `Authorization: Bearer …`. When no secret is configured, the endpoint deliberately returns 503. Add the secret directly in the **correct** PhotoTrackly Vercel project after restoring access to team `team_iMOgc2WCTM1NrLydPeLfcV9L`; never commit or share it. A cron is active only once a production deployment with this config succeeds. The authorized Vercel API currently returns Project not found even when scoped to the user-supplied project ID, so do not confuse GitHub preview checks with verified production activation.
+
+See [Vercel AI scorecard cron runbook](docs/growth/VERCEL_AI_SCORECARD_CRON_2026-10-13.md).
