@@ -54,6 +54,17 @@ export default function InsightsPage() {
         </ul>
         <p>Looking for the planned PhotoTrackly product? <Link href="/real-estate-photography-workflow-software">Explore the shoot-to-delivery workspace concept</Link>. For editable checklists, <Link href="/resources">browse practical templates</Link>.</p>
       </section>
+      <section className="resource-takeaway" aria-labelledby="insights-choose-workflow">
+        <h2 id="insights-choose-workflow">Find the right part of the job before choosing software</h2>
+        <p>These guides help diagnose operational handoffs using your current tools. If you are exploring a future connected workspace, choose the page that matches your responsibility:</p>
+        <ul>
+          <li><Link href="/real-estate-photography-business-software">Studio owners:</Link> manage several property jobs, people and deadlines</li>
+          <li><Link href="/real-estate-photography-scheduling-software">Schedulers:</Link> connect appointments to service requirements and photographer briefs</li>
+          <li><Link href="/real-estate-media-production-management">Editors and reviewers:</Link> coordinate media readiness, human QC and revisions</li>
+          <li><Link href="/real-estate-photography-workflow-software">Coordinators:</Link> follow the complete brief-to-delivery handoff</li>
+        </ul>
+        <p>PhotoTrackly is in development. These are intended workflows, not features you can use in a released product today.</p>
+      </section>
       <nav aria-label="Insight topics" className="in-related">{insightTopics.map(topic => <Link href={`#${topic.id}`} key={topic.id}>{topic.title}</Link>)}</nav>
       {insightTopics.map(topic => <section key={topic.id} id={topic.id}><h2>{topic.title}</h2><div className="in-grid">{insights.filter(article => topicFor(article)?.id === topic.id).map(article => <article key={article.slug} className="in-card"><Link className="in-card-image" href={`/insights/${article.slug}`} aria-label={`Read ${article.title}`}><Image src={article.image} alt={article.imageAlt} fill sizes="(max-width: 700px) 100vw, 50vw" /></Link><div className="in-card-copy"><p className="in-meta">{article.category} · {article.readingMinutes} min read</p><h2><Link href={`/insights/${article.slug}`}>{article.title}</Link></h2><p>{article.description}</p><Link className="in-read" href={`/insights/${article.slug}`}>Read article <span aria-hidden="true">↗</span></Link></div></article>)}</div></section>)}
       <p className="in-resource-link">Need something to use today? <Link href="/resources">Browse the checklists and templates</Link>.</p>
