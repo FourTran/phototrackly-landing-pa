@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import Script from 'next/script';
 import { useEffect, useState } from 'react';
-import { ANALYTICS_CONSENT_KEY, GA_MEASUREMENT_ID, isInternalQaSession, openCookieSettings, track } from '@/lib/analytics';
+import { ANALYTICS_CONSENT_KEY, GA_MEASUREMENT_ID, isInternalQaSession, isProductionAnalyticsHost, openCookieSettings, track } from '@/lib/analytics';
 import { sanitizedAnalyticsLocation } from '@/lib/campaign-attribution';
 
 export function CookieSettingsButton() { return <button className="pl-footer-link" type="button" onClick={openCookieSettings}>Cookie settings</button>; }
@@ -12,7 +12,7 @@ export default function AnalyticsConsent() {
   const [internalQa, setInternalQa] = useState(false);
   /* eslint-disable react-hooks/set-state-in-effect -- Synchronize this component with existing browser preferences after hydration. */
   useEffect(() => {
-    try { if (isInternalQaSession()) { setInternalQa(true); setChoice(null); setVisible(false); } else { const saved = localStorage.getItem(ANALYTICS_CONSENT_KEY); if (saved === 'accepted' || saved === 'declined') setChoice(saved); else setVisible(true); } } catch { /* No optional tracking when browser storage is blocked. */ }
+    try { if (!isProductionAnalyticsHost(window.location.hostname) || isInternalQaSession()) { setInternalQa(true); setChoice(null); setVisible(false); } else { const saved = localStorage.getItem(ANALYTICS_CONSENT_KEY); if (saved === 'accepted' || saved === 'declined') setChoice(saved); else setVisible(true); } } catch { /* No optional tracking when browser storage is blocked. */ }
     const reopen = () => setVisible(true);
     const click = (event: MouseEvent) => {
       const el = event.target instanceof Element ? event.target.closest<HTMLElement>('[data-track]') : null;
@@ -39,7 +39,7 @@ export default function AnalyticsConsent() {
     if (next === 'declined' && window.gtag) location.reload();
   }
   function init() {
-    if (isInternalQaSession()) return;
+    if (!isProductionAnalyticsHost(window.location.hostname) || isInternalQaSession()) return;
     window.dataLayer = window.dataLayer || [];
     // gtag's public queue format uses an arguments object.
     // eslint-disable-next-line prefer-rest-params
