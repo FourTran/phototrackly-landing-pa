@@ -7,7 +7,7 @@ import LeadForm from '@/components/prelaunch/lead-form';
 import AnalyticsConsent, { CookieSettingsButton } from '@/components/prelaunch/analytics-consent';
 import { Wordmark } from '@/components/prelaunch/primitives';
 import { getResource, resourceSlugs, resources } from '@/lib/resources';
-import { siteUrl } from '@/lib/site';
+import { PRODUCTION_SITE_URL, siteUrl } from '@/lib/site';
 import '@/components/marketing/prelaunch.css';
 import '@/components/marketing/seo-page.css';
 
@@ -21,13 +21,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function ResourceDetail({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params; const item = getResource(slug); if (!item) notFound();
   // Explain the actual editorial guide; do not imply a launched product or customer results.
-  const canonicalResourceUrl = `${siteUrl()}/resources/${slug}`;
+  const canonicalResourceUrl = `${PRODUCTION_SITE_URL}/resources/${slug}`;
   const guideSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: item.title,
     description: item.description,
-    mainEntityOfPage: canonicalResourceUrl,
+    mainEntityOfPage: `${siteUrl()}/resources/${slug}`,
     author: { '@type': 'Organization', name: 'PhotoTrackly', url: siteUrl() },
     publisher: { '@type': 'Organization', name: 'PhotoTrackly', url: siteUrl() },
     dateModified: '2026-10-13T00:00:00Z',
