@@ -111,25 +111,18 @@ test('API validates consent, limits input, rejects foreign origins, and saves id
   expect((await request.post('/api/early-access', { data: { ...valid(), website: 'honeypot' } })).status()).toBe(400);
 });
 
-test('optional analytics is off until consent and events omit form values', async ({ page }) => {
+test('local development cannot load production GA4 even with saved consent', async ({ page }) => {
   const scripts: string[] = [];
   page.on('request', request => { if (request.url().includes('googletagmanager.com/gtag')) scripts.push(request.url()); });
-  await page.route('https://www.googletagmanager.com/**', route => route.fulfill({ contentType: 'application/javascript', body: '/* isolated test: never contact Google Analytics */' }));
+  await page.addInitScript(() => localStorage.setItem('phototrackly.analytics-consent.v1', 'accepted'));
   await page.goto('/?email=never-track@example.com');
   await page.getByLabel('Work email').first().fill('private@example.com');
-  expect(scripts).toHaveLength(0);
-  await page.getByRole('button', { name: 'Allow analytics' }).click();
-  await expect.poll(() => scripts.length).toBe(1);
-  await expect.poll(() => page.evaluate(() => typeof window.gtag)).toBe('function');
   await page.getByRole('tab', { name: /Production/ }).click();
-  const queue = await page.evaluate(() => (window.dataLayer || []).map(x => Array.from(x as ArrayLike<unknown>)));
-  expect(JSON.stringify(queue)).toContain('sample_stage_view');
-  expect(JSON.stringify(queue)).not.toContain('private@example.com');
-  expect(JSON.stringify(queue)).not.toContain('never-track@example.com');
-  await page.getByRole('button', { name: 'Cookie settings' }).click();
-  await page.getByRole('button', { name: 'No thanks' }).click();
   await expect(page.locator('.pl-hero')).toBeVisible();
-  expect(await page.evaluate(() => localStorage.getItem('phototrackly.analytics-consent.v1'))).toBe('declined');
+  await expect(page.getByRole('button', { name: 'Allow analytics' })).toHaveCount(0);
+  expect(scripts).toEqual([]);
+  expect(await page.evaluate(() => typeof window.gtag)).not.toBe('function');
+  expect(JSON.stringify(await page.evaluate(() => window.dataLayer || []))).not.toContain('private@example.com');
 });
 
 test('navigation, headings, image text and layouts work at small and wide widths', async ({ page, isMobile }) => {
@@ -186,18 +179,15 @@ test('reference typography, section order and all five original photographs are 
 });
 
 
-test('campaign links preserve safe UTMs while withholding personal query parameters', async ({ page }) => {
-  await page.route('https://www.googletagmanager.com/**', route => route.fulfill({ contentType: 'application/javascript', body: '/* isolated GA test */' }));
-  await page.goto('/?utm_source=linkedin&utm_medium=social&utm_campaign=workflow_launch&utm_content=checklist&email=do-not-track@example.com');
-  await page.getByRole('button', { name: 'Allow analytics' }).click();
-  await expect.poll(() => page.evaluate(() => typeof window.gtag)).toBe('function');
-  await expect.poll(async () => {
-    const queue = await page.evaluate(() => (window.dataLayer || []).map(value => Array.from(value as ArrayLike<unknown>)));
-    return JSON.stringify(queue);
-  }).toContain('utm_source=linkedin');
-  const queue = await page.evaluate(() => (window.dataLayer || []).map(value => Array.from(value as ArrayLike<unknown>)));
-  expect(JSON.stringify(queue)).toContain('utm_campaign=workflow_launch');
-  expect(JSON.stringify(queue)).not.toContain('do-not-track@example.com');
+test('campaign parameters do not enable production GA4 on localhost', async ({ page }) => {
+  const scripts: string[] = [];
+  page.on('request', request => { if (request.url().includes('googletagmanager.com/gtag')) scripts.push(request.url()); });
+  await page.goto('/?utm_source=linkedin&utm_medium=social&utm_campaign=workflow_launch&email=do-not-track@example.com');
+  await expect(page.locator('.pl-hero')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Allow analytics' })).toHaveCount(0);
+  expect(scripts).toEqual([]);
+  expect(await page.evaluate(() => typeof window.gtag)).not.toBe('function');
+  // Safe UTM allowlisting and PII stripping are separately exercised in campaign-attribution unit tests.
 });
 
 test('explicit internal QA session suppresses consent analytics across pages', async ({ page }) => {

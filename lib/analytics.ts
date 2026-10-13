@@ -2,6 +2,12 @@ export const ANALYTICS_CONSENT_KEY = 'phototrackly.analytics-consent.v1';
 export const GA_MEASUREMENT_ID = 'G-GJQ82ZDWL2';
 const QA_SESSION_KEY = 'phototrackly.internal-analytics-qa.v1';
 
+/** Never send local development, preview or unrecognized hostnames to production GA4. */
+export function isProductionAnalyticsHost(hostname: string): boolean {
+  const host = hostname.trim().toLowerCase().replace(/\.$/, '');
+  return host === 'phototrackly.com' || host === 'www.phototrackly.com';
+}
+
 /** QA links suppress analytics for this browser tab; do not use for customer campaigns. */
 export function isInternalQaSession(): boolean {
   try {
@@ -29,7 +35,7 @@ type EventName =
 declare global { interface Window { dataLayer?: unknown[]; gtag?: (...args: unknown[]) => void; } }
 export function track(event: EventName, params: { location?: string; stage?: string; category?: string; question?: string } = {}) {
   try {
-    if (isInternalQaSession() || localStorage.getItem(ANALYTICS_CONSENT_KEY) !== 'accepted') return;
+    if (!isProductionAnalyticsHost(window.location.hostname) || isInternalQaSession() || localStorage.getItem(ANALYTICS_CONSENT_KEY) !== 'accepted') return;
     // Never pass form values, email, company, names, URLs, or free text to analytics.
     window.gtag?.('event', event, params);
   } catch { /* Analytics must never block registration or page controls. */ }
