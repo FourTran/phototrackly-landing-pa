@@ -1,0 +1,78 @@
+{
+  "version": "phototrackly-12-v1",
+  "market": "US",
+  "prompts": [
+    {
+      "id": "A01",
+      "prompt": "software to manage real estate photography shoots and editors",
+      "intent": "workflow",
+      "ownerPath": "/real-estate-photography-workflow-software"
+    },
+    {
+      "id": "A02",
+      "prompt": "real estate media workflow software",
+      "intent": "workflow",
+      "ownerPath": "/real-estate-photography-workflow-software"
+    },
+    {
+      "id": "A03",
+      "prompt": "how to track photo editor revisions before delivery",
+      "intent": "production",
+      "ownerPath": "/insights/handle-client-delivery-revisions-property-media"
+    },
+    {
+      "id": "A04",
+      "prompt": "best tools to manage real estate photography teams",
+      "intent": "business",
+      "ownerPath": "/real-estate-photography-business-software"
+    },
+    {
+      "id": "A05",
+      "prompt": "Tonomo HDPhotoHub Spiro alternatives for production coordination",
+      "intent": "comparison",
+      "ownerPath": "/insights/evaluate-property-media-workflow-software"
+    },
+    {
+      "id": "A06",
+      "prompt": "property media client delivery checklist",
+      "intent": "delivery",
+      "ownerPath": "/resources/shoot-to-delivery-checklist"
+    },
+    {
+      "id": "A07",
+      "prompt": "manage outsourced photo editors for property shoots",
+      "intent": "production",
+      "ownerPath": "/real-estate-media-production-management"
+    },
+    {
+      "id": "A08",
+      "prompt": "software for real estate photo QC workflow",
+      "intent": "quality-control",
+      "ownerPath": "/real-estate-media-production-management"
+    },
+    {
+      "id": "A09",
+      "prompt": "coordinate photographer assignments and floor plans",
+      "intent": "scheduling",
+      "ownerPath": "/real-estate-photography-scheduling-software"
+    },
+    {
+      "id": "A10",
+      "prompt": "multi service shoot scheduling workflow",
+      "intent": "scheduling",
+      "ownerPath": "/insights/multi-service-shoot-scheduling"
+    },
+    {
+      "id": "A11",
+      "prompt": "how to prevent wrong images delivered to agents",
+      "intent": "delivery",
+      "ownerPath": "/insights/prevent-wrong-property-images-client-delivery"
+    },
+    {
+      "id": "A12",
+      "prompt": "real estate photography job status board template",
+      "intent": "operations",
+      "ownerPath": "/resources/property-job-status-board-template"
+    }
+  ]
+}

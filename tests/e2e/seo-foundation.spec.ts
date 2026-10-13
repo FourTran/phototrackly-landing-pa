@@ -9,6 +9,9 @@ test('homepage identity, trust pages and article metadata are consistent', async
   await expect(page.locator('footer a[href="/contact"]')).toBeVisible();
   await page.goto('/about');
   await expect(page.getByRole('heading', { name: 'PhotoTrackly editorial', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Which website is PhotoTrackly’s current home?' })).toBeVisible();
+  await expect(page.locator('#current-website')).toContainText('qrtrackly.com');
+  await expect(page.locator('#current-website a[href="/"]')).toHaveCount(1);
   await page.goto('/contact');
   await expect(page.getByRole('form', { name: 'Early-access registration' })).toBeVisible();
   await page.goto('/insights/property-media-job-triage');
