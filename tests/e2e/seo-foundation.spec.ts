@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 
 test('homepage identity, trust pages and article metadata are consistent', async ({ page, request }) => {
   await page.goto('/');
-  await expect(page).toHaveTitle('Real Estate Photography Workflow Software — PhotoTrackly');
+  await expect(page).toHaveTitle('PhotoTrackly — Property Media Operations for Growing Studios');
   const identity = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent() || '{}');
   expect(identity['@graph'].map((node: { '@type': string }) => node['@type'])).toEqual(['Organization', 'WebSite']);
   await expect(page.locator('footer a[href="/about"]')).toBeVisible();
@@ -91,6 +91,7 @@ test('each commercial page has its own direct answer, realistic handoff, and tra
   for (const [slug, checkpoint] of commercial) {
     await page.goto('/' + slug);
     await expect(page.locator('main h1')).toHaveCount(1);
+    await expect(page.locator('main h1')).toContainText(new RegExp(slug.replaceAll('-', ' '), 'i'));
     const answer = page.locator('.seo-buyer-answer');
     await expect(answer).toContainText('PhotoTrackly');
     answers.push((await answer.textContent()) || '');
