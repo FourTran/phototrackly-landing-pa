@@ -12,7 +12,7 @@ export default function AnalyticsConsent() {
   const [internalQa, setInternalQa] = useState(false);
   /* eslint-disable react-hooks/set-state-in-effect -- Synchronize this component with existing browser preferences after hydration. */
   useEffect(() => {
-    try { if (!isProductionAnalyticsHost(window.location.hostname) || isInternalQaSession()) { setInternalQa(true); setChoice(null); setVisible(false); } else { const saved = localStorage.getItem(ANALYTICS_CONSENT_KEY); if (saved === 'accepted' || saved === 'declined') setChoice(saved); else setVisible(true); } } catch { /* No optional tracking when browser storage is blocked. */ }
+    try { if (isInternalQaSession() || !isProductionAnalyticsHost(window.location.hostname)) { setInternalQa(true); setChoice(null); setVisible(false); } else { const saved = localStorage.getItem(ANALYTICS_CONSENT_KEY); if (saved === 'accepted' || saved === 'declined') setChoice(saved); else setVisible(true); } } catch { /* No optional tracking when browser storage is blocked. */ }
     const reopen = () => setVisible(true);
     const click = (event: MouseEvent) => {
       const el = event.target instanceof Element ? event.target.closest<HTMLElement>('[data-track]') : null;
