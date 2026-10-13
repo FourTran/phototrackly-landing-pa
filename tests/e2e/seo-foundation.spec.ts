@@ -97,6 +97,10 @@ test('each commercial page has its own direct answer, realistic handoff, and tra
     answers.push((await answer.textContent()) || '');
     await expect(page.locator('.seo-decision-table-scroll tbody tr')).toHaveCount(4);
     await expect(page.locator('.seo-decision-table-scroll')).toContainText(checkpoint);
+    await expect(page.locator('.seo-selection-grid li')).toHaveCount(3);
+    await expect(page.locator('.seo-selection-checks')).toContainText('How to verify:');
+    await expect(page.locator('.seo-selection-checks')).toContainText('Important boundary:');
+    await expect(page.locator('.seo-selection-checks a[href="/insights/evaluate-property-media-workflow-software"]')).toHaveCount(1);
     await expect(page.locator('.seo-boundary-grid > div')).toHaveCount(2);
     await expect(page.locator('.seo-boundary-grid li')).toHaveCount(6);
     await expect(page.locator('.seo-product-boundaries')).toContainText('in development');
