@@ -5,6 +5,7 @@ import LeadForm from '@/components/prelaunch/lead-form';
 import AnalyticsConsent, { CookieSettingsButton } from '@/components/prelaunch/analytics-consent';
 import { Wordmark } from '@/components/prelaunch/primitives';
 import type { MarketingPage } from '@/lib/marketing-pages';
+import { buyerSignupCopy } from '@/lib/conversion-messaging';
 import './prelaunch.css';
 import './seo-page.css';
 
@@ -28,6 +29,7 @@ const operationalGuideByPage: Record<string, { href: string; label: string }> = 
 };
 
 export default function SeoPage({ page }: { page: MarketingPage }) {
+  const signup = buyerSignupCopy[page.slug];
   return <div className="pl reference-site"><Navigation /><main id="main" className="seo-main">
     <div className="seo-wrap seo-breadcrumb"><Link href="/">PhotoTrackly</Link><span aria-hidden="true">/</span><span>{page.title}</span></div>
     <section className="seo-wrap seo-hero"><div><p className="rf-eyebrow">{page.eyebrow}</p><h1>{page.heading}</h1><p className="seo-intro">{page.introduction}</p><a className="rf-button" href="#early-access" data-track="cta_click" data-location={page.slug}>Join early access <span aria-hidden="true">↗</span></a><p className="seo-status">In development · No payment or mandatory meeting</p></div><figure><Image src={page.image} alt={page.imageAlt} fill sizes="(max-width: 900px) 100vw, 45vw" /><figcaption>Illustrative property media imagery</figcaption></figure></section>
@@ -74,6 +76,6 @@ export default function SeoPage({ page }: { page: MarketingPage }) {
     ].filter(([slug]) => slug !== page.slug).map(([slug, label]) => <Link key={slug} href={`/${slug}`}>{label}<span aria-hidden="true">↗</span></Link>)}</div></section>
     <section className="seo-wrap seo-related"><div><p className="rf-eyebrow">PRACTICAL NEXT STEPS</p><h2>Use the workflow with your team.</h2></div><div><Link href="/resources">Browse practical resources<span aria-hidden="true">↗</span></Link><Link href="/insights">Read operations insights<span aria-hidden="true">↗</span></Link><Link href={operationalGuideByPage[page.slug].href}>{operationalGuideByPage[page.slug].label}<span aria-hidden="true">↗</span></Link><Link href="/resources/photographer-handoff-template">Use the photographer handoff template<span aria-hidden="true">↗</span></Link><Link href="/contact">Share workflow feedback<span aria-hidden="true">↗</span></Link></div></section>
     <section className="seo-wrap seo-questions"><p className="rf-eyebrow">CLEAR ANSWERS</p><h2>Before you join early access</h2>{page.questions.map(item => <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</section>
-    <section className="seo-signup" id="early-access"><div className="seo-wrap seo-signup-grid"><div><p className="rf-eyebrow">JOIN EARLY ACCESS</p><h2>Help shape PhotoTrackly.</h2><p>We’re inviting real estate photography and property media teams in the United States and Australia to share where their current workflow gets stuck. Registering interest does not create an account or guarantee immediate access.</p></div><LeadForm variant="footer" /></div></section>
+    <section className="seo-signup" id="early-access"><div className="seo-wrap seo-signup-grid"><div><p className="rf-eyebrow">JOIN EARLY ACCESS</p><h2>{signup.heading}</h2><p>{signup.introduction}</p><p className="seo-signup-context">{signup.contextPrompt}</p><p>PhotoTrackly is in development for studios in the United States and Australia. Registration records interest, not a working account or guaranteed invitation. No payment or mandatory meeting is required.</p></div><LeadForm variant="footer" /></div></section>
   </main><footer><div className="seo-wrap rf-foot-inner"><Wordmark /><p>Property media work, connected.</p><div className="rf-footer-links"><Link href="/build-notes">Build notes</Link><Link href="/privacy">Privacy</Link><CookieSettingsButton /><Link href="/">Home</Link></div></div></footer><AnalyticsConsent /></div>;
 }

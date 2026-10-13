@@ -1,0 +1,35 @@
+{
+  "source": "Connected Google Drive, PhotoTrackly Landing Page — Early Access Leads, Leads tab; read-only on 2026-10-13",
+  "period": "As of 2026-10-13",
+  "confidentiality": "Anonymous review flags only. No contact fields, request identifiers or submitted text. This is a snapshot, not a live database replica.",
+  "records": [
+    {
+      "sheetRowSaved": true,
+      "consentRecorded": true,
+      "suspectedTest": true,
+      "humanReviewed": false,
+      "buyerFitVerified": false,
+      "externalAcquisitionVerified": false,
+      "withdrawn": false
+    }
+  ],
+  "reviewPolicy": "Promote a saved record only after independently verifying business buyer fit, external acquisition evidence, and human review. An analytics event is never adequate proof.",
+  "ga4": {
+    "propertyId": "557439732",
+    "from": "2026-09-15",
+    "through": "2026-10-12",
+    "sessions": 523,
+    "engagedSessions": 27,
+    "reportedFormSubmitEvents": 1,
+    "reportedGenerateLeadEvents": 1,
+    "recordedKeyEvents": 0,
+    "configuredGenerateLeadKeyEvent": false,
+    "directSessions": 521,
+    "organicSessions": 0
+  },
+  "unresolved": [
+    "Original GA4 form_submit and generate_lead event producers not independently reconciled with GTM; do not add a second emitter.",
+    "Connected Vercel project access cannot independently confirm live webhook environment/deployed Apps Script version.",
+    "One saved row is test-like and has no confirmed external customer source; avoid asserting it is a qualified lead."
+  ]
+}

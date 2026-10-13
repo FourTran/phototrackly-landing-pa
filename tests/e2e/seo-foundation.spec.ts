@@ -167,3 +167,42 @@ test('local public HTML is crawlable for AI-search user agents without AI-only m
     }
   }
 });
+
+
+test('commercial signup journeys explain distinct buyer fit and remain optional-context, consent-first forms', async ({ page }) => {
+  const buyers = [
+    ['real-estate-photography-business-software', 'media studio'],
+    ['real-estate-photography-workflow-software', 'shoot-to-delivery'],
+    ['real-estate-photography-scheduling-software', 'scheduling'],
+    ['real-estate-media-production-management', 'editing and approval'],
+  ];
+  for (const [slug, phrase] of buyers) {
+    await page.goto('/' + slug);
+    const signup = page.locator('#early-access');
+    await expect(signup.locator('h2')).toContainText(phrase, { ignoreCase: true });
+    await expect(signup).toContainText('Optional:');
+    await expect(signup).toContainText('not a working account or guaranteed invitation');
+    const form = signup.getByRole('form', { name: 'Early-access registration' });
+    await expect(form.getByLabel('Work email')).toHaveAttribute('required', '');
+    await expect(form.getByLabel('Company', { exact: false })).toHaveAttribute('required', '');
+    await expect(form.getByRole('checkbox')).toHaveAttribute('required', '');
+    await expect(form.locator('select[name="role"]')).not.toHaveAttribute('required', '');
+    await expect(form.locator('select[name="country"]')).not.toHaveAttribute('required', '');
+    await expect(signup.getByRole('link', { name: 'Privacy notice' })).toHaveAttribute('href', '/privacy');
+  }
+});
+
+test('unconfirmed success response on commercial signup never implies a saved lead', async ({ page }) => {
+  await page.goto('/real-estate-media-production-management');
+  await page.route('**/api/early-access', route => route.fulfill({
+    status: 200, contentType: 'application/json', body: JSON.stringify({ ok: true, reference: 'unconfirmed' }),
+  }));
+  const form = page.locator('#early-access').getByRole('form', { name: 'Early-access registration' });
+  await form.getByLabel('Work email').fill('conversion-test@example.com');
+  await form.getByLabel('Company', { exact: false }).fill('CI Example Studio');
+  await form.getByRole('checkbox').check();
+  await form.getByRole('button', { name: 'Join early access', exact: true }).click();
+  await expect(form.getByRole('alert')).toContainText('We could not save your registration');
+  await expect(page.locator('.pl-form-success')).toHaveCount(0);
+  await expect(form.getByLabel('Work email')).toHaveValue('conversion-test@example.com');
+});
