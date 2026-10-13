@@ -5,10 +5,17 @@ import { marketingPages } from '../lib/marketing-pages.ts';
 test('four commercial owner pages each address distinct studio buying intent', () => {
   assert.equal(marketingPages.length, 4);
   const slugs = marketingPages.map(p => p.slug);
+  assert.equal(new Set(marketingPages.map(p => p.title)).size, 4);
+  assert.equal(new Set(marketingPages.map(p => p.description)).size, 4);
   assert.equal(new Set(slugs).size, 4);
   assert.equal(new Set(marketingPages.map(p => p.buyerGuide.directAnswer)).size, 4);
   for (const page of marketingPages) {
     const guide = page.buyerGuide;
+    const ownerIntent = page.slug.replaceAll('-', ' ');
+    assert.ok(page.title.toLowerCase().includes(ownerIntent), page.slug);
+    assert.ok(page.heading.toLowerCase().includes(ownerIntent), page.slug);
+    assert.ok(page.description.length >= 110 && page.description.length <= 180, page.slug);
+    assert.match(page.description, /planned|developing/i, page.slug);
     assert.ok(guide.directAnswer.length > 145, page.slug);
     assert.equal(guide.forTeams.length, 3, page.slug);
     assert.equal(guide.exampleHandoffs.length, 4, page.slug);
