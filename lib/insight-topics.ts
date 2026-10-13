@@ -9,6 +9,18 @@ export const insightTopics = [
 export function topicFor(article: Insight) {
   return insightTopics.find(topic => topic.categories.includes(article.category));
 }
+// Each editorial topic has one corresponding commercial owner; do not turn
+// informational guides into promises of an available PhotoTrackly product.
+const commercialOwnerByTopic: Record<string, { href: string; label: string }> = {
+  operations: { href: '/real-estate-photography-business-software', label: 'planned studio operations software' },
+  scheduling: { href: '/real-estate-photography-scheduling-software', label: 'planned real estate photography scheduling software' },
+  production: { href: '/real-estate-media-production-management', label: 'planned real estate media production management' },
+  delivery: { href: '/real-estate-photography-workflow-software', label: 'planned shoot-to-delivery workflow software' },
+};
+export function commercialOwnerForInsight(article: Insight) {
+  const topic = topicFor(article);
+  return topic ? commercialOwnerByTopic[topic.id] ?? null : null;
+}
 export function relatedInsights(article: Insight): Insight[] {
   const topic = topicFor(article);
   const words = new Set(article.slug.split('-'));
