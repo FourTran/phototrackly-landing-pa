@@ -24,7 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     // Do not fabricate a date when the last meaningful page update is unknown.
     { url: `${origin}/`, lastModified: homepageAndCommercialContentUpdated },
-    { url: `${origin}/about` },
+    { url: `${origin}/about`, lastModified: new Date('2026-10-13T00:00:00Z') }
     { url: `${origin}/build-notes`, lastModified: new Date('2026-10-12T00:00:00Z') },
     { url: `${origin}/contact`, lastModified: new Date('2026-10-13T00:00:00Z') },
     { url: `${origin}/privacy` },
