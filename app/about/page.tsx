@@ -14,7 +14,7 @@ export default function AboutPage() {
     </section>
     <section className="in-section" id="product-questions" aria-labelledby="product-questions-heading">
       <h2 id="product-questions-heading">Quick answers about PhotoTrackly</h2>
-      <p>These answers describe the product's current public status and planned scope. Follow the linked material for details rather than inferring features from a software category name.</p>
+      <p>These answers describe PhotoTrackly’s current public status and planned scope. Follow the linked material for details rather than inferring features from a software category name.</p>
       <dl className="geo-fact-list">
         {productAnswers.map(item => <div key={item.question}>
           <dt><strong>{item.question}</strong></dt>
