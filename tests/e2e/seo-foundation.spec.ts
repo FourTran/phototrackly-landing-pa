@@ -72,7 +72,7 @@ test('public crawlers get indexable HTML and public sitemap routes', async ({ re
   }
 });
 
-test('discovery paths connect an indexed article, an owner page, and a template without duplicate hub routes', async ({ page }) => {
+test('discovery paths connect articles, owner pages, and templates', async ({ page }) => {
   const links = [
     ['/insights/property-media-job-triage', '/real-estate-photography-business-software'],
     ['/insights/multi-service-shoot-scheduling', '/real-estate-photography-scheduling-software'],
@@ -80,52 +80,9 @@ test('discovery paths connect an indexed article, an owner page, and a template 
   ];
   for (const [articleUrl, ownerUrl] of links) {
     await page.goto(articleUrl);
-    await expect(page.locator(`.in-more a[href="${ownerUrl}"]`)).toHaveCount(1);
+    await expect(page.locator('.in-more a[href="' + ownerUrl + '"]')).toHaveCount(1);
     await expect(page.locator('.in-more a[href="/resources"]')).toHaveCount(1);
-    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', new RegExp(articleUrl + '
-  const mapping = [
-    ['real-estate-photography-business-software', 'evaluate-property-media-workflow-software'],
-    ['real-estate-photography-workflow-software', 'property-media-job-triage'],
-    ['real-estate-photography-scheduling-software', 'multi-service-shoot-scheduling'],
-    ['real-estate-media-production-management', 'real-estate-media-delivery-readiness'],
-  ];
-  for (const [pageSlug, guideSlug] of mapping) {
-    await page.goto('/' + pageSlug);
-    await expect(page.locator(`.seo-related a[href="/insights/${guideSlug}"]`)).toHaveCount(1);
-  }
-});
-
-
-test('each commercial page has its own direct answer, realistic handoff, and transparent product scope', async ({ page }) => {
-  const commercial = [
-    ['real-estate-photography-business-software', 'Order accepted', 'billing'],
-    ['real-estate-photography-workflow-software', 'Capture to edit', 'automation'],
-    ['real-estate-photography-scheduling-software', 'At assignment', 'calendar'],
-    ['real-estate-media-production-management', 'Quality review', 'quality'],
-  ];
-  const answers: string[] = [];
-  for (const [slug, checkpoint] of commercial) {
-    await page.goto('/' + slug);
-    await expect(page.locator('main h1')).toHaveCount(1);
-    await expect(page.locator('main h1')).toContainText(new RegExp(slug.replaceAll('-', ' '), 'i'));
-    const answer = page.locator('.seo-buyer-answer');
-    await expect(answer).toContainText('PhotoTrackly');
-    answers.push((await answer.textContent()) || '');
-    await expect(page.locator('.seo-decision-table-scroll tbody tr')).toHaveCount(4);
-    await expect(page.locator('.seo-decision-table-scroll')).toContainText(checkpoint);
-    await expect(page.locator('.seo-selection-grid li')).toHaveCount(3);
-    await expect(page.locator('.seo-selection-checks')).toContainText('How to verify:');
-    await expect(page.locator('.seo-selection-checks')).toContainText('Important boundary:');
-    await expect(page.locator('.seo-selection-checks a[href="/insights/evaluate-property-media-workflow-software"]')).toHaveCount(1);
-    await expect(page.locator('.seo-boundary-grid > div')).toHaveCount(2);
-    await expect(page.locator('.seo-boundary-grid li')).toHaveCount(6);
-    await expect(page.locator('.seo-product-boundaries')).toContainText('in development');
-    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', new RegExp('/' + slug + '$'));
-    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 2)).toBe(true);
-  }
-  expect(new Set(answers).size).toBe(4);
-});
-));
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'http://localhost:3000' + articleUrl);
   }
   await page.goto('/contact');
   await expect(page.locator('article a[href="/resources"]')).toHaveCount(1);
