@@ -17,6 +17,8 @@ export type WorkflowExample = {
   checkpoints: WorkflowCheckpoint[];
   worksheet: string;
   worksheetLabel: string;
+  /** Recorded date of a substantive example update; absent on historical examples. */
+  updatedAt?: string;
 };
 export const workflowExamples: Record<string, WorkflowExample> = {
   'property-media-job-triage': {
