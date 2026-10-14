@@ -163,3 +163,21 @@ test('five expanded articles show original example figures and correctly dated s
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 2)).toBe(true);
   }
 });
+
+test('five October 14 editorial expansions show actionable fictional steps and correct dates', async ({ page }) => {
+  const refreshed = ["scale-photography-business-without-owner-bottleneck","real-estate-photography-editing-workflow","property-media-editing-queue","prevent-double-booked-photographers","manage-property-photographer-availability"];
+  for (const slug of refreshed) {
+    await page.goto('/insights/' + slug);
+    const example = page.getByRole('figure', { name: 'Illustrative job workflow example' });
+    await expect(example).toBeVisible();
+    await expect(example.getByRole('listitem')).toHaveCount(4);
+    await expect(example).toContainText('Proof of completion:');
+    await expect(example).toContainText('fictional sample data');
+    await expect(example.getByRole('link', { name: /Download the blank/ })).toHaveAttribute('href', /worksheets\\/.*\\.csv$/);
+    const article = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent() || '{}');
+    expect(article.dateModified).toBe('2026-10-14T00:00:00Z');
+    await expect(page.locator('article time').last()).toHaveAttribute('datetime', '2026-10-14');
+    await expect(page.getByRole('heading', { name: /work/i }).first()).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 2)).toBe(true);
+  }
+});
