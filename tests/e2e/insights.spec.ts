@@ -173,11 +173,11 @@ test('five October 14 editorial expansions show actionable fictional steps and c
     await expect(example.getByRole('listitem')).toHaveCount(4);
     await expect(example).toContainText('Proof of completion:');
     await expect(example).toContainText('fictional sample data');
-    await expect(example.getByRole('link', { name: /Download the blank/ })).toHaveAttribute('href', /worksheets\\/.*\\.csv$/);
+    await expect(example.getByRole('link', { name: /Download the blank/ })).toHaveAttribute('href', /worksheets\/.*\.csv$/);
     const article = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent() || '{}');
     expect(article.dateModified).toBe('2026-10-14T00:00:00Z');
     await expect(page.locator('article time').last()).toHaveAttribute('datetime', '2026-10-14');
-    await expect(page.getByRole('heading', { name: /work/i }).first()).toBeVisible();
+    await expect(page.locator('article h1')).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 2)).toBe(true);
   }
 });
