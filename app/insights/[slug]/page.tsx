@@ -34,8 +34,8 @@ export default async function InsightDetail({ params }: { params: Promise<{ slug
   const worksheet = insightWorksheets[slug];
   const commercialOwner = commercialOwnerForInsight(article);
   const buyerGuideUpdated = slug === 'evaluate-property-media-workflow-software';
-  const visibleUpdateDate = buyerGuideUpdated ? '2026-10-13' : '2026-10-12';
-  const visibleUpdateLabel = buyerGuideUpdated ? 'October 13, 2026' : 'October 12, 2026';
+  const visibleUpdateDate = practice?.updatedAt ?? (buyerGuideUpdated ? '2026-10-13' : '2026-10-12');
+  const visibleUpdateLabel = new Date(`${visibleUpdateDate}T00:00:00Z`).toLocaleDateString('en-US', { timeZone: 'UTC', month: 'long', day: 'numeric', year: 'numeric' });
   const articleUrl = `${siteUrl()}/insights/${slug}`;
   const articleSchema = {
     '@context': 'https://schema.org',
