@@ -44,7 +44,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(Math.max(
         articleNavigationUpdated.getTime(),
         article.slug === 'evaluate-property-media-workflow-software' ? buyingGuideUpdated.getTime() : 0,
-        Object.prototype.hasOwnProperty.call(workflowExamples, article.slug) ? originalResourceExamplesUpdated.getTime() : 0,
+        workflowExamples[article.slug]?.updatedAt
+          ? Date.parse(`${workflowExamples[article.slug].updatedAt}T00:00:00Z`)
+          : Object.prototype.hasOwnProperty.call(workflowExamples, article.slug) ? originalResourceExamplesUpdated.getTime() : 0,
         article.publishedAt ? Date.parse(article.publishedAt) : 0,
       )),
     })),

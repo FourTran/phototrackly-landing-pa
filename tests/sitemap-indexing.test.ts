@@ -45,10 +45,13 @@ test('sitemap dates use verified historical updates, never current build time', 
     assert.equal((byPath.get('/resources/shoot-to-delivery-checklist')?.lastModified as Date).toISOString(), '2026-10-13T00:00:00.000Z');
     assert.equal((byPath.get('/real-estate-photography-workflow-software')?.lastModified as Date).toISOString(), '2026-10-13T00:00:00.000Z');
     assert.equal((byPath.get('/insights/evaluate-property-media-workflow-software')?.lastModified as Date).toISOString(), '2026-10-13T00:00:00.000Z');
+    for (const slug of ["scale-photography-business-without-owner-bottleneck","real-estate-photography-editing-workflow","property-media-editing-queue","prevent-double-booked-photographers","manage-property-photographer-availability"]) {
+      assert.equal((byPath.get('/insights/' + slug)?.lastModified as Date).toISOString(), '2026-10-14T00:00:00.000Z', slug);
+    }
     const article = byPath.get('/insights/property-media-job-triage');
     assert.equal((article?.lastModified as Date).toISOString(), '2026-10-12T00:00:00.000Z');
     assert.equal((byPath.get('/insights/handle-client-delivery-revisions-property-media')?.lastModified as Date).toISOString(), '2026-10-12T00:00:00.000Z');
-    assert.equal((byPath.get('/insights/scale-photography-business-without-owner-bottleneck')?.lastModified as Date).toISOString(), '2026-10-07T19:39:45.000Z');
+    assert.equal((byPath.get('/insights/handle-five-property-shoots-per-day')?.lastModified as Date).toISOString(), '2026-10-07T19:39:45.000Z');
     for (const entry of entries) {
       if (entry.lastModified !== undefined) {
         assert.ok(entry.lastModified instanceof Date);
