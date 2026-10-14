@@ -5,6 +5,7 @@ import LeadForm from '@/components/prelaunch/lead-form';
 import AnalyticsConsent, { CookieSettingsButton } from '@/components/prelaunch/analytics-consent';
 import { Wordmark } from '@/components/prelaunch/primitives';
 import type { MarketingPage } from '@/lib/marketing-pages';
+import { commercialBreadcrumbSchema } from '@/lib/commercial-breadcrumbs';
 import { buyerSignupCopy } from '@/lib/conversion-messaging';
 import './prelaunch.css';
 import './seo-page.css';
@@ -31,6 +32,7 @@ const operationalGuideByPage: Record<string, { href: string; label: string }> = 
 export default function SeoPage({ page }: { page: MarketingPage }) {
   const signup = buyerSignupCopy[page.slug];
   return <div className="pl reference-site"><Navigation /><main id="main" className="seo-main">
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(commercialBreadcrumbSchema(page)).replace(/</g, '\\u003c') }} />
     <div className="seo-wrap seo-breadcrumb"><Link href="/">PhotoTrackly</Link><span aria-hidden="true">/</span><span>{page.title}</span></div>
     <section className="seo-wrap seo-hero"><div><p className="rf-eyebrow">{page.eyebrow}</p><h1>{page.heading}</h1><p className="seo-intro">{page.introduction}</p><a className="rf-button" href="#early-access" data-track="cta_click" data-location={page.slug}>Join early access <span aria-hidden="true">↗</span></a><p className="seo-status">In development · No payment or mandatory meeting</p></div><figure><Image src={page.image} alt={page.imageAlt} fill sizes="(max-width: 900px) 100vw, 45vw" /><figcaption>Illustrative property media imagery</figcaption></figure></section>
     <section className="seo-wrap seo-buyer-answer" aria-labelledby="buyer-answer-heading">
