@@ -13,6 +13,7 @@ export function isProductionAnalyticsHost(hostname: string): boolean {
  * illustrative workspace routes and delivery previews must never be tracked.
  */
 export function isPublicMarketingPath(pathname: string): boolean {
+  if (!pathname.startsWith('/')) return false;
   const path = pathname.replace(/\/$/, '') || '/';
   if (path === '/' || ['/about', '/contact', '/build-notes', '/privacy',
     '/real-estate-photography-business-software',
