@@ -52,7 +52,8 @@ type EventName =
 declare global { interface Window { dataLayer?: unknown[]; gtag?: (...args: unknown[]) => void; } }
 export function track(event: EventName, params: { location?: string; stage?: string; category?: string; question?: string } = {}) {
   try {
-    if (!isProductionAnalyticsHost(window.location.hostname) || isInternalQaSession() || localStorage.getItem(ANALYTICS_CONSENT_KEY) !== 'accepted') return;
+    if (!isProductionAnalyticsHost(window.location.hostname) || !isPublicMarketingPath(window.location.pathname)
+      || isInternalQaSession() || localStorage.getItem(ANALYTICS_CONSENT_KEY) !== 'accepted') return;
     // Never pass form values, email, company, names, URLs, or free text to analytics.
     window.gtag?.('event', event, params);
   } catch { /* Analytics must never block registration or page controls. */ }
