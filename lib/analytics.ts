@@ -8,6 +8,22 @@ export function isProductionAnalyticsHost(hostname: string): boolean {
   return host === 'phototrackly.com' || host === 'www.phototrackly.com';
 }
 
+/**
+ * Only public marketing pages are measurable. Private registration preferences,
+ * illustrative workspace routes and delivery previews must never be tracked.
+ */
+export function isPublicMarketingPath(pathname: string): boolean {
+  const path = pathname.replace(/\/$/, '') || '/';
+  if (path === '/' || ['/about', '/contact', '/build-notes', '/privacy',
+    '/real-estate-photography-business-software',
+    '/real-estate-photography-workflow-software',
+    '/real-estate-photography-scheduling-software',
+    '/real-estate-media-production-management',
+  ].includes(path)) return true;
+  return path === '/insights' || path.startsWith('/insights/')
+    || path === '/resources' || path.startsWith('/resources/');
+}
+
 /** QA links suppress analytics for this browser tab; do not use for customer campaigns. */
 export function isInternalQaSession(): boolean {
   try {
