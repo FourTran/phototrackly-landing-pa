@@ -24,7 +24,7 @@ export type MarketingPage = {
 export const marketingPages: MarketingPage[] = [
   {
     slug: 'real-estate-photography-business-software',
-    title: 'Real Estate Photography Business Software for Studios',
+    title: 'Real Estate Photography Business Software',
     description: 'Explore PhotoTrackly’s planned real estate photography business software for studios coordinating shoots, photographers, editors and client handoffs.',
     eyebrow: 'FOR PROPERTY MEDIA BUSINESSES',
     heading: 'Real estate photography business software for studio operations',
