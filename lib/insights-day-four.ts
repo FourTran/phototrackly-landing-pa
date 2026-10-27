@@ -21,7 +21,7 @@ export const dayFourInsights: Insight[] = [
   },
   {
     slug: 'real-estate-photography-editing-style-guide', category: 'Editing',
-    title: 'How to build a real estate photography editing style guide',
+    title: 'Real Estate Photography Editing Style Guide',
     description: 'Turn subjective preferences into versioned standards, approved references and explicit exception rules that editors and reviewers can apply.',
     answer: 'Build the guide around decisions an editor and reviewer can observe: color direction, brightness, vertical treatment, window handling, sky or object-change boundaries, output specifications and property-specific exceptions. Pair short rules with approved examples, name the current version, and update it only when feedback should apply to future jobs.',
     intro: 'A folder of attractive photographs is not automatically an editing standard. Editors need to know which decision each reference demonstrates and which instruction wins when a property request differs.',
@@ -140,7 +140,7 @@ export const dayFourInsights: Insight[] = [
   },
   {
     slug: 'handle-client-delivery-revisions-property-media', category: 'Delivery',
-    title: 'How to handle client revisions after property-media delivery',
+    title: 'Client Revisions After Media Delivery',
     description: 'Capture the request, preserve the delivered version, clarify scope, assign the correction and approve a new client-facing package.',
     answer: 'Treat a post-delivery request as a new revision event on the original property job. Preserve what was delivered, record the exact requested change and affected files, clarify whether it is a correction or new scope, assign an owner and due time, then run review again. Replace or supplement the client package only with a clearly approved version.',
     intro: 'Once a client has received media, overwriting files without a revision record makes it hard to know what changed, what remains valid and which version the client can access.',

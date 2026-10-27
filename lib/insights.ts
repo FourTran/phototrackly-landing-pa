@@ -157,7 +157,7 @@ const originalInsights: Insight[] = [
   {
     slug: 'evaluate-property-media-workflow-software',
     category: 'Buying guide',
-    title: 'Real Estate Photography Software Comparison for Teams',
+    title: 'Compare Real Estate Photography Software',
     description: 'Compare real estate photography software for scheduling, editing, QC and delivery, with primary-source evidence for Aryeo, Tonomo, Spiro and more.',
     answer: 'To compare real estate photography software, start with the bottleneck: booking and scheduling, photographer-to-editor production, gallery delivery or whole-business coordination. Test one property job with photos, drone and floor plans through each shortlisted tool. Check handoff ownership, actual capability, regional availability, price and migration work; a vendor-published feature is not a proven trial result.',
     intro: 'A long feature list does not show whether a coordinator can find the missing floor plan on a busy day. A realistic test job reveals where people would still need separate messages, spreadsheets and folders.',
