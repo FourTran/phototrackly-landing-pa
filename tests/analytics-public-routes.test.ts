@@ -12,7 +12,7 @@ test('GA4 uses the verified PhotoTrackly stream and only canonical production ho
   }
 });
 
-test('public landing, buyer, article and resource URLs qualify for consented measurement', () => {
+test('public landing, buyer, article and resource URLs qualify for GA4 measurement', () => {
   for (const route of [
     '/', '/about', '/contact', '/build-notes', '/privacy',
     '/real-estate-photography-business-software',
@@ -37,17 +37,17 @@ test('private preferences, prototypes and unknown routes are never public analyt
   }
 });
 
-test('only one global consent component owns GA4; no unconditional Google tag in root layout', () => {
+test('one global GA4 component owns production measurement without a consent gate', () => {
   const layout = readFileSync(new URL('../app/layout.tsx', import.meta.url), 'utf8');
   const landing = readFileSync(new URL('../components/marketing/landing.tsx', import.meta.url), 'utf8');
-  const consent = readFileSync(new URL('../components/prelaunch/analytics-consent.tsx', import.meta.url), 'utf8');
-  assert.equal((layout.match(/<AnalyticsConsent \/>/g) || []).length, 1);
-  assert.doesNotMatch(landing, /<AnalyticsConsent\s*\/>/);
-  assert.doesNotMatch(layout, /<GoogleAnalytics|googletagmanager|gtag\/js/i);
-  assert.match(consent, /publicPage && choice === 'accepted' && !internalQa/);
-  assert.match(consent, /send_page_view: false/);
-  assert.match(consent, /lastTrackedLocation/);
-  assert.match(consent, /sanitizedAnalyticsLocation\(window\.location\.href\)/);
-  assert.match(consent, /onReady=\{init\}/);
-  assert.doesNotMatch(consent, /generate_lead/);
+  const analytics = readFileSync(new URL('../components/prelaunch/google-analytics.tsx', import.meta.url), 'utf8');
+  assert.equal((layout.match(/<GoogleAnalytics \/>/g) || []).length, 1);
+  assert.doesNotMatch(landing, /CookieSettingsButton|AnalyticsConsent/);
+  assert.match(analytics, /googletagmanager\.com\/gtag\/js/);
+  assert.match(analytics, /GA_MEASUREMENT_ID/);
+  assert.match(analytics, /send_page_view: false/);
+  assert.match(analytics, /lastTrackedLocation/);
+  assert.match(analytics, /sanitizedAnalyticsLocation\(window\.location\.href\)/);
+  assert.match(analytics, /onReady=\{init\}/);
+  assert.doesNotMatch(analytics, /choice === 'accepted'|ANALYTICS_CONSENT_KEY|analytics_storage/);
 });
