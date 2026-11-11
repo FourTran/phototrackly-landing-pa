@@ -42,4 +42,7 @@ export const insightWorksheets: Record<string, { file: string; label: string }> 
   'track-property-media-client-delivery-event': { file: 'delivery-readiness', label: 'Delivery readiness worksheet' },
   'evaluate-property-media-workflow-software': { file: 'software-evaluation', label: 'Workflow software evaluation worksheet' },
   'outgrown-spreadsheets-property-media': { file: 'software-evaluation', label: 'Workflow software evaluation worksheet' },
+  'real-estate-photography-crm-vs-production-management': { file: 'software-evaluation', label: 'Workflow software evaluation worksheet' },
+  'booking-software-vs-workflow-software-real-estate-photography': { file: 'software-evaluation', label: 'Workflow software evaluation worksheet' },
+  'real-estate-photography-software-stack': { file: 'software-evaluation', label: 'Workflow software evaluation worksheet' },
 };
