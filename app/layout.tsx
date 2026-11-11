@@ -4,7 +4,7 @@ import type { ReactNode } from 'react';
 import { DM_Sans, Manrope, JetBrains_Mono, Plus_Jakarta_Sans } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import AnalyticsConsent from '@/components/prelaunch/analytics-consent';
+import GoogleAnalytics from '@/components/prelaunch/google-analytics';
 import '@/components/marketing/prelaunch.css';
 import { siteUrl } from '@/lib/site';
 import './globals.css';
@@ -35,7 +35,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {children}
         <Analytics />
         <SpeedInsights />
-        <AnalyticsConsent />
+        <GoogleAnalytics />
       </body>
     </html>
   );
