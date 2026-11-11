@@ -1,14 +1,14 @@
-/**
- * Legacy compatibility shim.
- *
- * GA4 is owned globally by components/prelaunch/google-analytics.tsx.
- * Older marketing pages may still import these exports; keep them as no-ops
- * so they cannot create a second tag or consent gate.
- */
+'use client';
+import { openCookieSettings } from '@/lib/analytics';
+
 export function CookieSettingsButton() {
-  return null;
+  return <button className="pl-footer-link" type="button" onClick={openCookieSettings}>Cookie settings</button>;
 }
 
+/**
+ * Legacy compatibility export. The global consent UI and Google tag are owned
+ * by components/prelaunch/google-analytics.tsx.
+ */
 export default function AnalyticsConsent() {
   return null;
 }
