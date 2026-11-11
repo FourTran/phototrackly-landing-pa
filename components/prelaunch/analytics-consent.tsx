@@ -1,14 +1,11 @@
-'use client';
-import { openCookieSettings } from '@/lib/analytics';
-
+/**
+ * Legacy compatibility exports. GA4 is owned globally by
+ * components/prelaunch/google-analytics.tsx and runs cookieless with storage denied.
+ */
 export function CookieSettingsButton() {
-  return <button className="pl-footer-link" type="button" onClick={openCookieSettings}>Cookie settings</button>;
+  return null;
 }
 
-/**
- * Legacy compatibility export. The global consent UI and Google tag are owned
- * by components/prelaunch/google-analytics.tsx.
- */
 export default function AnalyticsConsent() {
   return null;
 }

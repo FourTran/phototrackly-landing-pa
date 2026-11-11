@@ -1,4 +1,3 @@
-export const ANALYTICS_CONSENT_KEY = 'phototrackly.analytics-consent.v1';
 export const GA_MEASUREMENT_ID = 'G-GJQ82ZDWL2';
 const QA_SESSION_KEY = 'phototrackly.internal-analytics-qa.v1';
 
@@ -58,4 +57,3 @@ export function track(event: EventName, params: { location?: string; stage?: str
     window.gtag?.('event', event, params);
   } catch { /* Analytics must never block registration or page controls. */ }
 }
-export function openCookieSettings() { window.dispatchEvent(new Event('phototrackly:cookie-settings')); }
