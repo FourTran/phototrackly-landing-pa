@@ -31,26 +31,11 @@ export default function GoogleAnalytics() {
 
   useEffect(() => {
     try {
-      if (!publicPage || !isProductionAnalyticsHost(window.location.hostname) || isInternalQaSession()) {
-        setEnabled(false);
-        return;
-      }
-
-      window.dataLayer = window.dataLayer || [];
-      // The Google tag queue stores its arguments object, not an array.
-      // eslint-disable-next-line prefer-rest-params
-      window.gtag = window.gtag || function () { window.dataLayer!.push(arguments); };
-
-      // Cookieless GA4 measurement only. No analytics or advertising storage.
-      // This default is queued before gtag.js is allowed to load.
-      window.gtag('consent', 'default', {
-        analytics_storage: 'denied',
-        ad_storage: 'denied',
-        ad_user_data: 'denied',
-        ad_personalization: 'denied',
-      });
-
-      setEnabled(true);
+      setEnabled(
+        publicPage
+        && isProductionAnalyticsHost(window.location.hostname)
+        && !isInternalQaSession()
+      );
     } catch {
       setEnabled(false);
     }
@@ -71,12 +56,13 @@ export default function GoogleAnalytics() {
   }, [pathname, sendPageView]);
 
   function init() {
-    if (!enabled || !window.gtag || configured.current) return;
+    if (!enabled || configured.current) return;
+    window.dataLayer = window.dataLayer || [];
+    // eslint-disable-next-line prefer-rest-params
+    window.gtag = window.gtag || function () { window.dataLayer!.push(arguments); };
     window.gtag('js', new Date());
     window.gtag('config', GA_MEASUREMENT_ID, {
       send_page_view: false,
-      allow_google_signals: false,
-      allow_ad_personalization_signals: false,
       page_location: sanitizedAnalyticsLocation(location.href),
       page_referrer: document.referrer ? new URL(document.referrer).origin : '',
     });
