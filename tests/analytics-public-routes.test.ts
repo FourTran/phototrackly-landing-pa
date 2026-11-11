@@ -37,7 +37,7 @@ test('private preferences, prototypes and unknown routes are never public analyt
   }
 });
 
-test('one global GA4 component uses permanent cookieless consent-denied mode', () => {
+test('one global GA4 component uses normal collection without forced consent restrictions', () => {
   const layout = readFileSync(new URL('../app/layout.tsx', import.meta.url), 'utf8');
   const landing = readFileSync(new URL('../components/marketing/landing.tsx', import.meta.url), 'utf8');
   const analytics = readFileSync(new URL('../components/prelaunch/google-analytics.tsx', import.meta.url), 'utf8');
@@ -49,14 +49,7 @@ test('one global GA4 component uses permanent cookieless consent-denied mode', (
   assert.match(analytics, /lastTrackedLocation/);
   assert.match(analytics, /sanitizedAnalyticsLocation\(window\.location\.href\)/);
   assert.match(analytics, /onReady=\{init\}/);
-  assert.match(analytics, /analytics_storage: 'denied'/);
-  assert.match(analytics, /ad_storage: 'denied'/);
-  assert.match(analytics, /ad_user_data: 'denied'/);
-  assert.match(analytics, /ad_personalization: 'denied'/);
-  assert.match(analytics, /gtag\('consent', 'default'/);
-  assert.doesNotMatch(analytics, /consent', 'update|ANALYTICS_CONSENT_KEY|Allow analytics|No thanks/);
-  assert.ok(
-    analytics.indexOf("gtag('consent', 'default'") < analytics.indexOf('setEnabled(true)'),
-    'denied consent defaults must be queued before gtag.js is enabled',
-  );
+  assert.doesNotMatch(analytics, /analytics_storage|ad_storage|ad_user_data|ad_personalization/);
+  assert.doesNotMatch(analytics, /allow_google_signals|allow_ad_personalization_signals/);
+  assert.doesNotMatch(analytics, /consent', 'default|consent', 'update|ANALYTICS_CONSENT_KEY|Allow analytics|No thanks/);
 });
