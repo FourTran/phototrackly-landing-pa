@@ -2,7 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Navigation from '@/components/prelaunch/navigation';
 import LeadForm from '@/components/prelaunch/lead-form';
-import AnalyticsConsent, { CookieSettingsButton } from '@/components/prelaunch/analytics-consent';
 import { Wordmark } from '@/components/prelaunch/primitives';
 import type { MarketingPage } from '@/lib/marketing-pages';
 import { commercialBreadcrumbSchema } from '@/lib/commercial-breadcrumbs';
@@ -79,5 +78,5 @@ export default function SeoPage({ page }: { page: MarketingPage }) {
     <section className="seo-wrap seo-related"><div><p className="rf-eyebrow">PRACTICAL NEXT STEPS</p><h2>Use the workflow with your team.</h2></div><div><Link href="/resources">Browse practical resources<span aria-hidden="true">↗</span></Link><Link href="/insights">Read operations insights<span aria-hidden="true">↗</span></Link><Link href={operationalGuideByPage[page.slug].href}>{operationalGuideByPage[page.slug].label}<span aria-hidden="true">↗</span></Link><Link href="/resources/photographer-handoff-template">Use the photographer handoff template<span aria-hidden="true">↗</span></Link><Link href="/contact">Share workflow feedback<span aria-hidden="true">↗</span></Link></div></section>
     <section className="seo-wrap seo-questions"><p className="rf-eyebrow">CLEAR ANSWERS</p><h2>Before you join early access</h2>{page.questions.map(item => <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</section>
     <section className="seo-signup" id="early-access"><div className="seo-wrap seo-signup-grid"><div><p className="rf-eyebrow">JOIN EARLY ACCESS</p><h2>{signup.heading}</h2><p>{signup.introduction}</p><p className="seo-signup-context">{signup.contextPrompt}</p><p>PhotoTrackly is in development for studios in the United States and Australia. Registration records interest, not a working account or guaranteed invitation. No payment or mandatory meeting is required.</p></div><LeadForm variant="footer" /></div></section>
-  </main><footer><div className="seo-wrap rf-foot-inner"><Wordmark /><p>Property media work, connected.</p><div className="rf-footer-links"><Link href="/build-notes">Build notes</Link><Link href="/privacy">Privacy</Link><CookieSettingsButton /><Link href="/">Home</Link></div></div></footer><AnalyticsConsent /></div>;
+  </main><footer><div className="seo-wrap rf-foot-inner"><Wordmark /><p>Property media work, connected.</p><div className="rf-footer-links"><Link href="/build-notes">Build notes</Link><Link href="/privacy">Privacy</Link><Link href="/">Home</Link></div></div></footer></div>;
 }
