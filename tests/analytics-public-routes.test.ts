@@ -37,17 +37,27 @@ test('private preferences, prototypes and unknown routes are never public analyt
   }
 });
 
-test('one global GA4 component owns production measurement without a consent gate', () => {
+test('one global GA4 component uses advanced consent mode before tag loading', () => {
   const layout = readFileSync(new URL('../app/layout.tsx', import.meta.url), 'utf8');
   const landing = readFileSync(new URL('../components/marketing/landing.tsx', import.meta.url), 'utf8');
   const analytics = readFileSync(new URL('../components/prelaunch/google-analytics.tsx', import.meta.url), 'utf8');
   assert.equal((layout.match(/<GoogleAnalytics \/>/g) || []).length, 1);
-  assert.doesNotMatch(landing, /CookieSettingsButton|AnalyticsConsent/);
+  assert.match(landing, /CookieSettingsButton/);
   assert.match(analytics, /googletagmanager\.com\/gtag\/js/);
   assert.match(analytics, /GA_MEASUREMENT_ID/);
   assert.match(analytics, /send_page_view: false/);
   assert.match(analytics, /lastTrackedLocation/);
   assert.match(analytics, /sanitizedAnalyticsLocation\(window\.location\.href\)/);
   assert.match(analytics, /onReady=\{init\}/);
-  assert.doesNotMatch(analytics, /choice === 'accepted'|ANALYTICS_CONSENT_KEY|analytics_storage/);
+  assert.match(analytics, /analytics_storage: analyticsStorage/);
+  assert.match(analytics, /ad_storage: 'denied'/);
+  assert.match(analytics, /ad_user_data: 'denied'/);
+  assert.match(analytics, /ad_personalization: 'denied'/);
+  assert.match(analytics, /gtag\('consent', 'default'/);
+  assert.match(analytics, /gtag\?\.\('consent', 'update'/);
+  assert.match(analytics, /saved === 'accepted' \? 'granted' : 'denied'/);
+  assert.ok(
+    analytics.indexOf("gtag('consent', 'default'") < analytics.indexOf('setEnabled(true)'),
+    'consent defaults must be queued before gtag.js is enabled',
+  );
 });
