@@ -14,7 +14,7 @@ const homepageAndCommercialContentUpdated = new Date('2026-10-13T00:00:00Z');
 const articleNavigationUpdated = new Date('2026-10-07T19:39:45Z');
 const buyingGuideUpdated = new Date('2026-10-13T00:00:00Z');
 const resourceSchemaUpdated = new Date('2026-10-08T07:41:41Z');
-const contentHubsUpdated = new Date('2026-10-13T00:00:00Z');
+const contentHubsUpdated = new Date('2026-11-11T09:10:00Z');
 const originalResourceExamplesUpdated = new Date('2026-10-12T00:00:00Z');
 const resourceSharingUpdated = new Date('2026-10-13T00:00:00Z');
 

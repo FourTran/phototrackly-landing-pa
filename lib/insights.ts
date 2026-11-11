@@ -5,6 +5,7 @@ import { dayFourInsights } from './insights-day-four';
 import { dayFiveInsights } from './insights-day-five';
 import { daySixInsights } from './insights-day-six';
 import { daySevenInsights } from './insights-day-seven';
+import { commercialGrowthInsights } from './insights-commercial-growth';
 
 export type Insight = {
   slug: string;
@@ -205,6 +206,25 @@ const originalInsights: Insight[] = [
         ],
       },
       {
+        heading: 'Ten workflows to test before you buy project-management software',
+        paragraphs: [
+          'A buyer-intent demo should reproduce the moments where property-media work actually breaks. Use the same fictional job in every product so the comparison measures handoffs rather than presentation quality.',
+          'For each test, record whether the workflow is demonstrated in the product, documented only by the vendor, requires a workaround, or remains unknown. This makes the evaluation useful to an operations buyer and keeps marketing claims separate from observed evidence.',
+        ],
+        bullets: [
+          '1. New order: create one property with photos, drone and a floor plan without duplicating the job.',
+          '2. Scheduling: assign a qualified photographer and then reschedule the appointment without leaving stale instructions.',
+          '3. Source intake: identify one missing source set before editing begins.',
+          '4. Editor assignment: show who owns each deliverable and when it is due.',
+          '5. Revision: return one item for correction while the other deliverables keep their approved state.',
+          '6. QC: distinguish uploaded, reviewed, revision-needed and approved files.',
+          '7. Partial delivery: release approved photos while keeping an outstanding video visibly open only when the client has agreed.',
+          '8. Version recovery: locate the exact version that was previously approved and delivered.',
+          '9. Exception handling: surface a blocked or overdue job without manually opening every project.',
+          '10. Final handoff: verify the client-facing package, record what was sent and preserve the delivery event.',
+        ],
+      },
+      {
         heading: 'Make a decision with known gaps',
         paragraphs: [
           'Record which problems the tool solves now, which require a workaround, and which are only planned. Set a short trial outcome such as “a coordinator can answer the next owner and readiness for every test job.” Do not choose solely on a generic AI label or a promised automation.',
@@ -285,6 +305,7 @@ export const insights: Insight[] = [
   ...published(dayFiveInsights, '2026-10-05T02:04:27Z'),
   ...published(daySixInsights, '2026-10-06T02:10:20Z'),
   ...published(daySevenInsights, '2026-10-07T02:00:00Z'),
+  ...published(commercialGrowthInsights, '2026-11-11T09:10:00Z'),
 ];
 export const insightSlugs = insights.map(article => article.slug);
 export function getInsight(slug: string) { return insights.find(article => article.slug === slug); }
