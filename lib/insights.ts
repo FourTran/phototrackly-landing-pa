@@ -6,6 +6,7 @@ import { dayFiveInsights } from './insights-day-five';
 import { daySixInsights } from './insights-day-six';
 import { daySevenInsights } from './insights-day-seven';
 import { commercialGrowthInsights } from './insights-commercial-growth';
+import { seoCommercialInsights } from './insights-seo-commercial-2026-11';
 
 export type Insight = {
   slug: string;
@@ -306,6 +307,7 @@ export const insights: Insight[] = [
   ...published(daySixInsights, '2026-10-06T02:10:20Z'),
   ...published(daySevenInsights, '2026-10-07T02:00:00Z'),
   ...published(commercialGrowthInsights, '2026-11-11T09:10:00Z'),
+  ...seoCommercialInsights, // Publication date assigned only when approved and published.
 ];
 export const insightSlugs = insights.map(article => article.slug);
 export function getInsight(slug: string) { return insights.find(article => article.slug === slug); }
