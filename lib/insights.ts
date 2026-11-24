@@ -112,6 +112,7 @@ const originalInsights: Insight[] = [
     related: [
       { href: '/resources/photographer-handoff-template', label: 'Use the photographer handoff template' },
       { href: '/real-estate-photography-scheduling-software', label: 'Explore the planned scheduling workspace' },
+      { href: '/insights/deliver-floor-plans-with-property-photography', label: 'Plan the floor-plan review and client delivery handoff' },
     ],
   },
   {
