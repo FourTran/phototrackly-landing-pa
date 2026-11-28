@@ -32,6 +32,116 @@ export type Insight = {
 
 const originalInsights: Insight[] = [
   {
+    "slug": "manage-real-estate-photography-order-changes",
+    "category": "Operations",
+    "title": "How to manage real estate photography order changes after booking",
+    "description": "Handle client-requested add-ons after booking without losing track of photographer capacity, editing requirements, approvals or delivery deadlines.",
+    "answer": "Record the requested change against the original property job, assess its effect on capture, editing, price and delivery, obtain client confirmation, and assign the revised work to named owners before marking it ready.",
+    "intro": "The agent booked photos and a floor plan yesterday. This morning they ask for a drone video, while the photographer already has another appointment after the shoot. A coordinator who simply replies yes may leave the crew with an impossible schedule, an editor without instructions and the client expecting a deliverable nobody owns. Growing property-media studios need a repeatable way to accept changes without losing control of the original order.",
+    "image": "/images/insights/multi-service-shoot-scheduling.webp",
+    "imageAlt": "Photographer preparing cameras, drone equipment and floor-plan tools for a property shoot",
+    "readingMinutes": 5,
+    "publishedAt": "2026-11-28T13:37:00Z",
+    "sections": [
+      {
+        "heading": "Separate the request from an approved change",
+        "paragraphs": [
+          "Use one property job identifier and keep the original confirmed service list. Record the requested addition or cancellation, who requested it, the time received, the affected appointment and the proposed output. A request is not yet a commitment. Assign one coordinator to confirm feasibility and communicate the decision.",
+          "Tonomo's service documentation illustrates why add-ons affect more than an invoice: services have scheduling, production compensation and delivery settings. Its order-details guidance also describes editing service line items and rescheduling appointments. Those examples demonstrate the categories of work a studio needs to coordinate; they do not establish that every platform has the same capabilities."
+        ],
+        "bullets": [
+          "Requested: recorded but not promised.",
+          "Approved: client has confirmed scope, revised price if applicable and timing.",
+          "Assigned: capture and production owners have acknowledged the revised brief.",
+          "Verified: the final delivery checklist reflects the approved scope."
+        ]
+      },
+      {
+        "heading": "Check the impact across the whole job",
+        "paragraphs": [
+          "Consider a fictional booking with a 60-minute photo and floor-plan appointment followed by a 30-minute travel allowance. A drone-video request needs another 25 minutes of capture and a separate editing slot. These are illustrative planning assumptions, not typical service durations or market rates. If the next appointment cannot move, the coordinator must offer a different capture time or decline the addition rather than silently compress travel.",
+          "Check the actual photographer's skills, equipment, applicable drone operating requirements and availability before agreeing. Confirm the added editing task and review deadline, then communicate the revised delivery promise. If an extra service requires a separate appointment, keep it tied to the same property record."
+        ],
+        "table": {
+          "headers": [
+            "Impact",
+            "Original plan",
+            "Proposed change"
+          ],
+          "rows": [
+            [
+              "Capture",
+              "60 minutes",
+              "85 minutes if feasible"
+            ],
+            [
+              "Travel",
+              "30 minutes",
+              "Preserve travel allowance"
+            ],
+            [
+              "Production",
+              "Photos and floor plan",
+              "Add video editing and review"
+            ],
+            [
+              "Delivery",
+              "Original agreed deadline",
+              "Confirm separate video deadline if needed"
+            ],
+            [
+              "Commercial",
+              "Original confirmed scope",
+              "Confirm revised quote before work"
+            ]
+          ]
+        }
+      },
+      {
+        "heading": "Use a change checklist and notify each owner",
+        "paragraphs": [
+          "A spreadsheet or shared job record is enough to start. Keep one row per change with request time, service, decision, approver, capture owner, editing owner, revised due date and confirmation status. Link to the client confirmation rather than copying sensitive contact information into every channel.",
+          "Do not overwrite completed work or imply that unchanged deliverables need to wait. If a photographer is already on site, the coordinator can still record the request and obtain approval before extra work begins. If a service is removed, notify the assigned people and remove it from the active delivery checklist while preserving the decision history."
+        ],
+        "bullets": [
+          "Verify the revised brief was received by the photographer.",
+          "Confirm the editor knows the expected file types and deadline.",
+          "Record whether pricing and client approval are settled.",
+          "Review the final list of approved outputs before delivery."
+        ]
+      },
+      {
+        "heading": "Connect the changed scope to production and delivery",
+        "paragraphs": [
+          "Before: an agent sends a message about drone video, the owner forwards it to a photographer, a calendar stays unchanged, and the editor only sees a folder of photos. The missing video is discovered at delivery. After: the coordinator records the requested service on the existing job, confirms capacity and commercial terms, updates the capture brief and assigns the editing task, then a human reviewer checks the revised list before release.",
+          "PhotoTrackly is being built as a connected shoot-to-delivery workspace for property-media teams. Its planned job records, services and add-ons, manual photographer assignment, editing progress, quality review and delivery are intended to keep this operational context together. A dedicated automated change-approval or billing feature is not being promised. Studios can apply the checklist now using their existing tools.",
+          "If add-ons repeatedly get lost between booking, field work and post-production, register interest in PhotoTrackly early access and tell us where the handoff breaks. Use that workflow problem to evaluate whether a connected job workspace would fit your team."
+        ]
+      }
+    ],
+    "closing": "Try the checklist on the next client-requested change before accepting it. Early-access registration is free, requires no meeting or payment and does not guarantee immediate access.",
+    "sources": [
+      {
+        "label": "Tonomo — How do I set up the services I offer?",
+        "url": "https://support.tonomo.io/articles/4626978536-how-do-i-set-up-the-services-i-offer"
+      },
+      {
+        "label": "Tonomo — How do I use the order details section?",
+        "url": "https://support.tonomo.io/articles/5708450205-order-details-redesign"
+      }
+    ],
+    "related": [
+      {
+        "href": "/insights/multi-service-shoot-scheduling",
+        "label": "Plan multi-service property shoots"
+      },
+      {
+        "href": "/insights/real-estate-photography-job-profitability",
+        "label": "Understand how extra work affects job profitability"
+      }
+    ]
+  },
+  {
     "slug": "real-estate-photography-job-profitability",
     "category": "Operations",
     "title": "How to calculate profitability per real estate photography job",
